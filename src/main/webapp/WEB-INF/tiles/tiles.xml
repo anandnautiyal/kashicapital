@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name=".tile.mainLayout" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="taglibs" value="/WEB-INF/views/common/taglibs.jsp" />
+		<put-attribute name="header" value=".tile.header" />
+		<put-attribute name="mobileheader" value=".tile.header.mobileheader" />
+		<put-attribute name="miniheader" value=".tile.header.miniheader" />
+		<put-attribute name="sidebar" value=".tile.leftnav.sidebar" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value=".tile.footer" />
+	</definition>
+
+	<definition name=".tile.loginLayout" template="/WEB-INF/views/layout/main.jsp">
+		<put-attribute name="header" value=".tile.header" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value=".tile.footer" />
+	</definition>
+
+	<definition name=".tile.header" template="/WEB-INF/views/layout/header.jsp"/>	
+	
+	<definition name=".tile.header.miniheader" template="/WEB-INF/views/layout/miniHeader.jsp"/>
+	
+	<definition name=".tile.header.mobileheader" template="/WEB-INF/views/layout/headerMobile.jsp">
+		<put-attribute name="leftnav" value=".tile.leftnav" />
+	</definition>
+	
+	<definition name=".tile.footer" template="/WEB-INF/views/layout/footer.jsp"/>
+	
+	<definition name=".tile.leftnav" template="/WEB-INF/views/layout/leftNav.jsp" preparer="leftNavPreparer"/>	
+	
+	<definition name=".tile.leftnav.sidebar" template="/WEB-INF/views/layout/leftSideBar.jsp"/>
+
+	<definition name=".tile.body.dashboard" template="/WEB-INF/views/common/dashboard.jsp"/>
+
+	<definition name="index" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.dashboard" />
+	</definition>
+
+	<definition name="login" template="/WEB-INF/views/common/login.jsp">
+		<put-attribute name="header" value=".tile.header" />
+		<put-attribute name="footer" value=".tile.footer" />
+	</definition>
+
+</tiles-definitions>

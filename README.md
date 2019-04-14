@@ -1,1 +1,1 @@
-ddddd
+1) git add .  (This is the first command that you'll run after making some changes to the project files. )

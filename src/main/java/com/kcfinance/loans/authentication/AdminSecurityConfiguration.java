@@ -26,7 +26,7 @@ public class AdminSecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.withUser("admin")
 		.password("{noop}password")
 		.roles("USER", "ADMIN");
-	}*/
+	}     */
 		
 	@Bean    
 	public UserDetailsService userDetailsService() {    

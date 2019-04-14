@@ -61,8 +61,8 @@ Steps to commit changes to new branch
 	git commit -m "added my github name"
 
 	The -m flag is for the message (“added my github name”) on the commit - every commit needs a commit message.
-
-3) 
+		
+3)  git push -u https://github.com/anandnautiyal/kashicapital.git kashicapital-14042019
 
 	Push your changes to GitHub
 

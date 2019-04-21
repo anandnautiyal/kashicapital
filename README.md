@@ -89,3 +89,8 @@ After checkout you can follow below steps
    you will be redirected to login page.
 
 4) Use creadentails admin/password1
+
+5) In application.properties you will have to make changes for your local db
+properties needs to be changed are:
+spring.datasource.username=PERUVIANCONNECTIONREV
+spring.datasource.password=PERUVIANCONNECTIONREV

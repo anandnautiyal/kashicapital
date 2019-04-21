@@ -20,7 +20,7 @@ public class LoadDatabase {
 
 	Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 			
-	@Bean
+	/*@Bean
 	CommandLineRunner initDatabase(CustomerRepository customerRepository, UserRepository userRepository) {
 		return args -> {
 			log.info("Preloading customer" + customerRepository.save(new Customer("Bilbo Baggins", "burglar", "9999999999", "California")));
@@ -30,5 +30,5 @@ public class LoadDatabase {
 			log.info("Preloading user" + userRepository.save(new User("Administrator", "Administrator", "administrator", "password1")));
 			log.info("Preloading user" + userRepository.save(new User("User", "User", "user", "password1")));
 		};
-	}
+	}*/
 }

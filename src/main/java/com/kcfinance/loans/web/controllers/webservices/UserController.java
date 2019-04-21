@@ -41,7 +41,7 @@ public class UserController {
 				.orElseThrow(() -> new UserNotFoundException(id));
 	}
 
-	@PutMapping("/users/{id}")
+	/*@PutMapping("/users/{id}")
 	User replaceUser(@RequestBody User newUser, @PathVariable Long id) {		
 		return userRepository.findById(id).map(user -> {
 			user.setFirstName(newUser.getFirstName());
@@ -54,7 +54,7 @@ public class UserController {
 			return userRepository.save(newUser);
 		});
 	}
-
+*/
 	@DeleteMapping("/users/{id}")
 	void deleteUser(@PathVariable Long id) {
 		userRepository.deleteById(id);

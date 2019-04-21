@@ -1,18 +1,29 @@
-<!-- Jquery JS-->
-<script src="vendor/jquery-3.2.1.min.js"></script>
-<!-- Bootstrap JS-->
-<script src="vendor/bootstrap-4.1/popper.min.js"></script>
-<script src="vendor/bootstrap-4.1/bootstrap.min.js"></script>
-<!-- Vendor JS       -->
-<script src="vendor/slick/slick.min.js"></script>
-<script src="vendor/wow/wow.min.js"></script>
-<script src="vendor/animsition/animsition.min.js"></script>
-<script src="vendor/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-<script src="vendor/counter-up/jquery.waypoints.min.js"></script>
-<script src="vendor/counter-up/jquery.counterup.min.js"></script>
-<script src="vendor/circle-progress/circle-progress.min.js"></script>
-<script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
-<script src="vendor/chartjs/Chart.bundle.min.js"></script>
-<script src="vendor/select2/select2.min.js"></script>
-<!-- Main JS-->
+<!-- Jquery Core Js -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap Core Js -->
+<script src="vendor/bootstrap/js/bootstrap.js"></script>
+<!-- Select Plugin Js -->
+<script src="vendor/bootstrap-select/js/bootstrap-select.js"></script>
+<!-- Slimscroll Plugin Js -->
+<script src="vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="vendor/node-waves/waves.js"></script>
+<!-- Jquery CountTo Plugin Js -->
+<script src="vendor/jquery-countto/jquery.countTo.js"></script>
+<!-- Morris Plugin Js -->
+<script src="vendor/raphael/raphael.min.js"></script>
+<script src="vendor/morrisjs/morris.js"></script>
+<!-- ChartJs -->
+<script src="vendor/chartjs/Chart.bundle.js"></script>
+<!-- Flot Charts Plugin Js -->
+<script src="vendor/flot-charts/jquery.flot.js"></script>
+<script src="vendor/flot-charts/jquery.flot.resize.js"></script>
+<script src="vendor/flot-charts/jquery.flot.pie.js"></script>
+<script src="vendor/flot-charts/jquery.flot.categories.js"></script>
+<script src="vendor/flot-charts/jquery.flot.time.js"></script>
+<!-- Sparkline Chart Plugin Js -->
+<script src="vendor/jquery-sparkline/jquery.sparkline.js"></script>
 <script src="js/main.js"></script>
+</body>
+
+</html>

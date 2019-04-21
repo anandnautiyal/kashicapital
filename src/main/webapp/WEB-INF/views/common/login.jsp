@@ -3,73 +3,58 @@
 <%--@ taglib uri="/WEB-INF/tlds/fmt.tld" prefix="fmt" --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
-<!DOCTYPE html>
-<html lang="en">
-
 <tiles:insertAttribute name="header" />
-
-<body class="animsition">
-    <div class="page-wrapper">
-        <div class="page-content--bge5">
-            <div class="container">
-                <div class="login-wrap">
-                    <div class="login-content">
-                        
-                        <div class="login-logo">
-                            <a href="#">
-                                <img src="images/icon/logo.png" alt="CoolAdmin">
-                            </a>
-                        </div>
-                        
-                        <c:if test="${not empty param.error}">
-	                        <div class="alert alert-error">    
-			                    Invalid Username or password.
-			                </div>
-		                </c:if>
-		                
-                        <div class="login-form">
-                            <form action="/login" method="post">
-                                <div class="form-group">
-                                    <label>Username</label>
-                                    <input class="au-input au-input--full" type="text" name="username" placeholder="Username">
-                                </div>
-                                <div class="form-group">
-                                    <label>Password</label>
-                                    <input class="au-input au-input--full" type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="login-checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember">Remember Me
-                                    </label>
-                                    <label>
-                                        <a href="#">Forgotten Password?</a>
-                                    </label>
-                                </div>
-                                
-                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                                
-                                <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
-                               
-                            </form>
-                            
-                            <div class="register-link">
-                                <p>
-                                    Don't you have account?
-                                    <a href="#">Contact Administrator</a>
-                                </p>
-                            </div>
+<body class="login-page">
+	<div class="login-box">
+        <div class="logo">
+            <img src="images/icon/logo.png" alt="Kashi Capital">
+        </div>
+		 <c:if test="${not empty param.error}">
+			<div class="alert alert-error">    
+				Invalid Username or password.
+			</div>
+		</c:if>
+        <div class="card">
+            <div class="body">
+                <form action="/login" id="sign_in" method="POST">
+                    <div class="msg">Sign in to start your session</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
                         </div>
                     </div>
-                </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="password" placeholder="Password" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 p-t-5">
+                            <input type="checkbox" name="password" id="rememberme" class="filled-in chk-col-pink">
+                            <label for="rememberme">Remember Me</label>
+                        </div>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <div class="col-xs-4">
+                            <button class="btn btn-block bg-black waves-effect" type="submit">SIGN IN</button>
+                        </div>
+                    </div>
+                    <div class="row m-t-15 m-b--20">
+                        <div class="col-xs-6">
+                            <a href="sign-up.html">Register Now!</a>
+                        </div>
+                        <div class="col-xs-6 align-right">
+                            <a href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-
-    </div>
-
+    </div>	
     <tiles:insertAttribute name="footer" />
-
-</body>
-
-</html>
 <!-- end document-->

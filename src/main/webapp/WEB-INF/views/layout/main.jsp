@@ -9,34 +9,13 @@
 
 <tiles:insertAttribute name="header" />
 <!-- header -->
-
-<body class="animsition">
-    <div class="page-wrapper">
-       
-		<!-- HEADER MOBILE-->
-			<tiles:insertAttribute name="mobileheader" />
-        <!-- END HEADER MOBILE-->
-
-        <!-- MENU SIDEBAR-->
-			<tiles:insertAttribute name="sidebar" />
-        <!-- END MENU SIDEBAR-->
-
-        <!-- PAGE CONTAINER-->
-        <div class="page-container">				
-			<!-- mini header -->
-			<tiles:insertAttribute name="miniheader" />
-
-			<!-- main body -->
-			<tiles:insertAttribute name="body" />            
-        </div>
-		<!-- END PAGE CONTAINER-->
-
-    </div>
-
-    <!-- FOOTER -->
+<body class="theme-amber">			
+	<!-- mini header -->
+	<tiles:insertAttribute name="miniheader" />
+	<!-- MENU SIDEBAR-->
+	<tiles:insertAttribute name="sidebar" />
+	<!-- END MENU SIDEBAR-->
+	<!-- main body -->
+	<tiles:insertAttribute name="body" />            
+	<!-- FOOTER -->
 	<tiles:insertAttribute name="footer" />
-
-</body>
-
-</html>
-<!-- end document-->

@@ -41,7 +41,7 @@ public class CustomerController {
 			.orElseThrow(() -> new CustomerNotFoundException(id));
 	}
 
-	@PutMapping("/customers/{id}")
+	/*@PutMapping("/customers/{id}")
 	Customer replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) {
 		
 		return customerRepository.findById(id).map(customer -> {
@@ -54,7 +54,7 @@ public class CustomerController {
 			newCustomer.setId(id);
 			return customerRepository.save(newCustomer);
 		});
-	}
+	}*/
 
 	@DeleteMapping("/customers/{id}")
 	void deleteCustomer(@PathVariable Long id) {

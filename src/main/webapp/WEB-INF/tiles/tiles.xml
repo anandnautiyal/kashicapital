@@ -36,14 +36,60 @@
 	<definition name=".tile.leftnav.sidebar" template="/WEB-INF/views/layout/leftSideBar.jsp"/>
 
 	<definition name=".tile.body.dashboard" template="/WEB-INF/views/common/dashboard.jsp"/>
+	
+	<definition name=".tile.body.lead" template="/WEB-INF/views/mod/lead.jsp"/>
+	
+	<definition name=".tile.body.loan" template="/WEB-INF/views/mod/loan.jsp"/>
+	
+	<definition name=".tile.body.loanform" template="/WEB-INF/views/mod/loan_form.jsp"/>
+	
+	<definition name=".tile.body.leadform" template="/WEB-INF/views/mod/lead_form.jsp"/>
+	
+	<definition name="lead" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.lead" />
+	</definition>
+	
+	<definition name="loan" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.loan" />
+	</definition>
+	
+	<definition name="loanform" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.loanform" />
+	</definition>
+	
+	<definition name="leadform" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.leadform" />
+	</definition>
 
 	<definition name="index" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.dashboard" />
 	</definition>
-
+	<definition name=".tile.body.dashboard" template="/WEB-INF/views/common/dashboard.jsp"/>
+	<definition name=".tile.body.userList" template="/WEB-INF/views/layout/userList.jsp"/>
+	<definition name=".tile.body.registration" template="/WEB-INF/views/layout/registration.jsp"/>
 	<definition name="login" template="/WEB-INF/views/common/login.jsp">
 		<put-attribute name="header" value=".tile.header" />
 		<put-attribute name="footer" value=".tile.footer" />
 	</definition>
-
+	<definition name="userslist" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.userList" />
+	</definition>
+	<definition name="registration" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.registration" />
+	</definition>
+	
+	<definition name="registrationsuccess" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.registrationsuccess" />
+	</definition>
+	<definition name=".tile.body.lead" template="/WEB-INF/views/mod/lead.jsp"/>
+	
+	<definition name=".tile.body.loan" template="/WEB-INF/views/mod/loan.jsp"/>
+	
+	<definition name=".tile.body.loanform" template="/WEB-INF/views/mod/loan_form.jsp"/>
+	
+	<definition name=".tile.body.leadform" template="/WEB-INF/views/mod/lead_form.jsp"/>
+	
+	<definition name="lead" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.lead" />
+	</definition>
 </tiles-definitions>

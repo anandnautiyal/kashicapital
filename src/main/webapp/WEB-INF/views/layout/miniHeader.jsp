@@ -1,173 +1,49 @@
-<!-- HEADER DESKTOP-->
-<header class="header-desktop">
-	<div class="section__content section__content--p30">
-		<div class="container-fluid">
-			<div class="header-wrap">
-				<form class="form-header" action="" method="POST">
-					<input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
-					<button class="au-btn--submit" type="submit">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-				</form>
-				<div class="header-button">
-					<div class="noti-wrap">
-						<div class="noti__item js-item-menu">
-							<i class="zmdi zmdi-comment-more"></i>
-							<span class="quantity">1</span>
-							<div class="mess-dropdown js-dropdown">
-								<div class="mess__title">
-									<p>You have 2 news message</p>
-								</div>
-								<div class="mess__item">
-									<div class="image img-cir img-40">
-										<img src="images/icon/avatar-06.jpg" alt="Michelle Moreno" />
-									</div>
-									<div class="content">
-										<h6>Michelle Moreno</h6>
-										<p>Have sent a photo</p>
-										<span class="time">3 min ago</span>
-									</div>
-								</div>
-								<div class="mess__item">
-									<div class="image img-cir img-40">
-										<img src="images/icon/avatar-04.jpg" alt="Diane Myers" />
-									</div>
-									<div class="content">
-										<h6>Diane Myers</h6>
-										<p>You are now connected on message</p>
-										<span class="time">Yesterday</span>
-									</div>
-								</div>
-								<div class="mess__footer">
-									<a href="#">View all messages</a>
-								</div>
-							</div>
-						</div>
-						<div class="noti__item js-item-menu">
-							<i class="zmdi zmdi-email"></i>
-							<span class="quantity">1</span>
-							<div class="email-dropdown js-dropdown">
-								<div class="email__title">
-									<p>You have 3 New Emails</p>
-								</div>
-								<div class="email__item">
-									<div class="image img-cir img-40">
-										<img src="images/icon/avatar-06.jpg" alt="Cynthia Harvey" />
-									</div>
-									<div class="content">
-										<p>Meeting about new dashboard...</p>
-										<span>Cynthia Harvey, 3 min ago</span>
-									</div>
-								</div>
-								<div class="email__item">
-									<div class="image img-cir img-40">
-										<img src="images/icon/avatar-05.jpg" alt="Cynthia Harvey" />
-									</div>
-									<div class="content">
-										<p>Meeting about new dashboard...</p>
-										<span>Cynthia Harvey, Yesterday</span>
-									</div>
-								</div>
-								<div class="email__item">
-									<div class="image img-cir img-40">
-										<img src="images/icon/avatar-04.jpg" alt="Cynthia Harvey" />
-									</div>
-									<div class="content">
-										<p>Meeting about new dashboard...</p>
-										<span>Cynthia Harvey, April 12,,2018</span>
-									</div>
-								</div>
-								<div class="email__footer">
-									<a href="#">See all emails</a>
-								</div>
-							</div>
-						</div>
-						<div class="noti__item js-item-menu">
-							<i class="zmdi zmdi-notifications"></i>
-							<span class="quantity">3</span>
-							<div class="notifi-dropdown js-dropdown">
-								<div class="notifi__title">
-									<p>You have 3 Notifications</p>
-								</div>
-								<div class="notifi__item">
-									<div class="bg-c1 img-cir img-40">
-										<i class="zmdi zmdi-email-open"></i>
-									</div>
-									<div class="content">
-										<p>You got a email notification</p>
-										<span class="date">April 12, 2018 06:50</span>
-									</div>
-								</div>
-								<div class="notifi__item">
-									<div class="bg-c2 img-cir img-40">
-										<i class="zmdi zmdi-account-box"></i>
-									</div>
-									<div class="content">
-										<p>Your account has been blocked</p>
-										<span class="date">April 12, 2018 06:50</span>
-									</div>
-								</div>
-								<div class="notifi__item">
-									<div class="bg-c3 img-cir img-40">
-										<i class="zmdi zmdi-file-text"></i>
-									</div>
-									<div class="content">
-										<p>You got a new file</p>
-										<span class="date">April 12, 2018 06:50</span>
-									</div>
-								</div>
-								<div class="notifi__footer">
-									<a href="#">All notifications</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="account-wrap">
-						<div class="account-item clearfix js-item-menu">
-							<div class="image">
-								<img src="images/icon/avatar-01.jpg" alt="John Doe" />
-							</div>
-							<div class="content">
-								<a class="js-acc-btn" href="#">john doe</a>
-							</div>
-							<div class="account-dropdown js-dropdown">
-								<div class="info clearfix">
-									<div class="image">
-										<a href="#">
-											<img src="images/icon/avatar-01.jpg" alt="John Doe" />
-										</a>
-									</div>
-									<div class="content">
-										<h5 class="name">
-											<a href="#">john doe</a>
-										</h5>
-										<span class="email">johndoe@example.com</span>
-									</div>
-								</div>
-								<div class="account-dropdown__body">
-									<div class="account-dropdown__item">
-										<a href="#">
-											<i class="zmdi zmdi-account"></i>Account</a>
-									</div>
-									<div class="account-dropdown__item">
-										<a href="#">
-											<i class="zmdi zmdi-settings"></i>Setting</a>
-									</div>
-									<div class="account-dropdown__item">
-										<a href="#">
-											<i class="zmdi zmdi-money-box"></i>Billing</a>
-									</div>
-								</div>
-								<div class="account-dropdown__footer">
-									<a href="/logout">
-										<i class="zmdi zmdi-power"></i>Logout</a>
-								</div>
-							</div>
-						</div>
-					</div>
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+	<div class="loader">
+		<div class="preloader">
+			<div class="spinner-layer pl-red">
+				<div class="circle-clipper left">
+					<div class="circle"></div>
+				</div>
+				<div class="circle-clipper right">
+					<div class="circle"></div>
 				</div>
 			</div>
 		</div>
+		<p>Please wait...</p>
 	</div>
-</header>
-<!-- HEADER DESKTOP-->
+</div>
+<!-- #END# Page Loader -->
+ <!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+<!-- #END# Overlay For Sidebars -->
+<!-- Search Bar -->
+<div class="search-bar">
+	<div class="search-icon">
+		<i class="material-icons">search</i>
+	</div>
+	<input type="text" placeholder="START TYPING...">
+	<div class="close-search">
+		<i class="material-icons">close</i>
+	</div>
+</div>
+<!-- #END# Search Bar -->
+<!-- Top Bar -->
+<nav class="navbar">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
+			<a href="javascript:void(0);" class="bars"></a>
+			<a class="navbar-brand" href="#"><img src="images/icon/logo.png" alt="Kashi Capital"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<!-- Call Search -->
+				<li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+				<!-- #END# Call Search -->
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- #Top Bar -->

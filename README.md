@@ -94,3 +94,5 @@ After checkout you can follow below steps
 properties needs to be changed are:
 spring.datasource.username=PERUVIANCONNECTIONREV
 spring.datasource.password=PERUVIANCONNECTIONREV
+
+6)Please run lead table scripts on your local db before running the application.

@@ -31,8 +31,10 @@ public class LeadService{
     public void updateLead(Lead lead, String leadId) {
         Optional<Lead> entity = leadRepository.findById(Long.parseLong(leadId));
         if(entity!=null){
-        	lead.setId(Long.parseLong(leadId));
-        	leadRepository.save(lead);
+        	
+        	entity.get().getLeadCustomer().setMeetingDate(lead.getLeadCustomer().getMeetingDate());
+        	
+        	leadRepository.saveAndFlush(entity.get());
          }
     }
  

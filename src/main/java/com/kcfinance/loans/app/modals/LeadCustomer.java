@@ -35,9 +35,6 @@ public class LeadCustomer {
 	private Long id;
 
 
-	@Column(name="LEAD_ID", insertable = false, updatable= false,nullable=false)
-	private String leadId;
-
 	@Column(name="FIRST_NAME", nullable=true)
 	private String firstName;
 
@@ -104,14 +101,7 @@ public class LeadCustomer {
 		return id;
 	}
 
-	public String getLeadId() {
-		return leadId;
-	}
-
-	public void setLeadId(String leadId) {
-		this.leadId = leadId;
-	}
-
+	
 	public String getAadharNo() {
 		return aadharNo;
 	}

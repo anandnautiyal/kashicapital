@@ -22,8 +22,6 @@ public class LeadDocuments {
 	@Column(name="ID", nullable=false)
 	private Long id;
 
-	@Column(name="LEAD_ID", insertable = false, updatable= false)
-	private String leadId;
 
 	@Column(name="CODE", nullable=true)
 	private String code;
@@ -53,14 +51,6 @@ public class LeadDocuments {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getLeadId() {
-		return leadId;
-	}
-
-	public void setLeadId(String leadId) {
-		this.leadId = leadId;
 	}
 
 	public String getCode() {

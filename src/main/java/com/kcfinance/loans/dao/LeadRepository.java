@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.kcfinance.loans.app.modals.Lead;
 
-public interface LeadRepository extends  JpaRepository<Lead, Long> {
+public interface LeadRepository extends JpaRepository<Lead, Long> {
  
 
 	

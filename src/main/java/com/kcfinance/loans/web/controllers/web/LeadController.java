@@ -16,11 +16,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+
 
 import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.modals.LeadModal;
 import com.kcfinance.loans.app.service.lead.impl.LeadService;
+import com.kcfinance.loans.dao.LeadRepository;
 
 @Controller
 @RequestMapping("/")
@@ -46,18 +47,21 @@ public class LeadController {
 	 */
 	@RequestMapping(value = { "/list", "/list" }, method = RequestMethod.POST)
 	public String listUsers(ModelMap model) {
-		Iterable<Lead> users = leadService.findAllLeads();
-		List<LeadModal> leadModal = new ArrayList<LeadModal>(); 
+		
+		List<Lead> leads = leadService.findAllLeads();
+		
+		/*List<LeadModal> leadModal = new ArrayList<LeadModal>(); 
 		Lead lead = users.iterator().next();
 		LeadModal leadvo = new LeadModal();
 		leadvo.setFirstName(lead.getLeadCustomer().getFirstName());
+		
 		leadvo.setLastName(lead.getLeadCustomer().getLastName());
 		leadvo.setMobileNumber(lead.getLeadCustomer().getPhone());
-		leadvo.setCreateDate(lead.getDateCreated());
+		leadvo.setMeetingDate(lead.getLeadCustomer().getMeetingDate());
 		leadvo.setId(lead.getId());
 
-		leadModal.add(leadvo);
-		model.addAttribute("leadList", leadModal);
+		leadModal.add(leadvo);*/
+		model.addAttribute("leadList", leads);
 		return "lead";
 	}
 
@@ -68,25 +72,24 @@ public class LeadController {
     @RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.GET)
     public String editUser(@PathVariable String leadId, ModelMap model) {
         Optional<Lead> lead = leadService.findById(leadId);
-        LeadModal leadvo = new LeadModal();
-		leadvo.setFirstName(lead.get().getLeadCustomer().getFirstName());
-		leadvo.setLastName(lead.get().getLeadCustomer().getLastName());
-		leadvo.setMobileNumber(lead.get().getLeadCustomer().getPhone());
-		leadvo.setId(lead.get().getId());
-        model.addAttribute("lead", leadvo);
+        /*LeadModal leadvo = new LeadModal();
+		leadvo.setLeadCustomer(lead.get().getLeadCustomer());*/
+		
+        model.addAttribute("lead", lead.get());
         model.addAttribute("edit", true);
-        return "registration";
+        return "editLead";
     }
     
     @RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
     public String updateUser(@Valid Lead lead, BindingResult result,
             ModelMap model, @PathVariable String leadId) {
- 
+    	Optional<Lead> tempLead = leadService.findById(leadId);
         if (result.hasErrors()) {
             return "registration";
         }
- 
-        leadService.updateLead(lead);
+       
+    
+        leadService.updateLead(lead,leadId);
  
         model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "+ lead.getLeadCustomer().getLastName() + " updated successfully");
         return "registrationsuccess";

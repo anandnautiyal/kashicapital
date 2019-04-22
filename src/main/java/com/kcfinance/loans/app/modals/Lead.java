@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,11 +25,10 @@ import lombok.Data;
 public class Lead {
 
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue
 	@Column(name="ID", nullable=false)
 	private Long id;
-
-
 
 	@Column(name="CODE", nullable=true)
 	private String code;
@@ -52,7 +52,7 @@ public class Lead {
 	@OneToMany(mappedBy = "lead", cascade = CascadeType.ALL)
 	private Set<LeadDocuments> leadDocuments;
 	
-	@OneToOne(mappedBy = "lead")
+	@OneToOne(mappedBy = "lead",cascade = CascadeType.ALL)
 	private LeadCustomer leadCustomer;
 
 	public LeadCustomer getLeadCustomer() {

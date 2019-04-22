@@ -8,14 +8,29 @@ public class LeadModal {
 	
 	private long id;
 	
-	private Date createDate;
+	private Date meetingDate;
 	
-	public Date getCreateDate() {
-		return createDate;
+
+	private String lastName;
+	
+	private String mobileNumber;
+	
+	private LeadCustomer leadCustomer;
+	
+	public LeadCustomer getLeadCustomer() {
+		return leadCustomer;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setLeadCustomer(LeadCustomer leadCustomer) {
+		this.leadCustomer = leadCustomer;
+	}
+
+	public Date getMeetingDate() {
+		return meetingDate;
+	}
+
+	public void setMeetingDate(Date meetingDate) {
+		this.meetingDate = meetingDate;
 	}
 
 	public long getId() {
@@ -50,9 +65,6 @@ public class LeadModal {
 		this.mobileNumber = mobileNumber;
 	}
 
-	private String lastName;
-	
-	private String mobileNumber;
 	
 
 }

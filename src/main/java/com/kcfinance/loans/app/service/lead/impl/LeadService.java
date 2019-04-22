@@ -28,19 +28,16 @@ public class LeadService{
     	leadDao.save(Lead);
     }*/
     
-    public void updateLead(Lead lead) {
-        Optional<Lead> entity = leadRepository.findById(lead.getId());
+    public void updateLead(Lead lead, String leadId) {
+        Optional<Lead> entity = leadRepository.findById(Long.parseLong(leadId));
         if(entity!=null){
-            
-           /* entity.get().setFirstName(lead.getFirstName());
-            entity.get().setLastName(lead.getLastName());
-            entity.get().setMobileNumber(lead.getMobileNumber());
-            */
-        }
+        	lead.setId(Long.parseLong(leadId));
+        	leadRepository.save(lead);
+         }
     }
  
      
-   public Iterable<Lead> findAllLeads() {
+   public List<Lead> findAllLeads() {
         return leadRepository.findAll();
     }
  

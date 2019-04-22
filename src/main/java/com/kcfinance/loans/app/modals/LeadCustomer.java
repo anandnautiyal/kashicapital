@@ -29,8 +29,9 @@ import lombok.Data;
 @Table(name="LEAD_CUSTOMER")
 public class LeadCustomer {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID", nullable=false)
+	@Id 
+	@GeneratedValue
+	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
 
@@ -49,7 +50,7 @@ public class LeadCustomer {
 	private String phone;
 
 	@Column(name="AADHAR_NO", nullable=true)
-	private String aadhar_no;
+	private String aadharNo;
 
 	@Column(name="NATURE_OF_BUSINESS", nullable=true)
 	private String natureOfBusiness;
@@ -62,6 +63,9 @@ public class LeadCustomer {
 
 	@Column(name="ACTIVE", nullable=true)
 	private int active;
+	
+	@Column(name="Address", nullable=true)
+	private String address;
 
 	
 	/**
@@ -80,11 +84,11 @@ public class LeadCustomer {
 	/**
 	 * Date entity last modified.
 	 */
-	@Column(name="MEETING_DATE", nullable=true)
+	@Column(name="MODIFIED_DATE", nullable=true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date meetingDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(unique = true)
 	private Lead lead;
 
 
@@ -108,12 +112,12 @@ public class LeadCustomer {
 		this.leadId = leadId;
 	}
 
-	public String getAadhar_no() {
-		return aadhar_no;
+	public String getAadharNo() {
+		return aadharNo;
 	}
 
-	public void setAadhar_no(String aadhar_no) {
-		this.aadhar_no = aadhar_no;
+	public void setAadharNo(String aadharNo) {
+		this.aadharNo = aadharNo;
 	}
 
 	public String getNatureOfBusiness() {
@@ -202,13 +206,13 @@ public class LeadCustomer {
 		this.phone = phone;
 	}
 
-	/* public Set<User> getUserProfiles() {
-        return userProfiles;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public void setUserProfiles(Set<User> userProfiles) {
-        this.userProfiles = userProfiles;
-    }*/
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	@Override
 	public int hashCode() {

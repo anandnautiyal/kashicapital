@@ -18,7 +18,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                           <form:form method="POST" action="/list" modelAttribute="lead" >
+                        <form:form method="POST" action="/list" modelAttribute="lead" >
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
@@ -65,15 +65,11 @@
                                     <tbody>
                                          <c:forEach items="${leadList}" var="lead">
 											<tr>
-											<td>${lead.firstName}</td>
-											<td>${lead.lastName}</td>
-											<td>${lead.mobileNumber}</td>
-											<td>${lead.createDate}</td>
-										   
-										   
-											<td><a href="<c:url value='/edit-user-${lead.id}' />" class="btn btn-success 
-					 
-											custom-width">edit</a></td>
+											<td>${lead.leadCustomer.firstName}</td>
+											<td>${lead.leadCustomer.lastName}</td>
+											<td>${lead.leadCustomer.phone}</td>
+											<td>${lead.leadCustomer.meetingDate}</td>
+											<td><a href="<c:url value='/edit-user-${lead.id}' />" class="btn btn-success custom-width">edit</a></td>
 											<td><a href="<c:url value='/delete-user-${user.mobileNumber}' />" class="btn btn-danger 
 					 
 												custom-width">delete</a></td>

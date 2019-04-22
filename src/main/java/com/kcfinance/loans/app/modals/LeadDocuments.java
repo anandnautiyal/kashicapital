@@ -18,7 +18,7 @@ import lombok.Data;
 @Table(name="LEAD_CUSTOMER")
 public class LeadDocuments {
 
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID", nullable=false)
 	private Long id;
 

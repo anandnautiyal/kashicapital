@@ -74,8 +74,8 @@
 	<definition name="userslist" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.userList" />
 	</definition>
-	<definition name="registration" extends=".tile.mainLayout">
-		<put-attribute name="body" value=".tile.body.registration" />
+	<definition name="editLead" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.leadform" />
 	</definition>
 	
 	<definition name="registrationsuccess" extends=".tile.mainLayout">
@@ -88,6 +88,8 @@
 	<definition name=".tile.body.loanform" template="/WEB-INF/views/mod/loan_form.jsp"/>
 	
 	<definition name=".tile.body.leadform" template="/WEB-INF/views/mod/lead_form.jsp"/>
+	
+	<definition name=".tile.body.registrationsuccess" template="/WEB-INF/views/layout/registrationsuccess.jsp"/>
 	
 	<definition name="lead" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.lead" />

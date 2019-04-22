@@ -1,1670 +1,469 @@
+if (typeof jQuery === "undefined") {
+    throw new Error("jQuery plugins need to be before this file");
+}
 
-(function ($) {
-  // USE STRICT
-  "use strict";
-
-  try {
-    //WidgetChart 1
-    var ctx = document.getElementById("widgetChart1");
-    if (ctx) {
-      ctx.height = 130;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-          type: 'line',
-          datasets: [{
-            data: [78, 81, 80, 45, 34, 12, 40],
-            label: 'Dataset',
-            backgroundColor: 'rgba(255,255,255,.1)',
-            borderColor: 'rgba(255,255,255,.55)',
-          },]
-        },
-        options: {
-          maintainAspectRatio: true,
-          legend: {
-            display: false
-          },
-          layout: {
-            padding: {
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0
-            }
-          },
-          responsive: true,
-          scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
-              },
-              ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
-              }
-            }],
-            yAxes: [{
-              display: false,
-              ticks: {
-                display: false,
-              }
-            }]
-          },
-          title: {
-            display: false,
-          },
-          elements: {
-            line: {
-              borderWidth: 0
-            },
-            point: {
-              radius: 0,
-              hitRadius: 10,
-              hoverRadius: 4
-            }
-          }
-        }
-      });
+$.AdminBSB = {};
+$.AdminBSB.options = {
+    colors: {
+        red: '#F44336',
+        pink: '#E91E63',
+        purple: '#9C27B0',
+        deepPurple: '#673AB7',
+        indigo: '#3F51B5',
+        blue: '#2196F3',
+        lightBlue: '#03A9F4',
+        cyan: '#00BCD4',
+        teal: '#009688',
+        green: '#4CAF50',
+        lightGreen: '#8BC34A',
+        lime: '#CDDC39',
+        yellow: '#ffe821',
+        amber: '#FFC107',
+        orange: '#FF9800',
+        deepOrange: '#FF5722',
+        brown: '#795548',
+        grey: '#9E9E9E',
+        blueGrey: '#607D8B',
+        black: '#000000',
+        white: '#ffffff'
+    },
+    leftSideBar: {
+        scrollColor: 'rgba(0,0,0,0.5)',
+        scrollWidth: '4px',
+        scrollAlwaysVisible: false,
+        scrollBorderRadius: '0',
+        scrollRailBorderRadius: '0',
+        scrollActiveItemWhenPageLoad: true,
+        breakpointWidth: 1170
+    },
+    dropdownMenu: {
+        effectIn: 'fadeIn',
+        effectOut: 'fadeOut'
     }
+}
 
+/* Left Sidebar - Function =================================================================================================
+*  You can manage the left sidebar menu options
+*  
+*/
+$.AdminBSB.leftSideBar = {
+    activate: function () {
+        var _this = this;
+        var $body = $('body');
+        var $overlay = $('.overlay');
 
-    //WidgetChart 2
-    var ctx = document.getElementById("widgetChart2");
-    if (ctx) {
-      ctx.height = 130;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-          type: 'line',
-          datasets: [{
-            data: [1, 18, 9, 17, 34, 22],
-            label: 'Dataset',
-            backgroundColor: 'transparent',
-            borderColor: 'rgba(255,255,255,.55)',
-          },]
-        },
-        options: {
+        //Close sidebar
+        $(window).click(function (e) {
+            var $target = $(e.target);
+            if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
 
-          maintainAspectRatio: false,
-          legend: {
-            display: false
-          },
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            titleFontSize: 12,
-            titleFontColor: '#000',
-            bodyFontColor: '#000',
-            backgroundColor: '#fff',
-            titleFontFamily: 'Montserrat',
-            bodyFontFamily: 'Montserrat',
-            cornerRadius: 3,
-            intersect: false,
-          },
-          scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
-              },
-              ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
-              }
-            }],
-            yAxes: [{
-              display: false,
-              ticks: {
-                display: false,
-              }
-            }]
-          },
-          title: {
-            display: false,
-          },
-          elements: {
-            line: {
-              tension: 0.00001,
-              borderWidth: 1
-            },
-            point: {
-              radius: 4,
-              hitRadius: 10,
-              hoverRadius: 4
+            if (!$target.hasClass('bars') && _this.isOpen() && $target.parents('#leftsidebar').length === 0) {
+                if (!$target.hasClass('js-right-sidebar')) $overlay.fadeOut();
+                $body.removeClass('overlay-open');
             }
-          }
-        }
-      });
-    }
+        });
 
+        $.each($('.menu-toggle.toggled'), function (i, val) {
+            $(val).next().slideToggle(0);
+        });
 
-    //WidgetChart 3
-    var ctx = document.getElementById("widgetChart3");
-    if (ctx) {
-      ctx.height = 130;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June'],
-          type: 'line',
-          datasets: [{
-            data: [65, 59, 84, 84, 51, 55],
-            label: 'Dataset',
-            backgroundColor: 'transparent',
-            borderColor: 'rgba(255,255,255,.55)',
-          },]
-        },
-        options: {
+        //When page load
+        $.each($('.menu .list li.active'), function (i, val) {
+            var $activeAnchors = $(val).find('a:eq(0)');
 
-          maintainAspectRatio: false,
-          legend: {
-            display: false
-          },
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            titleFontSize: 12,
-            titleFontColor: '#000',
-            bodyFontColor: '#000',
-            backgroundColor: '#fff',
-            titleFontFamily: 'Montserrat',
-            bodyFontFamily: 'Montserrat',
-            cornerRadius: 3,
-            intersect: false,
-          },
-          scales: {
-            xAxes: [{
-              gridLines: {
-                color: 'transparent',
-                zeroLineColor: 'transparent'
-              },
-              ticks: {
-                fontSize: 2,
-                fontColor: 'transparent'
-              }
-            }],
-            yAxes: [{
-              display: false,
-              ticks: {
-                display: false,
-              }
-            }]
-          },
-          title: {
-            display: false,
-          },
-          elements: {
-            line: {
-              borderWidth: 1
-            },
-            point: {
-              radius: 4,
-              hitRadius: 10,
-              hoverRadius: 4
-            }
-          }
-        }
-      });
-    }
+            $activeAnchors.addClass('toggled');
+            $activeAnchors.next().show();
+        });
 
+        //Collapse or Expand Menu
+        $('.menu-toggle').on('click', function (e) {
+            var $this = $(this);
+            var $content = $this.next();
 
-    //WidgetChart 4
-    var ctx = document.getElementById("widgetChart4");
-    if (ctx) {
-      ctx.height = 115;
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [78, 81, 80, 65, 58, 75, 60, 75, 65, 60, 60, 75],
-              borderColor: "transparent",
-              borderWidth: "0",
-              backgroundColor: "rgba(255,255,255,.3)"
-            }
-          ]
-        },
-        options: {
-          maintainAspectRatio: true,
-          legend: {
-            display: false
-          },
-          scales: {
-            xAxes: [{
-              display: false,
-              categoryPercentage: 1,
-              barPercentage: 0.65
-            }],
-            yAxes: [{
-              display: false
-            }]
-          }
-        }
-      });
-    }
+            if ($($this.parents('ul')[0]).hasClass('list')) {
+                var $not = $(e.target).hasClass('menu-toggle') ? e.target : $(e.target).parents('.menu-toggle');
 
-    // Recent Report
-    const brandProduct = 'rgba(0,181,233,0.8)'
-    const brandService = 'rgba(0,173,95,0.8)'
-
-    var elements = 10
-    var data1 = [52, 60, 55, 50, 65, 80, 57, 70, 105, 115]
-    var data2 = [102, 70, 80, 100, 56, 53, 80, 75, 65, 90]
-
-    var ctx = document.getElementById("recent-rep-chart");
-    if (ctx) {
-      ctx.height = 250;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', ''],
-          datasets: [
-            {
-              label: 'My First dataset',
-              backgroundColor: brandService,
-              borderColor: 'transparent',
-              pointHoverBackgroundColor: '#fff',
-              borderWidth: 0,
-              data: data1
-
-            },
-            {
-              label: 'My Second dataset',
-              backgroundColor: brandProduct,
-              borderColor: 'transparent',
-              pointHoverBackgroundColor: '#fff',
-              borderWidth: 0,
-              data: data2
-
-            }
-          ]
-        },
-        options: {
-          maintainAspectRatio: true,
-          legend: {
-            display: false
-          },
-          responsive: true,
-          scales: {
-            xAxes: [{
-              gridLines: {
-                drawOnChartArea: true,
-                color: '#f2f2f2'
-              },
-              ticks: {
-                fontFamily: "Poppins",
-                fontSize: 12
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                maxTicksLimit: 5,
-                stepSize: 50,
-                max: 150,
-                fontFamily: "Poppins",
-                fontSize: 12
-              },
-              gridLines: {
-                display: true,
-                color: '#f2f2f2'
-
-              }
-            }]
-          },
-          elements: {
-            point: {
-              radius: 0,
-              hitRadius: 10,
-              hoverRadius: 4,
-              hoverBorderWidth: 3
-            }
-          }
-
-
-        }
-      });
-    }
-
-    // Percent Chart
-    var ctx = document.getElementById("percent-chart");
-    if (ctx) {
-      ctx.height = 280;
-      var myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [60, 40],
-              backgroundColor: [
-                '#00b5e9',
-                '#fa4251'
-              ],
-              hoverBackgroundColor: [
-                '#00b5e9',
-                '#fa4251'
-              ],
-              borderWidth: [
-                0, 0
-              ],
-              hoverBorderColor: [
-                'transparent',
-                'transparent'
-              ]
-            }
-          ],
-          labels: [
-            'Products',
-            'Services'
-          ]
-        },
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          cutoutPercentage: 55,
-          animation: {
-            animateScale: true,
-            animateRotate: true
-          },
-          legend: {
-            display: false
-          },
-          tooltips: {
-            titleFontFamily: "Poppins",
-            xPadding: 15,
-            yPadding: 10,
-            caretPadding: 0,
-            bodyFontSize: 16
-          }
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-
-
-  try {
-
-    // Recent Report 2
-    const bd_brandProduct2 = 'rgba(0,181,233,0.9)'
-    const bd_brandService2 = 'rgba(0,173,95,0.9)'
-    const brandProduct2 = 'rgba(0,181,233,0.2)'
-    const brandService2 = 'rgba(0,173,95,0.2)'
-
-    var data3 = [52, 60, 55, 50, 65, 80, 57, 70, 105, 115]
-    var data4 = [102, 70, 80, 100, 56, 53, 80, 75, 65, 90]
-
-    var ctx = document.getElementById("recent-rep2-chart");
-    if (ctx) {
-      ctx.height = 230;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', ''],
-          datasets: [
-            {
-              label: 'My First dataset',
-              backgroundColor: brandService2,
-              borderColor: bd_brandService2,
-              pointHoverBackgroundColor: '#fff',
-              borderWidth: 0,
-              data: data3
-
-            },
-            {
-              label: 'My Second dataset',
-              backgroundColor: brandProduct2,
-              borderColor: bd_brandProduct2,
-              pointHoverBackgroundColor: '#fff',
-              borderWidth: 0,
-              data: data4
-
-            }
-          ]
-        },
-        options: {
-          maintainAspectRatio: true,
-          legend: {
-            display: false
-          },
-          responsive: true,
-          scales: {
-            xAxes: [{
-              gridLines: {
-                drawOnChartArea: true,
-                color: '#f2f2f2'
-              },
-              ticks: {
-                fontFamily: "Poppins",
-                fontSize: 12
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                maxTicksLimit: 5,
-                stepSize: 50,
-                max: 150,
-                fontFamily: "Poppins",
-                fontSize: 12
-              },
-              gridLines: {
-                display: true,
-                color: '#f2f2f2'
-
-              }
-            }]
-          },
-          elements: {
-            point: {
-              radius: 0,
-              hitRadius: 10,
-              hoverRadius: 4,
-              hoverBorderWidth: 3
-            },
-            line: {
-              tension: 0
-            }
-          }
-
-
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-
-  try {
-
-    // Recent Report 3
-    const bd_brandProduct3 = 'rgba(0,181,233,0.9)';
-    const bd_brandService3 = 'rgba(0,173,95,0.9)';
-    const brandProduct3 = 'transparent';
-    const brandService3 = 'transparent';
-
-    var data5 = [52, 60, 55, 50, 65, 80, 57, 115];
-    var data6 = [102, 70, 80, 100, 56, 53, 80, 90];
-
-    var ctx = document.getElementById("recent-rep3-chart");
-    if (ctx) {
-      ctx.height = 230;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', ''],
-          datasets: [
-            {
-              label: 'My First dataset',
-              backgroundColor: brandService3,
-              borderColor: bd_brandService3,
-              pointHoverBackgroundColor: '#fff',
-              borderWidth: 0,
-              data: data5,
-              pointBackgroundColor: bd_brandService3
-            },
-            {
-              label: 'My Second dataset',
-              backgroundColor: brandProduct3,
-              borderColor: bd_brandProduct3,
-              pointHoverBackgroundColor: '#fff',
-              borderWidth: 0,
-              data: data6,
-              pointBackgroundColor: bd_brandProduct3
-
-            }
-          ]
-        },
-        options: {
-          maintainAspectRatio: false,
-          legend: {
-            display: false
-          },
-          responsive: true,
-          scales: {
-            xAxes: [{
-              gridLines: {
-                drawOnChartArea: true,
-                color: '#f2f2f2'
-              },
-              ticks: {
-                fontFamily: "Poppins",
-                fontSize: 12
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                maxTicksLimit: 5,
-                stepSize: 50,
-                max: 150,
-                fontFamily: "Poppins",
-                fontSize: 12
-              },
-              gridLines: {
-                display: false,
-                color: '#f2f2f2'
-              }
-            }]
-          },
-          elements: {
-            point: {
-              radius: 3,
-              hoverRadius: 4,
-              hoverBorderWidth: 3,
-              backgroundColor: '#333'
-            }
-          }
-
-
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-    //WidgetChart 5
-    var ctx = document.getElementById("widgetChart5");
-    if (ctx) {
-      ctx.height = 220;
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [78, 81, 80, 64, 65, 80, 70, 75, 67, 85, 66, 68],
-              borderColor: "transparent",
-              borderWidth: "0",
-              backgroundColor: "#ccc",
-            }
-          ]
-        },
-        options: {
-          maintainAspectRatio: true,
-          legend: {
-            display: false
-          },
-          scales: {
-            xAxes: [{
-              display: false,
-              categoryPercentage: 1,
-              barPercentage: 0.65
-            }],
-            yAxes: [{
-              display: false
-            }]
-          }
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-
-    // Percent Chart 2
-    var ctx = document.getElementById("percent-chart2");
-    if (ctx) {
-      ctx.height = 209;
-      var myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [60, 40],
-              backgroundColor: [
-                '#00b5e9',
-                '#fa4251'
-              ],
-              hoverBackgroundColor: [
-                '#00b5e9',
-                '#fa4251'
-              ],
-              borderWidth: [
-                0, 0
-              ],
-              hoverBorderColor: [
-                'transparent',
-                'transparent'
-              ]
-            }
-          ],
-          labels: [
-            'Products',
-            'Services'
-          ]
-        },
-        options: {
-          maintainAspectRatio: false,
-          responsive: true,
-          cutoutPercentage: 87,
-          animation: {
-            animateScale: true,
-            animateRotate: true
-          },
-          legend: {
-            display: false,
-            position: 'bottom',
-            labels: {
-              fontSize: 14,
-              fontFamily: "Poppins,sans-serif"
+                $.each($('.menu-toggle.toggled').not($not).next(), function (i, val) {
+                    if ($(val).is(':visible')) {
+                        $(val).prev().toggleClass('toggled');
+                        $(val).slideUp();
+                    }
+                });
             }
 
-          },
-          tooltips: {
-            titleFontFamily: "Poppins",
-            xPadding: 15,
-            yPadding: 10,
-            caretPadding: 0,
-            bodyFontSize: 16,
-          }
-        }
-      });
-    }
+            $this.toggleClass('toggled');
+            $content.slideToggle(320);
+        });
 
-  } catch (error) {
-    console.log(error);
-  }
+        //Set menu height
+        _this.setMenuHeight(true);
+        _this.checkStatusForResize(true);
+        $(window).resize(function () {
+            _this.setMenuHeight(false);
+            _this.checkStatusForResize(false);
+        });
 
-  try {
-    //Sales chart
-    var ctx = document.getElementById("sales-chart");
-    if (ctx) {
-      ctx.height = 150;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-          type: 'line',
-          defaultFontFamily: 'Poppins',
-          datasets: [{
-            label: "Foods",
-            data: [0, 30, 10, 120, 50, 63, 10],
-            backgroundColor: 'transparent',
-            borderColor: 'rgba(220,53,69,0.75)',
-            borderWidth: 3,
-            pointStyle: 'circle',
-            pointRadius: 5,
-            pointBorderColor: 'transparent',
-            pointBackgroundColor: 'rgba(220,53,69,0.75)',
-          }, {
-            label: "Electronics",
-            data: [0, 50, 40, 80, 40, 79, 120],
-            backgroundColor: 'transparent',
-            borderColor: 'rgba(40,167,69,0.75)',
-            borderWidth: 3,
-            pointStyle: 'circle',
-            pointRadius: 5,
-            pointBorderColor: 'transparent',
-            pointBackgroundColor: 'rgba(40,167,69,0.75)',
-          }]
-        },
-        options: {
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            titleFontSize: 12,
-            titleFontColor: '#000',
-            bodyFontColor: '#000',
-            backgroundColor: '#fff',
-            titleFontFamily: 'Poppins',
-            bodyFontFamily: 'Poppins',
-            cornerRadius: 3,
-            intersect: false,
-          },
-          legend: {
-            display: false,
-            labels: {
-              usePointStyle: true,
-              fontFamily: 'Poppins',
-            },
-          },
-          scales: {
-            xAxes: [{
-              display: true,
-              gridLines: {
-                display: false,
-                drawBorder: false
-              },
-              scaleLabel: {
-                display: false,
-                labelString: 'Month'
-              },
-              ticks: {
-                fontFamily: "Poppins"
-              }
-            }],
-            yAxes: [{
-              display: true,
-              gridLines: {
-                display: false,
-                drawBorder: false
-              },
-              scaleLabel: {
-                display: true,
-                labelString: 'Value',
-                fontFamily: "Poppins"
+        //Set Waves
+        Waves.attach('.menu .list a', ['waves-block']);
+        Waves.init();
+    },
+    setMenuHeight: function (isFirstTime) {
+        if (typeof $.fn.slimScroll != 'undefined') {
+            var configs = $.AdminBSB.options.leftSideBar;
+            var height = ($(window).height() - ($('.legal').outerHeight() + $('.user-info').outerHeight() + $('.navbar').innerHeight()));
+            var $el = $('.list');
 
-              },
-              ticks: {
-                fontFamily: "Poppins"
-              }
-            }]
-          },
-          title: {
-            display: false,
-            text: 'Normal Legend'
-          }
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-
-    //Team chart
-    var ctx = document.getElementById("team-chart");
-    if (ctx) {
-      ctx.height = 150;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["2010", "2011", "2012", "2013", "2014", "2015", "2016"],
-          type: 'line',
-          defaultFontFamily: 'Poppins',
-          datasets: [{
-            data: [0, 7, 3, 5, 2, 10, 7],
-            label: "Expense",
-            backgroundColor: 'rgba(0,103,255,.15)',
-            borderColor: 'rgba(0,103,255,0.5)',
-            borderWidth: 3.5,
-            pointStyle: 'circle',
-            pointRadius: 5,
-            pointBorderColor: 'transparent',
-            pointBackgroundColor: 'rgba(0,103,255,0.5)',
-          },]
-        },
-        options: {
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            titleFontSize: 12,
-            titleFontColor: '#000',
-            bodyFontColor: '#000',
-            backgroundColor: '#fff',
-            titleFontFamily: 'Poppins',
-            bodyFontFamily: 'Poppins',
-            cornerRadius: 3,
-            intersect: false,
-          },
-          legend: {
-            display: false,
-            position: 'top',
-            labels: {
-              usePointStyle: true,
-              fontFamily: 'Poppins',
-            },
-
-
-          },
-          scales: {
-            xAxes: [{
-              display: true,
-              gridLines: {
-                display: false,
-                drawBorder: false
-              },
-              scaleLabel: {
-                display: false,
-                labelString: 'Month'
-              },
-              ticks: {
-                fontFamily: "Poppins"
-              }
-            }],
-            yAxes: [{
-              display: true,
-              gridLines: {
-                display: false,
-                drawBorder: false
-              },
-              scaleLabel: {
-                display: true,
-                labelString: 'Value',
-                fontFamily: "Poppins"
-              },
-              ticks: {
-                fontFamily: "Poppins"
-              }
-            }]
-          },
-          title: {
-            display: false,
-          }
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-    //bar chart
-    var ctx = document.getElementById("barChart");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        defaultFontFamily: 'Poppins',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [65, 59, 80, 81, 56, 55, 40],
-              borderColor: "rgba(0, 123, 255, 0.9)",
-              borderWidth: "0",
-              backgroundColor: "rgba(0, 123, 255, 0.5)",
-              fontFamily: "Poppins"
-            },
-            {
-              label: "My Second dataset",
-              data: [28, 48, 40, 19, 86, 27, 90],
-              borderColor: "rgba(0,0,0,0.09)",
-              borderWidth: "0",
-              backgroundColor: "rgba(0,0,0,0.07)",
-              fontFamily: "Poppins"
-            }
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
+            if (!isFirstTime) {
+                $el.slimscroll({
+                    destroy: true
+                });
             }
 
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                fontFamily: "Poppins"
-
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontFamily: "Poppins"
-              }
-            }]
-          }
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-
-    //radar chart
-    var ctx = document.getElementById("radarChart");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'radar',
-        data: {
-          labels: [["Eating", "Dinner"], ["Drinking", "Water"], "Sleeping", ["Designing", "Graphics"], "Coding", "Cycling", "Running"],
-          defaultFontFamily: 'Poppins',
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [65, 59, 66, 45, 56, 55, 40],
-              borderColor: "rgba(0, 123, 255, 0.6)",
-              borderWidth: "1",
-              backgroundColor: "rgba(0, 123, 255, 0.4)"
-            },
-            {
-              label: "My Second dataset",
-              data: [28, 12, 40, 19, 63, 27, 87],
-              borderColor: "rgba(0, 123, 255, 0.7",
-              borderWidth: "1",
-              backgroundColor: "rgba(0, 123, 255, 0.5)"
-            }
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          scale: {
-            ticks: {
-              beginAtZero: true,
-              fontFamily: "Poppins"
-            }
-          }
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error)
-  }
-
-  try {
-
-    //line chart
-    var ctx = document.getElementById("lineChart");
-    if (ctx) {
-      ctx.height = 150;
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["January", "February", "March", "April", "May", "June", "July"],
-          defaultFontFamily: "Poppins",
-          datasets: [
-            {
-              label: "My First dataset",
-              borderColor: "rgba(0,0,0,.09)",
-              borderWidth: "1",
-              backgroundColor: "rgba(0,0,0,.07)",
-              data: [22, 44, 67, 43, 76, 45, 12]
-            },
-            {
-              label: "My Second dataset",
-              borderColor: "rgba(0, 123, 255, 0.9)",
-              borderWidth: "1",
-              backgroundColor: "rgba(0, 123, 255, 0.5)",
-              pointHighlightStroke: "rgba(26,179,148,1)",
-              data: [16, 32, 18, 26, 42, 33, 44]
-            }
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true,
-          tooltips: {
-            mode: 'index',
-            intersect: false
-          },
-          hover: {
-            mode: 'nearest',
-            intersect: true
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                fontFamily: "Poppins"
-
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontFamily: "Poppins"
-              }
-            }]
-          }
-
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-
-
-  try {
-
-    //doughut chart
-    var ctx = document.getElementById("doughutChart");
-    if (ctx) {
-      ctx.height = 150;
-      var myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          datasets: [{
-            data: [45, 25, 20, 10],
-            backgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0, 123, 255,0.5)",
-              "rgba(0,0,0,0.07)"
-            ],
-            hoverBackgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0, 123, 255,0.5)",
-              "rgba(0,0,0,0.07)"
-            ]
-
-          }],
-          labels: [
-            "Green",
-            "Green",
-            "Green",
-            "Green"
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-
-
-  try {
-
-    //pie chart
-    var ctx = document.getElementById("pieChart");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-          datasets: [{
-            data: [45, 25, 20, 10],
-            backgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0, 123, 255,0.5)",
-              "rgba(0,0,0,0.07)"
-            ],
-            hoverBackgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0, 123, 255,0.5)",
-              "rgba(0,0,0,0.07)"
-            ]
-
-          }],
-          labels: [
-            "Green",
-            "Green",
-            "Green"
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-
-    // polar chart
-    var ctx = document.getElementById("polarChart");
-    if (ctx) {
-      ctx.height = 200;
-      var myChart = new Chart(ctx, {
-        type: 'polarArea',
-        data: {
-          datasets: [{
-            data: [15, 18, 9, 6, 19],
-            backgroundColor: [
-              "rgba(0, 123, 255,0.9)",
-              "rgba(0, 123, 255,0.8)",
-              "rgba(0, 123, 255,0.7)",
-              "rgba(0,0,0,0.2)",
-              "rgba(0, 123, 255,0.5)"
-            ]
-
-          }],
-          labels: [
-            "Green",
-            "Green",
-            "Green",
-            "Green"
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          responsive: true
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  try {
-
-    // single bar chart
-    var ctx = document.getElementById("singelBarChart");
-    if (ctx) {
-      ctx.height = 150;
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["Sun", "Mon", "Tu", "Wed", "Th", "Fri", "Sat"],
-          datasets: [
-            {
-              label: "My First dataset",
-              data: [40, 55, 75, 81, 56, 55, 40],
-              borderColor: "rgba(0, 123, 255, 0.9)",
-              borderWidth: "0",
-              backgroundColor: "rgba(0, 123, 255, 0.5)"
-            }
-          ]
-        },
-        options: {
-          legend: {
-            position: 'top',
-            labels: {
-              fontFamily: 'Poppins'
-            }
-
-          },
-          scales: {
-            xAxes: [{
-              ticks: {
-                fontFamily: "Poppins"
-
-              }
-            }],
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-                fontFamily: "Poppins"
-              }
-            }]
-          }
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-})(jQuery);
-
-
-
-(function ($) {
-    // USE STRICT
-    "use strict";
-    $(".animsition").animsition({
-      inClass: 'fade-in',
-      outClass: 'fade-out',
-      inDuration: 900,
-      outDuration: 900,
-      linkElement: 'a:not([target="_blank"]):not([href^="#"]):not([class^="chosen-single"])',
-      loading: true,
-      loadingParentElement: 'html',
-      loadingClass: 'page-loader',
-      loadingInner: '<div class="page-loader__spin"></div>',
-      timeout: false,
-      timeoutCountdown: 5000,
-      onLoadEvent: true,
-      browser: ['animation-duration', '-webkit-animation-duration'],
-      overlay: false,
-      overlayClass: 'animsition-overlay-slide',
-      overlayParentElement: 'html',
-      transition: function (url) {
-        window.location.href = url;
-      }
-    });
-  
-  
-  })(jQuery);
-(function ($) {
-  // USE STRICT
-  "use strict";
-
-  // Map
-  try {
-
-    var vmap = $('#vmap');
-    if(vmap[0]) {
-      vmap.vectorMap( {
-        map: 'world_en',
-        backgroundColor: null,
-        color: '#ffffff',
-        hoverOpacity: 0.7,
-        selectedColor: '#1de9b6',
-        enableZoom: true,
-        showTooltip: true,
-        values: sample_data,
-        scaleColors: [ '#1de9b6', '#03a9f5'],
-        normalizeFunction: 'polynomial'
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  // Europe Map
-  try {
-    
-    var vmap1 = $('#vmap1');
-    if(vmap1[0]) {
-      vmap1.vectorMap( {
-        map: 'europe_en',
-        color: '#007BFF',
-        borderColor: '#fff',
-        backgroundColor: '#fff',
-        enableZoom: true,
-        showTooltip: true
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  // USA Map
-  try {
-    
-    var vmap2 = $('#vmap2');
-
-    if(vmap2[0]) {
-      vmap2.vectorMap( {
-        map: 'usa_en',
-        color: '#007BFF',
-        borderColor: '#fff',
-        backgroundColor: '#fff',
-        enableZoom: true,
-        showTooltip: true,
-        selectedColor: null,
-        hoverColor: null,
-        colors: {
-            mo: '#001BFF',
-            fl: '#001BFF',
-            or: '#001BFF'
-        },
-        onRegionClick: function ( event, code, region ) {
-            event.preventDefault();
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  // Germany Map
-  try {
-    
-    var vmap3 = $('#vmap3');
-    if(vmap3[0]) {
-      vmap3.vectorMap( {
-        map: 'germany_en',
-        color: '#007BFF',
-        borderColor: '#fff',
-        backgroundColor: '#fff',
-        onRegionClick: function ( element, code, region ) {
-            var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
-
-            alert( message );
-        }
-      });
-    }
-    
-  } catch (error) {
-    console.log(error);
-  }
-  
-  // France Map
-  try {
-    
-    var vmap4 = $('#vmap4');
-    if(vmap4[0]) {
-      vmap4.vectorMap( {
-        map: 'france_fr',
-        color: '#007BFF',
-        borderColor: '#fff',
-        backgroundColor: '#fff',
-        enableZoom: true,
-        showTooltip: true
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-  // Russia Map
-  try {
-    var vmap5 = $('#vmap5');
-    if(vmap5[0]) {
-      vmap5.vectorMap( {
-        map: 'russia_en',
-        color: '#007BFF',
-        borderColor: '#fff',
-        backgroundColor: '#fff',
-        hoverOpacity: 0.7,
-        selectedColor: '#999999',
-        enableZoom: true,
-        showTooltip: true,
-        scaleColors: [ '#C8EEFF', '#006491' ],
-        normalizeFunction: 'polynomial'
-      });
-    }
-
-
-  } catch (error) {
-    console.log(error);
-  }
-  
-  // Brazil Map
-  try {
-    
-    var vmap6 = $('#vmap6');
-    if(vmap6[0]) {
-      vmap6.vectorMap( {
-        map: 'brazil_br',
-        color: '#007BFF',
-        borderColor: '#fff',
-        backgroundColor: '#fff',
-        onRegionClick: function ( element, code, region ) {
-            var message = 'You clicked "' + region + '" which has the code: ' + code.toUpperCase();
-            alert( message );
-        }
-      });
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-})(jQuery);
-(function ($) {
-  // Use Strict
-  "use strict";
-  try {
-    var progressbarSimple = $('.js-progressbar-simple');
-    progressbarSimple.each(function () {
-      var that = $(this);
-      var executed = false;
-      $(window).on('load', function () {
-
-        that.waypoint(function () {
-          if (!executed) {
-            executed = true;
-            /*progress bar*/
-            that.progressbar({
-              update: function (current_percentage, $this) {
-                $this.find('.js-value').html(current_percentage + '%');
-              }
+            $el.slimscroll({
+                height: height + "px",
+                color: configs.scrollColor,
+                size: configs.scrollWidth,
+                alwaysVisible: configs.scrollAlwaysVisible,
+                borderRadius: configs.scrollBorderRadius,
+                railBorderRadius: configs.scrollRailBorderRadius
             });
-          }
-        }, {
-            offset: 'bottom-in-view'
-          });
 
-      });
-    });
-  } catch (err) {
-    console.log(err);
-  }
-})(jQuery);
-(function ($) {
-  // USE STRICT
-  "use strict";
+            //Scroll active menu item when page load, if option set = true
+            if ($.AdminBSB.options.leftSideBar.scrollActiveItemWhenPageLoad) {
+                var item = $('.menu .list li.active')[0];
+                if (item) {
+                    var activeItemOffsetTop = item.offsetTop;
+                    if (activeItemOffsetTop > 150) $el.slimscroll({ scrollTo: activeItemOffsetTop + 'px' });
+                }
+            }
+        }
+    },
+    checkStatusForResize: function (firstTime) {
+        var $body = $('body');
+        var $openCloseBar = $('.navbar .navbar-header .bars');
+        var width = $body.width();
 
-  // Scroll Bar
-  try {
-    var jscr1 = $('.js-scrollbar1');
-    if(jscr1[0]) {
-      const ps1 = new PerfectScrollbar('.js-scrollbar1');      
-    }
+        if (firstTime) {
+            $body.find('.content, .sidebar').addClass('no-animate').delay(1000).queue(function () {
+                $(this).removeClass('no-animate').dequeue();
+            });
+        }
 
-    var jscr2 = $('.js-scrollbar2');
-    if (jscr2[0]) {
-      const ps2 = new PerfectScrollbar('.js-scrollbar2');
-
-    }
-
-  } catch (error) {
-    console.log(error);
-  }
-
-})(jQuery);
-(function ($) {
-  // USE STRICT
-  "use strict";
-
-  // Select 2
-  try {
-
-    $(".js-select2").each(function () {
-      $(this).select2({
-        minimumResultsForSearch: 20,
-        dropdownParent: $(this).next('.dropDownSelect2')
-      });
-    });
-
-  } catch (error) {
-    console.log(error);
-  }
-
-
-})(jQuery);
-(function ($) {
-  // USE STRICT
-  "use strict";
-
-  // Dropdown 
-  try {
-    var menu = $('.js-item-menu');
-    var sub_menu_is_showed = -1;
-
-    for (var i = 0; i < menu.length; i++) {
-      $(menu[i]).on('click', function (e) {
-        e.preventDefault();
-        $('.js-right-sidebar').removeClass("show-sidebar");        
-        if (jQuery.inArray(this, menu) == sub_menu_is_showed) {
-          $(this).toggleClass('show-dropdown');
-          sub_menu_is_showed = -1;
+        if (width < $.AdminBSB.options.leftSideBar.breakpointWidth) {
+            $body.addClass('ls-closed');
+            $openCloseBar.fadeIn();
         }
         else {
-          for (var i = 0; i < menu.length; i++) {
-            $(menu[i]).removeClass("show-dropdown");
-          }
-          $(this).toggleClass('show-dropdown');
-          sub_menu_is_showed = jQuery.inArray(this, menu);
+            $body.removeClass('ls-closed');
+            $openCloseBar.fadeOut();
         }
-      });
+    },
+    isOpen: function () {
+        return $('body').hasClass('overlay-open');
     }
-    $(".js-item-menu, .js-dropdown").click(function (event) {
-      event.stopPropagation();
-    });
+};
+//==========================================================================================================================
 
-    $("body,html").on("click", function () {
-      for (var i = 0; i < menu.length; i++) {
-        menu[i].classList.remove("show-dropdown");
-      }
-      sub_menu_is_showed = -1;
-    });
+/* Right Sidebar - Function ================================================================================================
+*  You can manage the right sidebar menu options
+*  
+*/
+$.AdminBSB.rightSideBar = {
+    activate: function () {
+        var _this = this;
+        var $sidebar = $('#rightsidebar');
+        var $overlay = $('.overlay');
 
-  } catch (error) {
-    console.log(error);
-  }
+        //Close sidebar
+        $(window).click(function (e) {
+            var $target = $(e.target);
+            if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
 
-  var wW = $(window).width();
-    // Right Sidebar
-    var right_sidebar = $('.js-right-sidebar');
-    var sidebar_btn = $('.js-sidebar-btn');
-
-    sidebar_btn.on('click', function (e) {
-      e.preventDefault();
-      for (var i = 0; i < menu.length; i++) {
-        menu[i].classList.remove("show-dropdown");
-      }
-      sub_menu_is_showed = -1;
-      right_sidebar.toggleClass("show-sidebar");
-    });
-
-    $(".js-right-sidebar, .js-sidebar-btn").click(function (event) {
-      event.stopPropagation();
-    });
-
-    $("body,html").on("click", function () {
-      right_sidebar.removeClass("show-sidebar");
-
-    });
- 
-
-  // Sublist Sidebar
-  try {
-    var arrow = $('.js-arrow');
-    arrow.each(function () {
-      var that = $(this);
-      that.on('click', function (e) {
-        e.preventDefault();
-        that.find(".arrow").toggleClass("up");
-        that.toggleClass("open");
-        that.parent().find('.js-sub-list').slideToggle("250");
-      });
-    });
-
-  } catch (error) {
-    console.log(error);
-  }
-
-
-  try {
-    // Hamburger Menu
-    $('.hamburger').on('click', function () {
-      $(this).toggleClass('is-active');
-      $('.navbar-mobile').slideToggle('500');
-    });
-    $('.navbar-mobile__list li.has-dropdown > a').on('click', function () {
-      var dropdown = $(this).siblings('ul.navbar-mobile__dropdown');
-      $(this).toggleClass('active');
-      $(dropdown).slideToggle('500');
-      return false;
-    });
-  } catch (error) {
-    console.log(error);
-  }
-})(jQuery);
-(function ($) {
-  // USE STRICT
-  "use strict";
-
-  // Load more
-  try {
-    var list_load = $('.js-list-load');
-    if (list_load[0]) {
-      list_load.each(function () {
-        var that = $(this);
-        that.find('.js-load-item').hide();
-        var load_btn = that.find('.js-load-btn');
-        load_btn.on('click', function (e) {
-          $(this).text("Loading...").delay(1500).queue(function (next) {
-            $(this).hide();
-            that.find(".js-load-item").fadeToggle("slow", 'swing');
-          });
-          e.preventDefault();
+            if (!$target.hasClass('js-right-sidebar') && _this.isOpen() && $target.parents('#rightsidebar').length === 0) {
+                if (!$target.hasClass('bars')) $overlay.fadeOut();
+                $sidebar.removeClass('open');
+            }
         });
-      })
 
+        $('.js-right-sidebar').on('click', function () {
+            $sidebar.toggleClass('open');
+            if (_this.isOpen()) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
+        });
+    },
+    isOpen: function () {
+        return $('.right-sidebar').hasClass('open');
     }
-  } catch (error) {
-    console.log(error);
-  }
+}
+//==========================================================================================================================
 
-})(jQuery);
-(function ($) {
-  // USE STRICT
-  "use strict";
+/* Searchbar - Function ================================================================================================
+*  You can manage the search bar
+*  
+*/
+var $searchBar = $('.search-bar');
+$.AdminBSB.search = {
+    activate: function () {
+        var _this = this;
 
-  try {
-    
-    $('[data-toggle="tooltip"]').tooltip();
+        //Search button click event
+        $('.js-search').on('click', function () {
+            _this.showSearchBar();
+        });
 
-  } catch (error) {
-    console.log(error);
-  }
+        //Close search click event
+        $searchBar.find('.close-search').on('click', function () {
+            _this.hideSearchBar();
+        });
 
-  // Chatbox
-  try {
-    var inbox_wrap = $('.js-inbox');
-    var message = $('.au-message__item');
-    message.each(function(){
-      var that = $(this);
+        //ESC key on pressed
+        $searchBar.find('input[type="text"]').on('keyup', function (e) {
+            if (e.keyCode == 27) {
+                _this.hideSearchBar();
+            }
+        });
+    },
+    showSearchBar: function () {
+        $searchBar.addClass('open');
+        $searchBar.find('input[type="text"]').focus();
+    },
+    hideSearchBar: function () {
+        $searchBar.removeClass('open');
+        $searchBar.find('input[type="text"]').val('');
+    }
+}
+//==========================================================================================================================
 
-      that.on('click', function(){
-        $(this).parent().parent().parent().toggleClass('show-chat-box');
-      });
-    });
-    
+/* Navbar - Function =======================================================================================================
+*  You can manage the navbar
+*  
+*/
+$.AdminBSB.navbar = {
+    activate: function () {
+        var $body = $('body');
+        var $overlay = $('.overlay');
 
-  } catch (error) {
-    console.log(error);
-  }
+        //Open left sidebar panel
+        $('.bars').on('click', function () {
+            $body.toggleClass('overlay-open');
+            if ($body.hasClass('overlay-open')) { $overlay.fadeIn(); } else { $overlay.fadeOut(); }
+        });
 
-})(jQuery);
+        //Close collapse bar on click event
+        $('.nav [data-close="true"]').on('click', function () {
+            var isVisible = $('.navbar-toggle').is(':visible');
+            var $navbarCollapse = $('.navbar-collapse');
+
+            if (isVisible) {
+                $navbarCollapse.slideUp(function () {
+                    $navbarCollapse.removeClass('in').removeAttr('style');
+                });
+            }
+        });
+    }
+}
+//==========================================================================================================================
+
+/* Input - Function ========================================================================================================
+*  You can manage the inputs(also textareas) with name of class 'form-control'
+*  
+*/
+$.AdminBSB.input = {
+    activate: function ($parentSelector) {
+        $parentSelector = $parentSelector || $('body');
+
+        //On focus event
+        $parentSelector.find('.form-control').focus(function () {
+            $(this).closest('.form-line').addClass('focused');
+        });
+
+        //On focusout event
+        $parentSelector.find('.form-control').focusout(function () {
+            var $this = $(this);
+            if ($this.parents('.form-group').hasClass('form-float')) {
+                if ($this.val() == '') { $this.parents('.form-line').removeClass('focused'); }
+            }
+            else {
+                $this.parents('.form-line').removeClass('focused');
+            }
+        });
+
+        //On label click
+        $parentSelector.on('click', '.form-float .form-line .form-label', function () {
+            $(this).parent().find('input').focus();
+        });
+
+        //Not blank form
+        $parentSelector.find('.form-control').each(function () {
+            if ($(this).val() !== '') {
+                $(this).parents('.form-line').addClass('focused');
+            }
+        });
+    }
+}
+//==========================================================================================================================
+
+/* Form - Select - Function ================================================================================================
+*  You can manage the 'select' of form elements
+*  
+*/
+$.AdminBSB.select = {
+    activate: function () {
+        if ($.fn.selectpicker) { $('select:not(.ms)').selectpicker(); }
+    }
+}
+//==========================================================================================================================
+
+/* DropdownMenu - Function =================================================================================================
+*  You can manage the dropdown menu
+*  
+*/
+
+$.AdminBSB.dropdownMenu = {
+    activate: function () {
+        var _this = this;
+
+        $('.dropdown, .dropup, .btn-group').on({
+            "show.bs.dropdown": function () {
+                var dropdown = _this.dropdownEffect(this);
+                _this.dropdownEffectStart(dropdown, dropdown.effectIn);
+            },
+            "shown.bs.dropdown": function () {
+                var dropdown = _this.dropdownEffect(this);
+                if (dropdown.effectIn && dropdown.effectOut) {
+                    _this.dropdownEffectEnd(dropdown, function () { });
+                }
+            },
+            "hide.bs.dropdown": function (e) {
+                var dropdown = _this.dropdownEffect(this);
+                if (dropdown.effectOut) {
+                    e.preventDefault();
+                    _this.dropdownEffectStart(dropdown, dropdown.effectOut);
+                    _this.dropdownEffectEnd(dropdown, function () {
+                        dropdown.dropdown.removeClass('open');
+                    });
+                }
+            }
+        });
+
+        //Set Waves
+        Waves.attach('.dropdown-menu li a', ['waves-block']);
+        Waves.init();
+    },
+    dropdownEffect: function (target) {
+        var effectIn = $.AdminBSB.options.dropdownMenu.effectIn, effectOut = $.AdminBSB.options.dropdownMenu.effectOut;
+        var dropdown = $(target), dropdownMenu = $('.dropdown-menu', target);
+
+        if (dropdown.length > 0) {
+            var udEffectIn = dropdown.data('effect-in');
+            var udEffectOut = dropdown.data('effect-out');
+            if (udEffectIn !== undefined) { effectIn = udEffectIn; }
+            if (udEffectOut !== undefined) { effectOut = udEffectOut; }
+        }
+
+        return {
+            target: target,
+            dropdown: dropdown,
+            dropdownMenu: dropdownMenu,
+            effectIn: effectIn,
+            effectOut: effectOut
+        };
+    },
+    dropdownEffectStart: function (data, effectToStart) {
+        if (effectToStart) {
+            data.dropdown.addClass('dropdown-animating');
+            data.dropdownMenu.addClass('animated dropdown-animated');
+            data.dropdownMenu.addClass(effectToStart);
+        }
+    },
+    dropdownEffectEnd: function (data, callback) {
+        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+        data.dropdown.one(animationEnd, function () {
+            data.dropdown.removeClass('dropdown-animating');
+            data.dropdownMenu.removeClass('animated dropdown-animated');
+            data.dropdownMenu.removeClass(data.effectIn);
+            data.dropdownMenu.removeClass(data.effectOut);
+
+            if (typeof callback == 'function') {
+                callback();
+            }
+        });
+    }
+}
+//==========================================================================================================================
+
+/* Browser - Function ======================================================================================================
+*  You can manage browser
+*  
+*/
+var edge = 'Microsoft Edge';
+var ie10 = 'Internet Explorer 10';
+var ie11 = 'Internet Explorer 11';
+var opera = 'Opera';
+var firefox = 'Mozilla Firefox';
+var chrome = 'Google Chrome';
+var safari = 'Safari';
+
+$.AdminBSB.browser = {
+    activate: function () {
+        var _this = this;
+        var className = _this.getClassName();
+
+        if (className !== '') $('html').addClass(_this.getClassName());
+    },
+    getBrowser: function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+
+        if (/edge/i.test(userAgent)) {
+            return edge;
+        } else if (/rv:11/i.test(userAgent)) {
+            return ie11;
+        } else if (/msie 10/i.test(userAgent)) {
+            return ie10;
+        } else if (/opr/i.test(userAgent)) {
+            return opera;
+        } else if (/chrome/i.test(userAgent)) {
+            return chrome;
+        } else if (/firefox/i.test(userAgent)) {
+            return firefox;
+        } else if (!!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/)) {
+            return safari;
+        }
+
+        return undefined;
+    },
+    getClassName: function () {
+        var browser = this.getBrowser();
+
+        if (browser === edge) {
+            return 'edge';
+        } else if (browser === ie11) {
+            return 'ie11';
+        } else if (browser === ie10) {
+            return 'ie10';
+        } else if (browser === opera) {
+            return 'opera';
+        } else if (browser === chrome) {
+            return 'chrome';
+        } else if (browser === firefox) {
+            return 'firefox';
+        } else if (browser === safari) {
+            return 'safari';
+        } else {
+            return '';
+        }
+    }
+}
+//==========================================================================================================================
+
+$(function () {
+    $.AdminBSB.browser.activate();
+    $.AdminBSB.leftSideBar.activate();
+    $.AdminBSB.rightSideBar.activate();
+    $.AdminBSB.navbar.activate();
+    $.AdminBSB.dropdownMenu.activate();
+    $.AdminBSB.input.activate();
+    $.AdminBSB.select.activate();
+    $.AdminBSB.search.activate();
+
+    setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
+});

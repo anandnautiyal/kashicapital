@@ -3,18 +3,20 @@ package com.kcfinance.loans.app.modals;
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import lombok.Data;
 
@@ -49,10 +51,11 @@ public class Lead {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateModified;
 
-	@OneToMany(mappedBy = "lead", cascade = CascadeType.ALL)
+	/*@OneToMany(mappedBy = "lead")
 	private Set<LeadDocuments> leadDocuments;
-	
-	@OneToOne(mappedBy = "lead",cascade = CascadeType.ALL)
+	*/
+	@OneToOne(mappedBy = "lead")
+	@Cascade({CascadeType.SAVE_UPDATE})
 	private LeadCustomer leadCustomer;
 
 	public LeadCustomer getLeadCustomer() {
@@ -103,13 +106,13 @@ public class Lead {
 		this.dateModified = dateModified;
 	}
 
-	public Set<LeadDocuments> getLeadDocuments() {
+	/*public Set<LeadDocuments> getLeadDocuments() {
 		return leadDocuments;
 	}
 
 	public void setLeadDocuments(Set<LeadDocuments> leadDocuments) {
 		this.leadDocuments = leadDocuments;
-	}
+	}*/
 
 
 

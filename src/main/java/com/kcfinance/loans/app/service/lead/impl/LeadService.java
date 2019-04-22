@@ -32,7 +32,14 @@ public class LeadService{
         Optional<Lead> entity = leadRepository.findById(Long.parseLong(leadId));
         if(entity!=null){
         	
+        	entity.get().getLeadCustomer().setFirstName(lead.getLeadCustomer().getFirstName());
+        	
+        	entity.get().getLeadCustomer().setLastName(lead.getLeadCustomer().getLastName());
+        	
         	entity.get().getLeadCustomer().setMeetingDate(lead.getLeadCustomer().getMeetingDate());
+        	
+        	entity.get().getLeadCustomer().setPhone(lead.getLeadCustomer().getPhone());
+        	
         	
         	leadRepository.saveAndFlush(entity.get());
          }

@@ -81,11 +81,12 @@ public class LeadCustomer {
 	/**
 	 * Date entity last modified.
 	 */
-	@Column(name="MODIFIED_DATE", nullable=true)
+	@Column(name="MEETING_DATE", nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date meetingDate;
 
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(unique = true)
 	private Lead lead;
 
 

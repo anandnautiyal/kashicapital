@@ -41,9 +41,9 @@ public class LeadDocuments {
 	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
 	private Date dateModified;
 
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn
-	private Lead lead;
+	private Lead lead;*/
 
 	public Long getId() {
 		return id;
@@ -85,12 +85,12 @@ public class LeadDocuments {
 		this.dateModified = dateModified;
 	}
 
-	public Lead getLead() {
+	/*public Lead getLead() {
 		return lead;
 	}
 
 	public void setLead(Lead lead) {
 		this.lead = lead;
 	}
-
+*/
 }

@@ -28,73 +28,55 @@ import com.kcfinance.loans.dao.LeadRepository;
 
 public class LeadController {
 
-
-
 	@Autowired
 	LeadService leadService;
 
 
 	@Autowired
 	MessageSource messageSource;
-	
+
 	@RequestMapping(value="/lead", method = RequestMethod.GET)
-    public String showHomePage(ModelMap model){
-        return "lead";
-    }
+	public String showHomePage(ModelMap model){
+		return "lead";
+	}
 
 	/**
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/list", "/list" }, method = RequestMethod.POST)
 	public String listUsers(ModelMap model) {
-		
-		List<Lead> leads = leadService.findAllLeads();
-		
-		/*List<LeadModal> leadModal = new ArrayList<LeadModal>(); 
-		Lead lead = users.iterator().next();
-		LeadModal leadvo = new LeadModal();
-		leadvo.setFirstName(lead.getLeadCustomer().getFirstName());
-		
-		leadvo.setLastName(lead.getLeadCustomer().getLastName());
-		leadvo.setMobileNumber(lead.getLeadCustomer().getPhone());
-		leadvo.setMeetingDate(lead.getLeadCustomer().getMeetingDate());
-		leadvo.setId(lead.getId());
 
-		leadModal.add(leadvo);*/
+		List<Lead> leads = leadService.findAllLeads();
 		model.addAttribute("leadList", leads);
 		return "lead";
 	}
 
 
-    /**
-     * This method will provide the medium to update an existing user.
-     */
-    @RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.GET)
-    public String editUser(@PathVariable String leadId, ModelMap model) {
-        Optional<Lead> lead = leadService.findById(leadId);
-        /*LeadModal leadvo = new LeadModal();
-		leadvo.setLeadCustomer(lead.get().getLeadCustomer());*/
-		
-        model.addAttribute("lead", lead.get());
-        model.addAttribute("edit", true);
-        return "editLead";
-    }
-    
-    @RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
-    public String updateUser(@Valid Lead lead, BindingResult result,
-            ModelMap model, @PathVariable String leadId) {
-    	Optional<Lead> tempLead = leadService.findById(leadId);
-        if (result.hasErrors()) {
-            return "registration";
-        }
-       
-    
-        leadService.updateLead(lead,leadId);
- 
-        model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "+ lead.getLeadCustomer().getLastName() + " updated successfully");
-        return "registrationsuccess";
-    }
- 
+	/**
+	 * This method will provide the medium to update an existing user.
+	 */
+	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.GET)
+	public String editUser(@PathVariable String leadId, ModelMap model) {
+		Optional<Lead> lead = leadService.findById(leadId);
+		model.addAttribute("lead", lead.get());
+		model.addAttribute("edit", true);
+		return "editLead";
+	}
 
-	 
+	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
+	public String updateUser(@Valid Lead lead, BindingResult result,
+			ModelMap model, @PathVariable String leadId) {
+
+		if (result.hasErrors()) {
+			return "registration";
+		}
+
+		leadService.updateLead(lead,leadId);
+
+		model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "+ lead.getLeadCustomer().getLastName() + " updated successfully");
+		return "leadSuccess";
+	}
+
+
+
 }

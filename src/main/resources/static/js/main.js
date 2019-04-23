@@ -466,4 +466,20 @@ $(function () {
     $.AdminBSB.search.activate();
 
     setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
+	
+	 $('#wizard_horizontal').steps({
+        headerTag: 'h2',
+        bodyTag: 'section',
+        transitionEffect: 'slideLeft',
+        onInit: function (event, currentIndex) {
+            setButtonWavesEffect(event);
+			 $.AdminBSB.input.activate();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex) {
+            setButtonWavesEffect(event);
+			
+        }
+    });
+	
+	
 });

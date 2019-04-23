@@ -24,9 +24,9 @@ public class LeadService{
     }
  
    
-    /*public void saveLead(Lead Lead) {
-    	leadDao.save(Lead);
-    }*/
+    public void saveLead(Lead Lead) {
+    	leadRepository.save(Lead);
+    }
     
     public void updateLead(Lead lead, String leadId) {
         Optional<Lead> entity = leadRepository.findById(Long.parseLong(leadId));
@@ -40,12 +40,16 @@ public class LeadService{
         	
         	entity.get().getLeadCustomer().setPhone(lead.getLeadCustomer().getPhone());
         	
-        	
         	leadRepository.saveAndFlush(entity.get());
+        	
+        	
+        
          }
+        
+       
     }
  
-     
+    
    public List<Lead> findAllLeads() {
         return leadRepository.findAll();
     }

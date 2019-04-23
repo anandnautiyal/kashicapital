@@ -27,6 +27,7 @@
     <!-- Morris Chart Css-->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet" />
     <!-- Custom Css -->
+	<link href="vendor/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/theme-amber.css" rel="stylesheet" />

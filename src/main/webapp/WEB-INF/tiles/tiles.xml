@@ -94,4 +94,7 @@
 	<definition name="lead" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.lead" />
 	</definition>
+	<definition name="loanform" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.loanform" />
+	</definition>
 </tiles-definitions>

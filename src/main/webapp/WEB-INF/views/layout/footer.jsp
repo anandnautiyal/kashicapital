@@ -23,6 +23,7 @@
 <script src="vendor/flot-charts/jquery.flot.time.js"></script>
 <!-- Sparkline Chart Plugin Js -->
 <script src="vendor/jquery-sparkline/jquery.sparkline.js"></script>
+<script src="vendor/jquery-steps/jquery.steps.js"></script>
 <script src="js/main.js"></script>
 </body>
 

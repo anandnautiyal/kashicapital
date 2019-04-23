@@ -21,6 +21,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 
@@ -83,6 +85,7 @@ public class LeadCustomer {
 	 */
 	@Column(name="MEETING_DATE", nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date meetingDate;
 
 	@OneToOne(cascade = CascadeType.ALL)

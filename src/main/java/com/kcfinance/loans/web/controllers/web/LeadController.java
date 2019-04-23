@@ -2,10 +2,12 @@ package com.kcfinance.loans.web.controllers.web;
 
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import com.kcfinance.loans.app.modals.Lead;
+import com.kcfinance.loans.app.modals.LeadDocuments;
 import com.kcfinance.loans.app.modals.LeadModal;
 import com.kcfinance.loans.app.service.lead.impl.LeadService;
 import com.kcfinance.loans.dao.LeadRepository;
@@ -76,7 +79,28 @@ public class LeadController {
 		model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "+ lead.getLeadCustomer().getLastName() + " updated successfully");
 		return "leadSuccess";
 	}
-
+	
+	@RequestMapping("/downloadFile/{fileId}")
+    public String  downloadFile(@PathVariable String fileId,HttpServletResponse response) {
+        // Load file from database
+		Optional<LeadDocuments> file = leadService.findByDocumentId(fileId);  
+		
+        // Check if file is actually retrieved from database.  
+		try{
+		if (file.get().getDocumentImage() != null) {  
+            response.setContentType("image/jpeg");  
+            response.setHeader("Content-Length",  
+                      String.valueOf(file.get().getDocumentImage().length));  
+            // Write file content to response.  
+            response.getOutputStream().write(file.get().getDocumentImage());  
+       } 
+		
+		} catch (IOException e) {  
+				e.printStackTrace();  
+		}  
+		return null;
+	}	
+       
 
 
 }

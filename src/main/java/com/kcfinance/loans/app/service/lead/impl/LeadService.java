@@ -6,7 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kcfinance.loans.app.modals.Lead;
-
+import com.kcfinance.loans.app.modals.LeadDocuments;
+import com.kcfinance.loans.dao.LeadDocumentsRepository;
 import com.kcfinance.loans.dao.LeadRepository;
 
 import org.springframework.stereotype.Service;
@@ -18,6 +19,9 @@ public class LeadService{
  
     @Autowired
     private LeadRepository leadRepository ;
+    
+    @Autowired
+    private LeadDocumentsRepository leadDocumentRepository ;
  
     public Optional<Lead> findById(String id) {
         return leadRepository.findById(Long.parseLong(id));
@@ -53,6 +57,13 @@ public class LeadService{
    public List<Lead> findAllLeads() {
         return leadRepository.findAll();
     }
+
+
+   public Optional<LeadDocuments> findByDocumentId(String fileId) {
+	   
+	   return leadDocumentRepository.findById(Long.parseLong(fileId));
+	  
+   }
  
    
     

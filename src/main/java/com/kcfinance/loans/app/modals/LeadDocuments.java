@@ -1,13 +1,16 @@
 package com.kcfinance.loans.app.modals;
 
+import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -15,19 +18,19 @@ import lombok.Data;
 
 @Data 
 @Entity
-@Table(name="LEAD_CUSTOMER")
+@Table(name="LEAD_CUSTOMER_DOCUMENTS")
 public class LeadDocuments {
 
-	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID", nullable=false)
+	@Id 
+	@GeneratedValue
+	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
 
-	@Column(name="CODE", nullable=true)
+	@Column(name="DOCUMENT_NAME", nullable=true)
 	private String code;
 
-	@Column(name="STATUS", nullable=true)
-	private String status;
+	
 
 	/**
 	 * Date entity created.
@@ -35,15 +38,16 @@ public class LeadDocuments {
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	private Date dateCreated;
 
-	/**
-	 * Date entity last modified.
-	 */
-	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
-	private Date dateModified;
+	
+	
+	@Column(name="DOCUMENT_IMAGE", nullable=true)
+	@Lob
+	private byte[] documentImage;
 
-	/*@ManyToOne
+
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn
-	private Lead lead;*/
+	private Lead lead;
 
 	public Long getId() {
 		return id;
@@ -61,14 +65,7 @@ public class LeadDocuments {
 		this.code = code;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
+	
 	public Date getDateCreated() {
 		return dateCreated;
 	}
@@ -77,20 +74,23 @@ public class LeadDocuments {
 		this.dateCreated = dateCreated;
 	}
 
-	public Date getDateModified() {
-		return dateModified;
-	}
+	
 
-	public void setDateModified(Date dateModified) {
-		this.dateModified = dateModified;
-	}
-
-	/*public Lead getLead() {
+	public Lead getLead() {
 		return lead;
 	}
 
 	public void setLead(Lead lead) {
 		this.lead = lead;
 	}
-*/
+	
+
+	public byte[] getDocumentImage() {
+		return documentImage;
+	}
+
+	public void setDocumentImage(byte[] documentImage) {
+		this.documentImage = documentImage;
+	}
+
 }

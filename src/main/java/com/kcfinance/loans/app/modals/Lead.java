@@ -1,6 +1,7 @@
 package com.kcfinance.loans.app.modals;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -8,8 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 
 import javax.persistence.Id;
-
-
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -51,9 +51,10 @@ public class Lead {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateModified;
 
-	/*@OneToMany(mappedBy = "lead")
-	private Set<LeadDocuments> leadDocuments;
-	*/
+	@OneToMany(mappedBy = "lead")
+	@Cascade({CascadeType.SAVE_UPDATE})
+	private List<LeadDocuments> leadDocuments;
+	
 	@OneToOne(mappedBy = "lead")
 	@Cascade({CascadeType.SAVE_UPDATE})
 	private LeadCustomer leadCustomer;
@@ -106,13 +107,13 @@ public class Lead {
 		this.dateModified = dateModified;
 	}
 
-	/*public Set<LeadDocuments> getLeadDocuments() {
+	public List<LeadDocuments> getLeadDocuments() {
 		return leadDocuments;
 	}
 
-	public void setLeadDocuments(Set<LeadDocuments> leadDocuments) {
+	public void setLeadDocuments(List<LeadDocuments> leadDocuments) {
 		this.leadDocuments = leadDocuments;
-	}*/
+	}
 
 
 

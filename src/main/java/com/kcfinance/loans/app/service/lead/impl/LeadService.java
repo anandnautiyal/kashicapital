@@ -6,7 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.modals.LeadDocuments;
+import com.kcfinance.loans.app.modals.LeadComment;
+
+import com.kcfinance.loans.app.modals.LeadCustomer;
+import com.kcfinance.loans.app.modals.LeadDocument;
+import com.kcfinance.loans.dao.LeadCommentsRepository;
 import com.kcfinance.loans.dao.LeadDocumentsRepository;
 import com.kcfinance.loans.dao.LeadRepository;
 
@@ -22,9 +26,18 @@ public class LeadService{
     
     @Autowired
     private LeadDocumentsRepository leadDocumentRepository ;
+    
+    
+    
+    @Autowired
+    private LeadCommentsRepository leadCommentsRepository ;
  
     public Optional<Lead> findById(String id) {
         return leadRepository.findById(Long.parseLong(id));
+    }
+    
+    public Optional<LeadComment> findByLocaleAndId(String id) {
+        return leadCommentsRepository.findByLocaleAndId("en_US",Long.parseLong(id));
     }
  
    
@@ -44,6 +57,11 @@ public class LeadService{
         	
         	entity.get().getLeadCustomer().setPhone(lead.getLeadCustomer().getPhone());
         	
+        	int size = lead.getLeadComments().size();
+        	LeadComment comment = lead.getLeadComments().get(size-1);
+        	comment.setLead(entity.get());
+        	comment.setLeadStatus("open");
+        	leadCommentsRepository.save(comment);
         	leadRepository.saveAndFlush(entity.get());
         	
         	
@@ -55,11 +73,11 @@ public class LeadService{
  
     
    public List<Lead> findAllLeads() {
-        return leadRepository.findAll();
+        return leadRepository.findByLocale("en_US");
     }
 
 
-   public Optional<LeadDocuments> findByDocumentId(String fileId) {
+   public Optional<LeadDocument> findByDocumentId(String fileId) {
 	   
 	   return leadDocumentRepository.findById(Long.parseLong(fileId));
 	  

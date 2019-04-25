@@ -1,10 +1,7 @@
 package com.kcfinance.loans.app.modals;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,10 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -23,16 +16,13 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.Data;
 
-
-@Data 
 @Entity
 @Table(name="LEAD_CUSTOMER")
 public class LeadCustomer {
 
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
@@ -65,14 +55,25 @@ public class LeadCustomer {
 	
 	@Column(name="Address", nullable=true)
 	private String address;
-
 	
+	@Column(name="LOCALE", nullable=true)
+	private String locale;
+
+	public String getLocale() {
+		return locale;
+	}
+
+	public void setLocale(String locale) {
+		this.locale = locale;
+	}
+
 	/**
 	 * Date entity created.
 	 */
-	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
+	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
+	
 	/**
 	 * Date entity last modified.
 	 */
@@ -88,7 +89,7 @@ public class LeadCustomer {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date meetingDate;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch=FetchType.LAZY)
 	@JoinColumn(unique = true)
 	private Lead lead;
 

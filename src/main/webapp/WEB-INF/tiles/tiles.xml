@@ -78,8 +78,8 @@
 		<put-attribute name="body" value=".tile.body.leadform" />
 	</definition>
 	
-	<definition name="registrationsuccess" extends=".tile.mainLayout">
-		<put-attribute name="body" value=".tile.body.registrationsuccess" />
+	<definition name="leadSuccess" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.leadSuccess" />
 	</definition>
 	<definition name=".tile.body.lead" template="/WEB-INF/views/mod/lead.jsp"/>
 	
@@ -89,7 +89,7 @@
 	
 	<definition name=".tile.body.leadform" template="/WEB-INF/views/mod/lead_form.jsp"/>
 	
-	<definition name=".tile.body.registrationsuccess" template="/WEB-INF/views/layout/registrationsuccess.jsp"/>
+	<definition name=".tile.body.leadSuccess" template="/WEB-INF/views/layout/leadSuccess.jsp"/>
 	
 	<definition name="lead" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.lead" />

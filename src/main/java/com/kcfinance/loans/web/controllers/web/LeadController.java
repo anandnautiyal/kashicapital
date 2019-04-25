@@ -2,8 +2,8 @@ package com.kcfinance.loans.web.controllers.web;
 
 
 
+import java.beans.PropertyEditor;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,16 +15,21 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.modals.LeadDocuments;
-import com.kcfinance.loans.app.modals.LeadModal;
+import com.kcfinance.loans.app.modals.LeadComment;
+
+import com.kcfinance.loans.app.modals.LeadDocument;
+
 import com.kcfinance.loans.app.service.lead.impl.LeadService;
-import com.kcfinance.loans.dao.LeadRepository;
 
 @Controller
 @RequestMapping("/")
@@ -51,6 +56,8 @@ public class LeadController {
 
 		List<Lead> leads = leadService.findAllLeads();
 		model.addAttribute("leadList", leads);
+
+
 		return "lead";
 	}
 
@@ -67,7 +74,7 @@ public class LeadController {
 	}
 
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
-	public String updateUser(@Valid Lead lead, BindingResult result,
+	public String updateUser(@ModelAttribute Lead lead, BindingResult result,
 			ModelMap model, @PathVariable String leadId) {
 
 		if (result.hasErrors()) {
@@ -79,28 +86,28 @@ public class LeadController {
 		model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "+ lead.getLeadCustomer().getLastName() + " updated successfully");
 		return "leadSuccess";
 	}
-	
+
 	@RequestMapping("/downloadFile/{fileId}")
-    public String  downloadFile(@PathVariable String fileId,HttpServletResponse response) {
-        // Load file from database
-		Optional<LeadDocuments> file = leadService.findByDocumentId(fileId);  
-		
-        // Check if file is actually retrieved from database.  
+	public String  downloadFile(@PathVariable String fileId,HttpServletResponse response) {
+		// Load file from database
+		Optional<LeadDocument> file = leadService.findByDocumentId(fileId);  
+
+		// Check if file is actually retrieved from database.  
 		try{
-		if (file.get().getDocumentImage() != null) {  
-            response.setContentType("image/jpeg");  
-            response.setHeader("Content-Length",  
-                      String.valueOf(file.get().getDocumentImage().length));  
-            // Write file content to response.  
-            response.getOutputStream().write(file.get().getDocumentImage());  
-       } 
-		
+			if (file.get().getDocumentImage() != null) {  
+				response.setContentType("image/jpeg");  
+				response.setHeader("Content-Length",  
+						String.valueOf(file.get().getDocumentImage().length));  
+				// Write file content to response.  
+				response.getOutputStream().write(file.get().getDocumentImage());  
+			} 
+
 		} catch (IOException e) {  
-				e.printStackTrace();  
+			e.printStackTrace();  
 		}  
 		return null;
 	}	
-       
 
+	 
 
 }

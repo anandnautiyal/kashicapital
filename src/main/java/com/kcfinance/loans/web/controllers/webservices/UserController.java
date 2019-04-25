@@ -19,11 +19,12 @@ import com.kcfinance.loans.dao.UserRepository;
 @RestController
 public class UserController {
 
-	private final LeadRepository leadReposittory;
+	
+	private  LeadRepository leadReposittory;
 
-	UserController(LeadRepository leadReposittory) {
+	/*UserController(LeadRepository leadReposittory) {
 		this.leadReposittory = leadReposittory;
-	}
+	}*/
 
 	// Aggregate root
 	@GetMapping("/leads")

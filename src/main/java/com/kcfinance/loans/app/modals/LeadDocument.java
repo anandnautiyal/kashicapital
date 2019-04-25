@@ -1,6 +1,5 @@
 package com.kcfinance.loans.app.modals;
 
-import java.sql.Blob;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -13,16 +12,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import lombok.Data;
-
-@Data 
+ 
 @Entity
 @Table(name="LEAD_CUSTOMER_DOCUMENTS")
-public class LeadDocuments {
+public class LeadDocument {
 
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
@@ -36,6 +35,7 @@ public class LeadDocuments {
 	 * Date entity created.
 	 */
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
 
 	
@@ -48,6 +48,8 @@ public class LeadDocuments {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn
 	private Lead lead;
+	
+	
 
 	public Long getId() {
 		return id;

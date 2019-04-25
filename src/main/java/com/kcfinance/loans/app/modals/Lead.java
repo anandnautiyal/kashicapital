@@ -7,7 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -17,18 +17,17 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
-import lombok.Data;
 
-
-@Data 
 @Entity
 @Table(name="LEAD")
 public class Lead {
 
 
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="ID", nullable=false)
 	private Long id;
 
@@ -52,12 +51,21 @@ public class Lead {
 	private Date dateModified;
 
 	@OneToMany(mappedBy = "lead")
+	@Cascade({CascadeType.ALL})
+	private List<LeadComment> leadComments;
+	
+	
+
+	@OneToMany(mappedBy = "lead")
 	@Cascade({CascadeType.SAVE_UPDATE})
-	private List<LeadDocuments> leadDocuments;
+	private List<LeadDocument> leadDocuments;
 	
 	@OneToOne(mappedBy = "lead")
 	@Cascade({CascadeType.SAVE_UPDATE})
 	private LeadCustomer leadCustomer;
+	
+	@Column(name="LOCALE", nullable=true)
+	private String locale;
 
 	public LeadCustomer getLeadCustomer() {
 		return leadCustomer;
@@ -107,15 +115,22 @@ public class Lead {
 		this.dateModified = dateModified;
 	}
 
-	public List<LeadDocuments> getLeadDocuments() {
+	public List<LeadDocument> getLeadDocuments() {
 		return leadDocuments;
 	}
 
-	public void setLeadDocuments(List<LeadDocuments> leadDocuments) {
+	public void setLeadDocuments(List<LeadDocument> leadDocuments) {
 		this.leadDocuments = leadDocuments;
 	}
 
+	public List<LeadComment> getLeadComments() {
+		return leadComments;
+	}
 
+	public void setLeadComments(List<LeadComment> leadComments) {
+		this.leadComments = leadComments;
+	}
 
+	
 
 }

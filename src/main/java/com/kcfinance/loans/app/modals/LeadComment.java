@@ -61,8 +61,7 @@ public class LeadComment {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date commentDate;
 
-	@Column(name="LOCALE", nullable=true)
-	private String locale;
+
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(unique = true)
@@ -85,15 +84,7 @@ public class LeadComment {
 		this.lead = lead;
 	}
 
-	public String getLocale() {
-		return locale;
-	}
-
-	public void setLocale(String locale) {
-		this.locale = locale;
-	}
-
-
+	
 	public Long getId() {
 		return id;
 	}

@@ -70,17 +70,7 @@ public class LeadCustomer {
 	@Column(name="Address", nullable=true)
 	private String address;
 
-	@Column(name="LOCALE", nullable=true)
-	private String locale;
-
-	public String getLocale() {
-		return locale;
-	}
-
-	public void setLocale(String locale) {
-		this.locale = locale;
-	}
-
+	
 	/**
 	 * Date entity created.
 	 */

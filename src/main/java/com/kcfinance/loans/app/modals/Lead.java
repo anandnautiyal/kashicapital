@@ -63,9 +63,6 @@ public class Lead {
 	private List<LeadDocument> leadDocuments;
 
 
-	@Column(name="LOCALE", nullable=true)
-	private String locale;
-
 	public LeadCustomer getLeadCustomer() {
 		return leadCustomer;
 	}

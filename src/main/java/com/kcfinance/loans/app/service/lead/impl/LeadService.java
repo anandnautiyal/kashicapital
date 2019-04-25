@@ -36,9 +36,7 @@ public class LeadService{
         return leadRepository.findById(Long.parseLong(id));
     }
     
-    public Optional<LeadComment> findByLocaleAndId(String id) {
-        return leadCommentsRepository.findByLocaleAndId("en_US",Long.parseLong(id));
-    }
+    
  
    
     public void saveLead(Lead Lead) {
@@ -76,7 +74,7 @@ public class LeadService{
  
     
    public List<Lead> findAllLeads() {
-        return leadRepository.findByLocale("en_US");
+        return leadRepository.findAll();
     }
 
 

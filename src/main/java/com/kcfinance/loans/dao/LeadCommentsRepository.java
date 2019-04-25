@@ -9,7 +9,7 @@ import com.kcfinance.loans.app.modals.LeadComment;
 
 public interface LeadCommentsRepository extends JpaRepository<LeadComment, Long>{
 	
-	Optional<LeadComment> findByLocaleAndId (String locale,Long id);
+	
 	
 
 }

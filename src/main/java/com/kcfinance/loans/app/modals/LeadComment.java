@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.NoArgsConstructor;
 
@@ -44,7 +45,7 @@ public class LeadComment {
 	 */
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
+	private Date createDate;
 
 
 	/**
@@ -52,16 +53,7 @@ public class LeadComment {
 	 */
 	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateModified;
-
-	/**
-	 * Date entity created.
-	 */
-	@Column(name="DATE_OF_COMMENT",nullable=true)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date commentDate;
-
-
+	private Date modifiedDate;
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(unique = true)
@@ -71,11 +63,9 @@ public class LeadComment {
 		super();
 		this.comment = comment;
 		this.leadStatus = leadStatus;
-
-
 	}		
 
-
+	@JsonIgnore
 	public Lead getLead() {
 		return lead;
 	}
@@ -109,28 +99,20 @@ public class LeadComment {
 		this.leadStatus = leadStatus;
 	}
 
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getDateModified() {
-		return dateModified;
+	public Date getModifiedDate() {
+		return modifiedDate;
 	}
 
-	public void setDateModified(Date dateModified) {
-		this.dateModified = dateModified;
-	}
-
-	public Date getCommentDate() {
-		return commentDate;
-	}
-
-	public void setCommentDate(Date commentDate) {
-		this.commentDate = commentDate;
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	@Override

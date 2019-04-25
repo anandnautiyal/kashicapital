@@ -39,8 +39,10 @@ public class AdminSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
     	http
+    	.csrf()
+    	.disable()
     	.authorizeRequests()
-    		.antMatchers("/fonts/**","/css/**","/images/**","/vendor/**","/js/**")
+    		.antMatchers("/fonts/**","/css/**","/images/**","/vendor/**","/js/**", "/leads/**","/users/**")
     		.permitAll()
     		.anyRequest()
     		.authenticated()

@@ -1,8 +1,7 @@
 package com.kcfinance.loans.app.modals;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,9 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -23,6 +19,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -76,14 +74,14 @@ public class LeadCustomer {
 	 */
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
+	private Date createDate;
 
 	/**
 	 * Date entity last modified.
 	 */
 	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateModified;
+	private Date modifiedDate;
 
 	/**
 	 * Date entity last modified.
@@ -97,7 +95,10 @@ public class LeadCustomer {
 	@JoinColumn(unique = true)
 	private Lead lead;
 
-
+	@OneToMany(mappedBy = "leadCustomer",cascade = CascadeType.ALL)
+	private List<LeadDocument> leadDocuments;
+	
+	@JsonIgnore
 	public Lead getLead() {
 		return lead;
 	}
@@ -151,22 +152,20 @@ public class LeadCustomer {
 		this.active = active;
 	}
 
-
-
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getDateModified() {
-		return dateModified;
+	public Date getModifiedDate() {
+		return modifiedDate;
 	}
 
-	public void setDateModified(Date dateModified) {
-		this.dateModified = dateModified;
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	public Date getMeetingDate() {
@@ -211,6 +210,14 @@ public class LeadCustomer {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	public List<LeadDocument> getLeadDocuments() {
+		return leadDocuments;
+	}
+
+	public void setLeadDocuments(List<LeadDocument> leadDocuments) {
+		this.leadDocuments = leadDocuments;
 	}
 
 	@Override

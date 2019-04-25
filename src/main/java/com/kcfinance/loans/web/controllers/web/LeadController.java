@@ -60,7 +60,7 @@ public class LeadController {
 	 */
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String leadId, ModelMap model) {
-		Optional<Lead> lead = leadService.findById(leadId);
+		Optional<Lead> lead = leadService.findById(Long.parseLong(leadId));
 		
 		LeadComment comments = new LeadComment("","open");
 		comments.setLead(lead.get());

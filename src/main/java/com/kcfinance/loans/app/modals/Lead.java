@@ -43,25 +43,19 @@ public class Lead {
 	 */
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
+	private Date createDate;
 	/**
 	 * Date entity last modified.
 	 */
 	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateModified;
+	private Date modifiedDate;
 
 	@OneToOne(mappedBy="lead", cascade = CascadeType.ALL)
 	private LeadCustomer leadCustomer;
 
 	@OneToMany(mappedBy = "lead",cascade = CascadeType.ALL)
-
 	private List<LeadComment> leadComments;
-
-
-	@OneToMany(mappedBy = "lead",cascade = CascadeType.ALL)
-	private List<LeadDocument> leadDocuments;
-
 
 	public LeadCustomer getLeadCustomer() {
 		return leadCustomer;
@@ -95,28 +89,20 @@ public class Lead {
 		this.status = status;
 	}
 
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
-	public Date getDateModified() {
-		return dateModified;
+	public Date getModifiedDate() {
+		return modifiedDate;
 	}
 
-	public void setDateModified(Date dateModified) {
-		this.dateModified = dateModified;
-	}
-
-	public List<LeadDocument> getLeadDocuments() {
-		return leadDocuments;
-	}
-
-	public void setLeadDocuments(List<LeadDocument> leadDocuments) {
-		this.leadDocuments = leadDocuments;
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
 	}
 
 	public List<LeadComment> getLeadComments() {

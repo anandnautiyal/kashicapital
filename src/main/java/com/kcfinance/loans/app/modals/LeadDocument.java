@@ -29,19 +29,15 @@ public class LeadDocument{
 	@Column(name="ID", nullable=false)
 	private Long id;
 
-
 	@Column(name="DOCUMENT_NAME", nullable=true)
-	private String code;
-
+	private String documentName;
 
 	/**
 	 * Date entity created.
 	 */
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateCreated;
-
-
+	private Date createDate;
 
 	@Column(name="DOCUMENT_IMAGE", nullable=true)
 	@Lob
@@ -50,9 +46,7 @@ public class LeadDocument{
 
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn
-	private Lead lead;
-
-
+	private LeadCustomer leadCustomer;
 
 	public Long getId() {
 		return id;
@@ -62,36 +56,33 @@ public class LeadDocument{
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
+	public String getDocumentName() {
+		return documentName;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setDocumentName(String documentName) {
+		this.documentName = documentName;
 	}
 
-
-	public Date getDateCreated() {
-		return dateCreated;
+	public Date getCreateDate() {
+		return createDate;
 	}
 
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
-
-
-
-	public Lead getLead() {
-		return lead;
-	}
-
-	public void setLead(Lead lead) {
-		this.lead = lead;
-	}
-
 
 	public byte[] getDocumentImage() {
 		return documentImage;
+	}
+
+	@JsonIgnore
+	public LeadCustomer getLeadCustomer() {
+		return leadCustomer;
+	}
+
+	public void setLeadCustomer(LeadCustomer leadCustomer) {
+		this.leadCustomer = leadCustomer;
 	}
 
 	public void setDocumentImage(byte[] documentImage) {

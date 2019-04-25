@@ -11,28 +11,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kcfinance.loans.Exceptions.UserNotFoundException;
-import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.modals.User;
-import com.kcfinance.loans.dao.LeadRepository;
 import com.kcfinance.loans.dao.UserRepository;
 
 @RestController
-public class UserController {
+public class UserControllerRest {
 
-	
-	private  LeadRepository leadReposittory;
+	private final UserRepository userRepository;
 
-	/*UserController(LeadRepository leadReposittory) {
-		this.leadReposittory = leadReposittory;
-	}*/
-
-	// Aggregate root
-	@GetMapping("/leads")
-	List<Lead> all() {
-		return leadReposittory.findAll();
+	UserControllerRest(UserRepository userRepository) {
+		this.userRepository = userRepository;
 	}
 
-	/*@PostMapping("/users")
+	// Aggregate root
+	@GetMapping("/users")
+	List<User> all() {
+		return userRepository.findAll();
+	}
+
+	@PostMapping("/users")
 	User newUser(@RequestBody User newUser) {
 		return userRepository.save(newUser);
 	}
@@ -43,7 +40,7 @@ public class UserController {
 		return userRepository.findById(id)
 				.orElseThrow(() -> new UserNotFoundException(id));
 	}
-*/
+
 	/*@PutMapping("/users/{id}")
 	User replaceUser(@RequestBody User newUser, @PathVariable Long id) {		
 		return userRepository.findById(id).map(user -> {
@@ -58,8 +55,8 @@ public class UserController {
 		});
 	}
 */
-	/*@DeleteMapping("/users/{id}")
+	@DeleteMapping("/users/{id}")
 	void deleteUser(@PathVariable Long id) {
 		userRepository.deleteById(id);
-	}*/
+	}
 }

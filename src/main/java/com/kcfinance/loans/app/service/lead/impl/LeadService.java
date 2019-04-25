@@ -2,20 +2,15 @@ package com.kcfinance.loans.app.service.lead.impl;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.modals.LeadComment;
-
 import com.kcfinance.loans.app.modals.LeadCustomer;
 import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.dao.LeadCommentsRepository;
 import com.kcfinance.loans.dao.LeadDocumentsRepository;
 import com.kcfinance.loans.dao.LeadRepository;
-
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
@@ -27,49 +22,34 @@ public class LeadService{
     @Autowired
     private LeadDocumentsRepository leadDocumentRepository ;
     
-    
-    
     @Autowired
     private LeadCommentsRepository leadCommentsRepository ;
- 
-    public Optional<Lead> findById(String id) {
-        return leadRepository.findById(Long.parseLong(id));
+    
+    public Optional<Lead> findById(Long id) {
+        return leadRepository.findById(id);
     }
     
+    public List<Lead> getLeads() {
+		return leadRepository.findAll();
+	}
     
- 
-   
-    public void saveLead(Lead Lead) {
-    	leadRepository.save(Lead);
+    public Lead saveLead(Lead lead) {
+    	
+    	LeadCustomer leadCustomer = lead.getLeadCustomer();
+    	leadCustomer.setLead(lead);
+    	for(LeadDocument document : leadCustomer.getLeadDocuments()) {
+    		document.setLeadCustomer(leadCustomer);
+    	}
+    	
+    	return leadRepository.save(lead);
+    }
+    
+    public void deleteLead(Long id) {
+    	leadRepository.deleteById(id);
     }
     
     public void updateLead(Lead lead, String leadId) {
-       
-    	/*Optional<Lead> entity = leadRepository.findById(Long.parseLong(leadId));
-        if(entity!=null){
-        	
-        	entity.get().getLeadCustomer().setFirstName(lead.getLeadCustomer().getFirstName());
-        	
-        	entity.get().getLeadCustomer().setLastName(lead.getLeadCustomer().getLastName());
-        	
-        	entity.get().getLeadCustomer().setMeetingDate(lead.getLeadCustomer().getMeetingDate());
-        	
-        	entity.get().getLeadCustomer().setPhone(lead.getLeadCustomer().getPhone());
-        	
-        	int size = lead.getLeadComments().size();
-        	LeadComment comment = lead.getLeadComments().get(size-1);
-        	comment.setLead(entity.get());
-        	comment.setLeadStatus("open");
-        	leadCommentsRepository.save(comment);
-        	leadRepository.saveAndFlush(entity.get());
-        	
-        	
-        
-         }*/
-        
         leadRepository.saveAndFlush(lead);
-        
-       
     }
  
     

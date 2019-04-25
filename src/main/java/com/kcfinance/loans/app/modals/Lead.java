@@ -2,8 +2,8 @@ package com.kcfinance.loans.app.modals;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,24 +11,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
+@Data 
 @Entity
 @Table(name="LEAD")
+@NoArgsConstructor
 public class Lead {
 
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="ID", nullable=false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lead_seq")
+	@SequenceGenerator(name="lead_seq", sequenceName="lead_seq",allocationSize=1)
 	private Long id;
 
 	@Column(name="CODE", nullable=true)
@@ -40,7 +41,7 @@ public class Lead {
 	/**
 	 * Date entity created.
 	 */
-	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
+	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
 	/**
@@ -50,20 +51,18 @@ public class Lead {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateModified;
 
-	@OneToMany(mappedBy = "lead")
-	@Cascade({CascadeType.ALL})
-	private List<LeadComment> leadComments;
-	
-	
-
-	@OneToMany(mappedBy = "lead")
-	@Cascade({CascadeType.SAVE_UPDATE})
-	private List<LeadDocument> leadDocuments;
-	
-	@OneToOne(mappedBy = "lead")
-	@Cascade({CascadeType.SAVE_UPDATE})
+	@OneToOne(mappedBy="lead", cascade = CascadeType.ALL)
 	private LeadCustomer leadCustomer;
-	
+
+	@OneToMany(mappedBy = "lead",cascade = CascadeType.ALL)
+
+	private List<LeadComment> leadComments;
+
+
+	@OneToMany(mappedBy = "lead",cascade = CascadeType.ALL)
+	private List<LeadDocument> leadDocuments;
+
+
 	@Column(name="LOCALE", nullable=true)
 	private String locale;
 
@@ -131,6 +130,6 @@ public class Lead {
 		this.leadComments = leadComments;
 	}
 
-	
+
 
 }

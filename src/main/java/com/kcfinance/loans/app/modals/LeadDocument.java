@@ -11,25 +11,28 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
- 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 @Entity
 @Table(name="LEAD_CUSTOMER_DOCUMENTS")
-public class LeadDocument {
+public class LeadDocument{
 
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="ID", nullable=false,insertable = false,updatable= false)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lead_cust_doc")
+	@SequenceGenerator(name="lead_cust_doc", sequenceName="lead_cust_doc",allocationSize=1)
+	@Column(name="ID", nullable=false)
 	private Long id;
 
 
 	@Column(name="DOCUMENT_NAME", nullable=true)
 	private String code;
 
-	
 
 	/**
 	 * Date entity created.
@@ -38,8 +41,8 @@ public class LeadDocument {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
 
-	
-	
+
+
 	@Column(name="DOCUMENT_IMAGE", nullable=true)
 	@Lob
 	private byte[] documentImage;
@@ -48,8 +51,8 @@ public class LeadDocument {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn
 	private Lead lead;
-	
-	
+
+
 
 	public Long getId() {
 		return id;
@@ -67,7 +70,7 @@ public class LeadDocument {
 		this.code = code;
 	}
 
-	
+
 	public Date getDateCreated() {
 		return dateCreated;
 	}
@@ -76,7 +79,7 @@ public class LeadDocument {
 		this.dateCreated = dateCreated;
 	}
 
-	
+
 
 	public Lead getLead() {
 		return lead;
@@ -85,7 +88,7 @@ public class LeadDocument {
 	public void setLead(Lead lead) {
 		this.lead = lead;
 	}
-	
+
 
 	public byte[] getDocumentImage() {
 		return documentImage;
@@ -94,5 +97,6 @@ public class LeadDocument {
 	public void setDocumentImage(byte[] documentImage) {
 		this.documentImage = documentImage;
 	}
+
 
 }

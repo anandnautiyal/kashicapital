@@ -1,7 +1,10 @@
 package com.kcfinance.loans.app.modals;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,20 +12,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+
+@Data 
 @Entity
+@NoArgsConstructor
 @Table(name="LEAD_CUSTOMER")
 public class LeadCustomer {
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lead_cust_seq")
+	@SequenceGenerator(name="lead_cust_seq", sequenceName="lead_cust",allocationSize=1)
 	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
@@ -52,10 +66,10 @@ public class LeadCustomer {
 
 	@Column(name="ACTIVE", nullable=true)
 	private int active;
-	
+
 	@Column(name="Address", nullable=true)
 	private String address;
-	
+
 	@Column(name="LOCALE", nullable=true)
 	private String locale;
 
@@ -73,7 +87,7 @@ public class LeadCustomer {
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
-	
+
 	/**
 	 * Date entity last modified.
 	 */
@@ -106,7 +120,7 @@ public class LeadCustomer {
 		return id;
 	}
 
-	
+
 	public String getAadharNo() {
 		return aadharNo;
 	}
@@ -147,7 +161,7 @@ public class LeadCustomer {
 		this.active = active;
 	}
 
-	
+
 
 	public Date getDateCreated() {
 		return dateCreated;

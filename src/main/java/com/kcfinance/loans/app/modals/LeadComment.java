@@ -23,18 +23,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name="LEAD_COMMENTS")
 public class LeadComment {
-	
+
 	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="comment_seq")
-	@SequenceGenerator(name="comment_seq", sequenceName="comment_seq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="lead_cust_comm")
+	@SequenceGenerator(name="lead_cust_comm", sequenceName="lead_cust_comm")
 	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
 
 	@Column(name="COMMENTS", nullable=true)
 	private String comment;
-	
-	
+
+
 	@Column(name="LEAD_STATUS", nullable=true)
 	private String leadStatus;
 
@@ -45,7 +45,7 @@ public class LeadComment {
 	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateCreated;
-	
+
 
 	/**
 	 * Date entity last modified.
@@ -53,29 +53,29 @@ public class LeadComment {
 	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dateModified;
-	
+
 	/**
 	 * Date entity created.
 	 */
 	@Column(name="DATE_OF_COMMENT",nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date commentDate;
-	
+
 	@Column(name="LOCALE", nullable=true)
 	private String locale;
-	
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(unique = true)
 	private Lead lead;
-	
+
 	public LeadComment(String comment, String leadStatus) {
 		super();
 		this.comment = comment;
 		this.leadStatus = leadStatus;
-		
-		
+
+
 	}		
-	
+
 
 	public Lead getLead() {
 		return lead;
@@ -150,7 +150,7 @@ public class LeadComment {
 
 		return result;
 	}
-	
+
 
 	@Override
 	public boolean equals(Object obj) {

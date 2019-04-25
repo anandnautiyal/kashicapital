@@ -2,38 +2,31 @@ package com.kcfinance.loans.web.controllers.web;
 
 
 
-import java.beans.PropertyEditor;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.modals.LeadComment;
-
 import com.kcfinance.loans.app.modals.LeadDocument;
-
 import com.kcfinance.loans.app.service.lead.impl.LeadService;
 
 @Controller
 @RequestMapping("/")
-
+@SessionAttributes ("lead")
 public class LeadController {
 
 	@Autowired
@@ -68,13 +61,17 @@ public class LeadController {
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String leadId, ModelMap model) {
 		Optional<Lead> lead = leadService.findById(leadId);
+		
+		LeadComment comments = new LeadComment("","open");
+		comments.setLead(lead.get());
+		lead.get().getLeadComments().add(comments);
 		model.addAttribute("lead", lead.get());
 		model.addAttribute("edit", true);
 		return "editLead";
 	}
 
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute Lead lead, BindingResult result,
+	public String updateUser(@ModelAttribute ("lead") Lead lead, BindingResult result,
 			ModelMap model, @PathVariable String leadId) {
 
 		if (result.hasErrors()) {
@@ -108,6 +105,9 @@ public class LeadController {
 		return null;
 	}	
 
-	 
+	@ModelAttribute("lead")
+	public Lead createLeadForm() {
+		return new Lead();
+	}
 
 }

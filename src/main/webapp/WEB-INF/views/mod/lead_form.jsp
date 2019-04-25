@@ -127,18 +127,22 @@
                                     </div>
                                 </div>
                             </div>
-							
+							<c:forEach items="${lead.leadComments}" var="leadComments" varStatus="status">
+							<c:set var="itemIndex" value="${status.index}" scope="request" />
+
+							 <c:if test="${leadComments.comment == '' || fn:length(leadComments.comment)<1}">
 							<div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
                                         <div class="form-line">
-                                            <form:textarea rows="4" class="form-control no-resize" path="leadComments[1].comment" />
+                                            <form:textarea rows="4" class="form-control no-resize" path="leadComments[${status.index}].comment" />
 											<label class="form-label">Please type your Comment</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-							
+							</c:if>
+							</c:forEach>
 							<input type="submit" value="Update" class="btn btn-orange m-t-15 waves-effect"/>
 							<input type="submit" value="Hold" class="btn btn-orange m-t-15 waves-effect"/>
 							</div>

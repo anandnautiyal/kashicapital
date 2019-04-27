@@ -8,9 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kcfinance.loans.Exceptions.CustomerNotFoundException;
+import com.kcfinance.loans.Exceptions.LeadNotFoundException;
 import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.service.lead.impl.LeadService;
 
@@ -37,10 +38,16 @@ public class LeadControllerRest {
 		return leadService.saveLead(newLead);
 	}
 	
-	@GetMapping("/leads/{id}")
-	Lead one(@PathVariable Long id) {
-		return leadService.findById(id)
-			.orElseThrow(() -> new CustomerNotFoundException(id));
+	/*
+	 * @GetMapping("/leads/{id}") Lead one(@PathVariable Long id) { return
+	 * leadService.findById(id) .orElseThrow(() -> new
+	 * LeadNotFoundException(String.valueOf(id))); }
+	 */
+	
+	@GetMapping("/leads/{code}")
+	Lead oneByCode(@PathVariable String code) {
+		return leadService.findByCode(code)
+			.orElseThrow(() -> new LeadNotFoundException(code));
 	}
 	
 	@DeleteMapping("/leads/{id}")

@@ -21,6 +21,8 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -95,6 +97,7 @@ public class LeadCustomer {
 	@JoinColumn(unique = true)
 	private Lead lead;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "leadCustomer",cascade = CascadeType.ALL)
 	private List<LeadDocument> leadDocuments;
 	
@@ -210,12 +213,14 @@ public class LeadCustomer {
 
 	public void setAddress(String address) {
 		this.address = address;
-	}
+	}	
 	
+	@JsonIgnore
 	public List<LeadDocument> getLeadDocuments() {
 		return leadDocuments;
 	}
 
+	@JsonProperty
 	public void setLeadDocuments(List<LeadDocument> leadDocuments) {
 		this.leadDocuments = leadDocuments;
 	}

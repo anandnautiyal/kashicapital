@@ -25,6 +25,7 @@
 <script src="vendor/jquery-sparkline/jquery.sparkline.js"></script>
 <script src="vendor/jquery-steps/jquery.steps.js"></script>
 <script src="js/main.js"></script>
+
 </body>
 
 </html>

@@ -29,6 +29,10 @@ public class LeadService{
         return leadRepository.findById(id);
     }
     
+    public Optional<Lead> findByCode(String code) {
+        return leadRepository.findByCode(code);
+    }
+    
     public List<Lead> getLeads() {
 		return leadRepository.findAll();
 	}

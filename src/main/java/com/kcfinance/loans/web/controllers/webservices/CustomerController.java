@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.kcfinance.loans.Exceptions.CustomerNotFoundException;
+import com.kcfinance.loans.Exceptions.LeadNotFoundException;
 import com.kcfinance.loans.app.modals.Customer;
 import com.kcfinance.loans.dao.CustomerRepository;
 
@@ -38,7 +38,7 @@ public class CustomerController {
 	Customer one(@PathVariable Long id) {
 
 		return customerRepository.findById(id)
-			.orElseThrow(() -> new CustomerNotFoundException(id));
+			.orElseThrow(() -> new LeadNotFoundException(String.valueOf(id)));
 	}
 
 	/*@PutMapping("/customers/{id}")

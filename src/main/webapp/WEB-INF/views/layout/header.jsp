@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags-->
@@ -31,4 +31,5 @@
     <link href="css/style.css" rel="stylesheet">
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/theme-amber.css" rel="stylesheet" />
+    <script type="text/javascript" src="http://www.google.com/jsapi?autoload={%27modules%27:[{%27name%27:%27elements%27,%27version%27:%271%27,%27packages%27:[%27transliteration%27]}]}"></script>
 </head>

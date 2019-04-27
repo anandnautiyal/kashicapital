@@ -27,7 +27,7 @@ public class LeadComment {
 
 	@Id 
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="lead_cust_comm")
-	@SequenceGenerator(name="lead_cust_comm", sequenceName="lead_cust_comm")
+	@SequenceGenerator(name="lead_cust_comm", sequenceName="lead_cust_comm",allocationSize=1)
 	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
@@ -58,6 +58,11 @@ public class LeadComment {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(unique = true)
 	private Lead lead;
+
+	
+	public LeadComment() {
+		super();
+	}
 
 	public LeadComment(String comment, String leadStatus) {
 		super();

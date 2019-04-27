@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%--@ taglib uri="/WEB-INF/tlds/fmt.tld" prefix="fmt" --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -271,29 +271,3 @@
             </div>
         </div>
     </section>
-    
-    <script>
-	//Load the Google Transliterate API
-	google.load("elements", "1", {
-		packages : "transliteration"
-	});
-
-	function onLoad() {
-		var options = {
-			sourceLanguage : google.elements.transliteration.LanguageCode.ENGLISH,
-			destinationLanguage : [ google.elements.transliteration.LanguageCode.HINDI ],
-			shortcutKey : 'ctrl+g',
-			transliterationEnabled : true
-		};
-		console.log("=======onLoad ======");
-		//Create an instance on TransliterationControl with the required
-		//options.
-		var control = new google.elements.transliteration.TransliterationControl(
-				options);
-
-		//Enable transliteration in the textbox with id
-		//'transliterateTextarea'.
-		control.makeTransliteratable([ 'leadCustomer.firstName', 'leadCustomer.lastName' ]);
-	}
-	google.setOnLoadCallback(onLoad);
-</script>

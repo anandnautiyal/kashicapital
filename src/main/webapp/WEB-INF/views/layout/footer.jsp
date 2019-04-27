@@ -13,6 +13,9 @@
 <!-- Morris Plugin Js -->
 <script src="vendor/raphael/raphael.min.js"></script>
 <script src="vendor/morrisjs/morris.js"></script>
+<script src="vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+<!-- Bootstrap Datepicker Plugin Js -->
+<script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 <!-- ChartJs -->
 <script src="vendor/chartjs/Chart.bundle.js"></script>
 <!-- Flot Charts Plugin Js -->
@@ -25,7 +28,6 @@
 <script src="vendor/jquery-sparkline/jquery.sparkline.js"></script>
 <script src="vendor/jquery-steps/jquery.steps.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 
 </html>

@@ -22,14 +22,13 @@ import lombok.NoArgsConstructor;
 
 @Data 
 @Entity
-@Table(name="LEAD")
+@Table(name="lead_master")
 @NoArgsConstructor
 public class Lead {
 
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lead_seq")
-	@SequenceGenerator(name="lead_seq", sequenceName="lead_seq",allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 
 	@Column(name="CODE", nullable=true)

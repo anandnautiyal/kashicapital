@@ -31,12 +31,11 @@ import lombok.NoArgsConstructor;
 @Data 
 @Entity
 @NoArgsConstructor
-@Table(name="LEAD_CUSTOMER")
+@Table(name="lead_customer")
 public class LeadCustomer {
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lead_cust_seq")
-	@SequenceGenerator(name="lead_cust_seq", sequenceName="lead_cust",allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 

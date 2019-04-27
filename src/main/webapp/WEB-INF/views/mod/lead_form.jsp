@@ -4,6 +4,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+ 
 <section class="content">
         <div class="container-fluid">
                 <div class="row clearfix">
@@ -271,3 +273,26 @@
             </div>
         </div>
     </section>
+<script>
+	//Load the Google Transliterate API
+	google.load("elements", "1", {
+		packages : "transliteration"
+	});
+	function onLoad() {
+		var options = {
+			sourceLanguage : google.elements.transliteration.LanguageCode.ENGLISH,
+			destinationLanguage : [ google.elements.transliteration.LanguageCode.HINDI ],
+			shortcutKey : 'ctrl+g',
+			transliterationEnabled : true
+		};
+		console.log("=======onLoad ======");
+		//Create an instance on TransliterationControl with the required
+		//options.
+		var control = new google.elements.transliteration.TransliterationControl(
+				options);
+		//Enable transliteration in the textbox with id
+		//'transliterateTextarea'.
+		control.makeTransliteratable([ 'leadCustomer.firstName', 'leadCustomer.lastName' ]);
+	}
+	google.setOnLoadCallback(onLoad);
+</script> 

@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kcfinance.loans.Exceptions.GenericException;
 import com.kcfinance.loans.app.modals.Loan;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 
@@ -25,5 +27,17 @@ public class LoanControllerRest {
 	@GetMapping("/loans")
 	public List<Loan> all() {
 		return loanService.getAllLoans();
+	}
+	
+	@GetMapping("/loans/{id}")
+	Loan byId(@PathVariable Long id) {
+		return loanService.getById(id)
+			.orElseThrow(() -> new GenericException(Loan.NAME, String.valueOf(id)));
+	}
+	
+	@GetMapping("/loans/gst/{gstNo}")
+	Loan byGstNo(@PathVariable String gstNo) {
+		return loanService.getByGstNo(gstNo);
+			//.orElseThrow(() -> new GenericException(Loan.NAME, gstNo));
 	}
 }

@@ -31,7 +31,7 @@ public class Loan implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
-
+	public static final String NAME ="LOAN";
 	private String code;
 
 	@Column(name="DATE_CREATED")

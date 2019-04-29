@@ -10,18 +10,18 @@ import java.sql.Timestamp;
 
 
 /**
- * The persistent class for the loan_customer_dependents database table.
+ * The persistent class for the loan_customer_dependent database table.
  * 
  */
 @Entity
-@Table(name="loan_customer_dependents")
+@Table(name="loan_customer_dependent")
 @NamedQuery(name="LoanCustomerDependent.findAll", query="SELECT l FROM LoanCustomerDependent l")
 public class LoanCustomerDependent implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long id;
+	private int id;
 
 	private String age;
 
@@ -45,19 +45,19 @@ public class LoanCustomerDependent implements Serializable {
 
 	private String relation;
 
-	//bi-directional many-to-one association to Loan
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(unique = true)
-	private Loan loan;
+	//bi-directional many-to-one association to LoanApplicationCustomer
+	@ManyToOne
+	@JoinColumn(name="LOAN_CUSTOMER_ID")
+	private LoanApplicationCustomer loanApplicationCustomer;
 
 	public LoanCustomerDependent() {
 	}
 
-	public long getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -134,12 +134,12 @@ public class LoanCustomerDependent implements Serializable {
 	}
 
 	@JsonIgnore
-	public Loan getLoan() {
-		return this.loan;
+	public LoanApplicationCustomer getLoanApplicationCustomer() {
+		return this.loanApplicationCustomer;
 	}
 
-	public void setLoan(Loan loan) {
-		this.loan = loan;
+	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
+		this.loanApplicationCustomer = loanApplicationCustomer;
 	}
 
 }

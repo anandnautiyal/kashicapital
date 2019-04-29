@@ -10,11 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kcfinance.loans.Exceptions.GenericException;
-import com.kcfinance.loans.app.modals.ApplicantBusinessDetail;
-import com.kcfinance.loans.app.modals.Loan;
+import com.kcfinance.loans.app.modals.LoanApplication;
+import com.kcfinance.loans.app.modals.LoanApplicationCustomer;
+import com.kcfinance.loans.app.modals.LoanCustomerBusiness;
 import com.kcfinance.loans.app.service.loan.ILoanService;
-import com.kcfinance.loans.dao.ApplicantBusinessDetailRepository;
-import com.kcfinance.loans.dao.LoanRepository;
+import com.kcfinance.loans.dao.LoanApplicationRepository;
+import com.kcfinance.loans.dao.LoanCustomerBusinessRepository;
 
 /**
  * @author Gautam Kundrai
@@ -28,18 +29,18 @@ public class LoanService implements ILoanService{
 	private Logger logger = LoggerFactory.getLogger(LoanService.class);
  
     @Autowired
-    private LoanRepository loanRepository ;
+    private LoanApplicationRepository loanApplicationRepository ;
     
     @Autowired
-    private ApplicantBusinessDetailRepository applicantBusinessDetailRepository;
+    private LoanCustomerBusinessRepository loanCustomerBusinessRepository;
     
 
 	@Override
-	public List<Loan> getAllLoans() {
+	public List<LoanApplication> getAllLoans() {
 		// TODO Auto-generated method stub
 		if(logger.isDebugEnabled())
 			logger.debug("Fetching all Loan records");
-		List<Loan> loanList = loanRepository.findAll();
+		List<LoanApplication> loanList = loanApplicationRepository.findAll();
 		if(logger.isDebugEnabled())
 			logger.debug("Loan records = {}",loanList);
 		return loanList;
@@ -47,19 +48,19 @@ public class LoanService implements ILoanService{
 
 
 	@Override
-	public Optional<Loan> getById(Long ld) {
+	public Optional<LoanApplication> getById(Long ld) {
 		// TODO Auto-generated method stub
-		return loanRepository.findById(ld);
+		return loanApplicationRepository.findById(ld);
 	}
 
 
-	public Loan getByGstNumber(String gstNo) {
+/*	public LoanApplication getByGstNumber(String gstNo) {
 		// TODO Auto-generated method stub
 		if(logger.isDebugEnabled())
 			logger.debug("getByGstNo start");
-		Loan loanDetail = null;
-		List<Loan> loans = getAllLoans();
-		for (Loan loan : loans) {
+		LoanApplication loanDetail = null;
+		List<LoanApplication> loans = getAllLoans();
+		for (LoanApplication loan : loans) {
 			List<ApplicantBusinessDetail> applicantBusinessDetailList = loan.getApplicantBusinessDetails();
 			for (ApplicantBusinessDetail applicantBusinessDetail : applicantBusinessDetailList) {
 				String applicantGstNumber = applicantBusinessDetail.getGstNumber();
@@ -72,22 +73,25 @@ public class LoanService implements ILoanService{
 			}
 		}
 		return loanDetail;
-	}
+	}*/
 	
 	@Override
-	public Loan getByGstNo(String gstNo) {
+	public LoanApplication getByGstNo(String gstNo) {
 		// TODO Auto-generated method stub
 		if(logger.isDebugEnabled())
 			logger.debug("getByGstNo start");
-		ApplicantBusinessDetail applicantBusinessDetail = applicantBusinessDetailRepository.findByGstNumber(gstNo);
-		Loan loanDetail = null;
+		LoanCustomerBusiness applicantBusinessDetail = loanCustomerBusinessRepository.findByGstNumber(gstNo);
+		LoanApplication loanDetail = null;
 		if(applicantBusinessDetail != null) {
-			loanDetail = applicantBusinessDetail.getLoan();
+			LoanApplicationCustomer loanApplicationCustomer = applicantBusinessDetail.getLoanApplicationCustomer();
 			if(logger.isDebugEnabled())
-				logger.debug("Loan by {} = {}", gstNo, loanDetail);
+				logger.debug("loanApplicationCustomer by {}", loanApplicationCustomer);
+			if(loanApplicationCustomer != null) {
+				loanDetail = loanApplicationCustomer.getLoanApplication();
+			}
 		}
 		else
-			throw new GenericException(Loan.NAME, gstNo);
+			throw new GenericException("LoanApplication", gstNo);
 		return loanDetail;
 	}
 	

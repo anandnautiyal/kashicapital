@@ -1,9 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%--@ taglib uri="/WEB-INF/tlds/fmt.tld" prefix="fmt" --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+ 
 <section class="content">
         <div class="container-fluid">
                 <div class="row clearfix">
@@ -271,13 +273,11 @@
             </div>
         </div>
     </section>
-    
-    <script>
+<script>
 	//Load the Google Transliterate API
 	google.load("elements", "1", {
 		packages : "transliteration"
 	});
-
 	function onLoad() {
 		var options = {
 			sourceLanguage : google.elements.transliteration.LanguageCode.ENGLISH,
@@ -290,10 +290,9 @@
 		//options.
 		var control = new google.elements.transliteration.TransliterationControl(
 				options);
-
 		//Enable transliteration in the textbox with id
 		//'transliterateTextarea'.
 		control.makeTransliteratable([ 'leadCustomer.firstName', 'leadCustomer.lastName' ]);
 	}
 	google.setOnLoadCallback(onLoad);
-</script>
+</script> 

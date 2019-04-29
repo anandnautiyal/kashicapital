@@ -20,12 +20,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
-@Table(name="LEAD_CUSTOMER_DOCUMENTS")
+@Table(name="lead_customer_documents")
 public class LeadDocument{
 
 	@Id 
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "lead_cust_doc")
-	@SequenceGenerator(name="lead_cust_doc", sequenceName="lead_cust_doc",allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID", nullable=false)
 	private Long id;
 

@@ -1,13 +1,20 @@
-<section class="content">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%--@ taglib uri="/WEB-INF/tlds/fmt.tld" prefix="fmt" --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+	
+	<section class="content">
         <div class="container-fluid loan-wizard">
             <!-- Basic Example | Horizontal Layout -->
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Loan Form</h2>
+                            <h2>Loan Form <span>(व्यवसाय  ऋण आवेदन पत्र)</span></h2>
                         </div>
                         <div class="body">
+                           <form>
                             <div id="wizard_horizontal">
             
         <!-------------------------------- Form Section 1 start from here ---------------------------------->
@@ -15,25 +22,25 @@
                                 <section>
                         <div class="header">
                             <h2>
-                                For office Use:
+                                For office Use<span>(कार्यालय उपयोग हेतु)</span>:
                             </h2>
                         </div>
                         <div class="body">
-                            <form>
+                           
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                        <div class="input-group input-group-lg">
-                                        <span class="input-group-addon">
+                                        <span class="input-group-addon kc-customerType">
                                             <input type="radio" name="customer_type" checked class="with-gap" value="Current Customer" id="current_customer">
-                                            <label for="current_customer">Current Customer</label>
+                                            <label for="current_customer">Current Customer<span>(वर्तमान ग्राहक)</span></label>
                                         </span>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                      <div class="input-group input-group-lg">
-                                        <span class="input-group-addon">
+                                        <span class="input-group-addon kc-customerType">
                                             <input type="radio" class="with-gap" name="customer_type" value="New Customer" id="new_customer">
-                                            <label for="new_customer">New Customer</label>
+                                            <label for="new_customer">New Customer<span>(नया ग्राहक)</span></label>
                                         </span>
                                         </div>
                                     </div>
@@ -41,7 +48,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="Current_situation">
-                                                <label class="form-label">Describe the situation of the current customer</label>
+                                                <label class="form-label">Describe the situation of the current customer<span>(वर्तमान ग्राहक होने के स्थिति  में विवरण दें)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -51,7 +58,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control">
-                                                <label class="form-label">Name Of Applicant</label>
+                                                <label class="form-label">Name Of Applicant<span>(आवेदक का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -59,7 +66,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="applicant_name">
-                                                <label class="form-label">Name Of Co-Applicant</label>
+                                                <label class="form-label">Name Of Co-Applicant<span>(सह -आवेदक का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +74,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="serial-number">
-                                                <label class="form-label">Application Serial Number</label>
+                                                <label class="form-label">Application Serial Number<span>(आवेदन क्रम संख्या)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -75,7 +82,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="customer_number">
-                                                <label class="form-label">Customer Number</label>
+                                                <label class="form-label">Customer Number<span>(ग्राहक संख्या)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +92,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="officer_name">
-                                                <label class="form-label">Loan officer's name</label>
+                                                <label class="form-label">Loan officer's name<span>(ऋण अधिकारी का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -93,7 +100,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="branch_name_number">
-                                                <label class="form-label">Branch Name and Number</label>
+                                                <label class="form-label">Branch Name and Number<span>(शाखा का नाम व संख्या)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -101,19 +108,19 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="state_name">
-                                                <label class="form-label">State Name</label>
+                                                <label class="form-label">State Name<span>(प्रदेश का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 										<select class="form-control show-tick" name="reason_behind">
-											<option>For Working</option>
-											<option>For Investment</option>
-											<option>For Diversity</option>
+											<option value="For Working">For Working<span>(कार्यशील हेतु)</span></option>
+											<option value="For Investment">For Investment<span>(निवेश हेतु)</span></option>
+											<option value="For Diversity">For Diversity<span>(विविधता हेतु)</span></option>
 										</select>
                                     </div>
                                 </div>
-                            </form>
+                            
                         </div>
 				</section>
                                           
@@ -125,25 +132,24 @@
 							<section>  
 							<div class="header">
 								<h2>
-									Proposed Credit Facilities:
+									Proposed Credit Facilities<span>(प्रस्तावित ऋण सुविधाएं)</span>:
 								</h2>
 							</div>
-							<div class="body">
-								<form>
+							<div class="body kc-top">
+								
 									<div class="row clearfix">
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<div class="form-group form-float">
-												<div class="form-line">
-                                                    <span class="form-control"></span>
-													<label class="form-label">Term Loan</label>
-												</div>
-											</div>
-									</div>
+								             <span class="kc-subhead">Types Of Loan<span>(सुविधाओं का प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="loan_types">
+											<option value="Term Loan">Term Loan<span>(सावधि ऋण)</span></option>
+											<option value="Other Loans">Other Loans<span>(अन्य ऋण)</span></option>
+										</select>
+									    </div>
 										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 											<div class="form-group form-float">
 												<div class="form-line">
 													<input type="text" class="form-control" name="termloan_amount">
-													<label class="form-label">Amount</label>
+													<label class="form-label">Amount<span>(राशि)</span></label>
 												</div>
 											</div>
 										</div>
@@ -151,7 +157,7 @@
 											<div class="form-group form-float">
 												<div class="form-line">
 													<input type="text" class="form-control" name="termloan_period">
-													<label class="form-label">Period</label>
+													<label class="form-label">Period<span>(अवधि)</span></label>
 												</div>
 											</div>
 										</div>
@@ -159,136 +165,38 @@
 											<div class="form-group form-float">
 												<div class="form-line">
 													<input type="text" class="form-control" name="termloan_aim_behind">
-													<label class="form-label">Aim Behind Facilitate Loan</label>
+													<label class="form-label">Aim Behind Facilitate Loan<span>(ऋण सुविधा प्राप्त करने का उद्देश्य)</span></label>
 												</div>
 											</div>
 										</div>
-									</div>
-                                    <div class="row clearfix">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<div class="form-group form-float">
-												<div class="form-line">
-                                                    <span class="form-control"></span>
-													<label class="form-label">Other loans</label>
-												</div>
-											</div>
-									</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="otherloan_amount">
-													<label class="form-label">Amount</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="otherloan_period">
-													<label class="form-label">Period</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="otherloan_aim_behind">
-													<label class="form-label">Aim Behind Facilitate Loan</label>
-												</div>
-											</div>
-										</div>
-									</div>
-                                    <div class="row clearfix">
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-										<div class="form-group form-float">
-												<div class="form-line">
-                                                    <span class="form-control"></span>
-													<label class="form-label">Total</label>
-												</div>
-											</div>
-									</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="total_amount">
-													<label class="form-label">Amount</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="total_period">
-													<label class="form-label">Period</label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="total_aim_behind">
-													<label class="form-label">Aim Behind Facilitate Loan</label>
-												</div>
-											</div>
-										</div>
-									</div>
-								</form>
+									</div> 
 							</div>
+                                <div id="IfTermLoan">
                                 <div class="header">
 								<h2>
-									In The Case Of Fixed Investment Loan Required, Details Of Machinery/Equipment Should Be Presented As Follows:
+									In The Case Of Fixed Investment Loan Required, Details Of Machinery/Equipment Should Be Presented As Follows<span>(सावधि निवेश ऋण आवश्यकता के मामले में, मशीन/उपकरण का ब्योरा निम्नानुसार प्रस्तुत किया जाए)</span>:
 								</h2>
 							</div>
 							<div class="body">
-								<form>
+								
 									<div class="row clearfix">
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-										<div class="form-group form-float">
-												<div class="form-line">
-                                                    <span class="form-control"></span>
-													<label class="form-label">Type Of Machine/Equipment</label>
-												</div>
-											</div>
-									</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													 <span class="form-control"></span>
-													<label class="form-label">Purpose To Get</label>
-												</div>
-											</div>
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label">
+													<label class="form-label kc-label">Type Of Machine/Equipment<span>(मशीन/उपकरण का प्रकार)</span></label>
+									    </div>
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label">
+													<label class="form-label kc-label">Purpose To Get<span>(प्राप्त करने का उद्देश्य)</span></label>
 										</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<span class="form-control"></span>
-													<label class="form-label">Suppliers Name</label>
-												</div>
-											</div>
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label">
+													<label class="form-label kc-label">Suppliers Name<span>(आपूर्तिकर्ता का नाम)</span></label>
 										</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<span class="form-control"></span>
-													<label class="form-label">Total Cost Of Machine</label>
-												</div>
-											</div>
+										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label">
+													<label class="form-label kc-label">Total Cost Of Machine<span>(मशीन की कुल लागत)</span></label>
 										</div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<span class="form-control"></span>
-													<label class="form-label">Subscription OF customers(?)</label>
-												</div>
-											</div>
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label">
+													<label class="form-label kc-label">Subscription OF customers(₹)<span>(ग्राहक का अंशदान (रु.) )</span></label>
 										</div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<span class="form-control"></span>
-													<label class="form-label">Required Loan Amount(?)</label>
-												</div>
-											</div>
+                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4 form-control-label">
+													<label class="form-label kc-label">Required Loan Amount(₹)<span>(आवश्यक ऋण राशि (रु.) )</span></label>
 										</div>
 									</div>
                                     <div class="row clearfix">
@@ -341,108 +249,8 @@
 											</div>
 										</div>
 									</div>
-                                    <div class="row clearfix">
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-										<div class="form-group form-float">
-												<div class="form-line">
-                                                    <input type="text" class="form-control" name="machine_equipment_2">
-													<label class="form-label"></label>
-												</div>
-											</div>
-									</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													 <input type="text" class="form-control" name="purpose_2">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="supplier_2">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="machine_cost_2">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="sub_of_customers_2">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="req_loan_amount_2">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-									</div>
-                                    <div class="row clearfix">
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-										<div class="form-group form-float">
-												<div class="form-line">
-                                                     <span class="form-control"></span>
-													<label class="form-label">Total</label>
-												</div>
-											</div>
-									</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													 <input type="text" class="form-control">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="total_sub_of_customers">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
-											<div class="form-group form-float">
-												<div class="form-line">
-													<input type="text" class="form-control" name="total_req_loan_amount">
-													<label class="form-label"></label>
-												</div>
-											</div>
-										</div>
-									</div>
-								</form>
 							</div>
+                                </div>
         </section> 
                         
       <!-------------------------------- Form Section 2 End Here ---------------------------------->
@@ -450,17 +258,17 @@
                                 <section>  
                                    <div class="header">
                             <h2>
-                                Business Information:
+                                Business Information<span>(व्यवसाय संबंधी जानकारी)</span>:
                             </h2>
                         </div>
                         <div class="body">
-                            <form>
+                           
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="enterprise_name">
-                                                <label class="form-label">Enterprise Name</label>
+                                                <label class="form-label">Enterprise Name<span>(उद्यम का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -468,7 +276,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="details_address">
-                                                <label class="form-label">Details Of The Current Business Address (Shop Number/Route)</label>
+                                                <label class="form-label">Details Of The Current Business Address (Shop Number/Route)<span>(वर्तमान व्यवसाय पता(दुकान संख्या/ मार्ग का विवरण))</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -476,7 +284,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="locality">
-                                                <label class="form-label">Village/Town</label>
+                                                <label class="form-label">Village/Town<span>(ग्राम/शहर)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -484,7 +292,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="post">
-                                                <label class="form-label">Post</label>
+                                                <label class="form-label">Post<span>(पोस्ट)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -492,7 +300,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="district">
-                                                <label class="form-label">District</label>
+                                                <label class="form-label">District<span>(जिला)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -500,7 +308,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="state">
-                                                <label class="form-label">State</label>
+                                                <label class="form-label">State<span>(प्रदेश)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -508,7 +316,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="pin_code">
-                                                <label class="form-label">Pin Code</label>
+                                                <label class="form-label">Pin Code<span>(पिन कोड)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -516,7 +324,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="mobile_number">
-                                                <label class="form-label">Mobie Number</label>
+                                                <label class="form-label">Mobie Number<span>(मोबाइल नं.)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -524,7 +332,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="tel_number">
-                                                <label class="form-label">Telephone Number</label>
+                                                <label class="form-label">Telephone Number<span>(टेलीफोन नं.)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -532,18 +340,20 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="email" class="form-control" name="email">
-                                                <label class="form-label">Email</label>
+                                                <label class="form-label">Email<span>(ई-मेल)</span></label>
                                             </div>
                                         </div>
                                     </div>  
                                 </div>
+                                <h4>
+                                     Business Office<span>(व्यवसाय कार्यकलाप)</span>:
+                                </h4>
                                 <div class="row clearfix">
-                                    <h5>Business Office</h5>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-8">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="present">
-                                                <label class="form-label">Present</label>
+                                                <label class="form-label">Present<span>(वर्तमान)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -551,7 +361,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="as_proposed">
-                                                <label class="form-label">As Proposed</label>
+                                                <label class="form-label">As Proposed<span>(प्रस्तावित)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -559,45 +369,40 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="date_commencement">
-                                                <label class="form-label">Date Of Commencement (Day/Month/Year)</label>
+                                                <label class="form-label">Date Of Commencement (Day/Month/Year)<span>(प्रारंभ करने की तिथि (दिन/महीना/वर्ष))</span></label>
                                             </div>
                                         </div>
                                     </div>
                                  </div>
                                <div class="row clearfix">
                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                       <span class="kc-subhead">Build-Type</span>
-										<select class="form-control show-tick" name="build_type">
-											<option>Sole Proprietorship</option>
-											<option>Partnerships</option>
-											<option>Pvt. LTD.</option>
-                                            <option>Limited Company</option>
-                                            <option>Personal</option>
-                                            <option>Specify Other</option>
-										</select>
+                                       <span class="kc-subhead">Build-Type<span>(गठन-प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="build_type">
+											<option value="Sole Proprietorship">Sole Proprietorship<span>(एकल स्वामित्व)</span></option>
+											<option value="Partnerships">Partnerships<span>(भागीदारी)</span></option>
+											<option value="Pvt. LTD.">Pvt. LTD.<span>(प्रा.लि.)</span></option>
+                                            <option value="Limited">Limited Company<span>(लिमिटेड कंपनी)</span></option>
+                                            <option value="Personal">Personal<span>(व्यक्तिगत)</span></option>
+                                            <option value="Specify Other">Specify Other<span>(अन्य(निर्दिष्ट करें))</span></option>
+										</select>                                                                             
                                    </div>
                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                       <span class="kc-subhead">Business Premises Type</span>
-										<select class="form-control show-tick" name="business_premises">
-											<option>Constant motion</option>
-											<option>Moving(Narrow Circle)</option>
-                                            <option>Stable(Rental)</option>
-                                            <option>Stable(Self)</option>
+                                       <span class="kc-subhead">Business Premises Type<span>(व्यवसाय परिसर प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="business_premises">
+											<option value="Constant motion">Constant motion<span>(निरंतर चलायमान)</span></option>
+											<option value="Moving(Narrow Circle)">Moving(Narrow Circle)<span>(चलायमान(सीमित दायरा))</span></option>
+                                            <option value="Stable(Rental)">Stable(Rental)<span>(स्थिर(किराये का))</span></option>
+                                            <option value="Stable(Self)">Stable(Self)<span>(स्थिर(स्वयं का))</span></option>
 										</select>
                                    </div>
-                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <span class="form-control"></span>
-                                                <label class="form-label">Is GST Registered (Yes/No)</label>
-                                            </div>
-                                        </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 form-control-label">
+                                                <label class="form-label kc-label">Is GST Registered (Yes/No)<span>(क्या इकाई GST पंजीकृत है (हाँ/ नहीं))</span></label>
                                     </div>
                                   <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2">
                                     <div class="input-group input-group-lg">
                                         <span class="input-group-addon">
                                             <input type="radio" class="with-gap" name="gst_registered" id="gst_yes" value="yes">
-                                            <label for="gst_yes">Yes</label>
+                                            <label for="gst_yes">Yes<span>(हाँ)</span></label>
                                         </span>
                                     </div>
                                    </div>
@@ -605,7 +410,7 @@
                                    <div class="input-group input-group-lg">
                                         <span class="input-group-addon">
                                             <input type="radio" class="with-gap" name="gst_registered" id="gst_no" value="no">
-                                            <label for="gst_no">No</label>
+                                            <label for="gst_no">No<span>(नहीं)</span></label>
                                         </span>
                                     </div>
                                   </div>
@@ -615,7 +420,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="gst_reg_num">
-                                                <label class="form-label">GST Registration No.</label>
+                                                <label class="form-label">GST Registration No.<span>(GST पंजीकरण नं:)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -623,7 +428,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="reg_off_adress">
-                                                <label class="form-label">Registered Office Address</label>
+                                                <label class="form-label">Registered Office Address<span>(पंजीकृत कार्यालय का पता)</span></label>
                                             </div>
                                         </div>
                                     </div>  
@@ -633,12 +438,12 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="entity_reg">
-                                                <label class="form-label">Is Entity registered (if So,Then where? For Example - T he Municipality / Municipal / Mandi Parishad etc.</label>
+                                                <label class="form-label">Is Entity registered (if So, Then where? For Example - The Municipality / Municipal / Mandi Parishad etc.<span>(क्या इकाई पंजीकृत है(यदि हाँ तो कहाँ ?उदाहरण - नगर पालिका/ नगर निगम/मंडी परिषद आदि))</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                           
                         </div>
                                 </section>
        <!-------------------------------- Form Section 3 End Here ---------------------------------->
@@ -647,15 +452,82 @@
                                 <section>
                                 <div class="header">
                             <h2>
-                                Family Details Of Those Members Are Dependent On You:
+                                Family Details Of Those Members Are Dependent On You<span>(पारिवारिक विवरण उन सदस्यों का जो आप पर आश्रित हैं)</span>:
                             </h2>
                                </div>
-                        <div class="body">
-                            <form>
+                        <div class="body kc-familyFormBody">
+                             <div class="kc-familyDetails">
                                 <div class="row clearfix">
-                                    
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="details_order[]">
+                                                <label class="form-label">Order<span>(क्रम)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="family_member_name[]">
+                                                <label class="form-label">Name<span>(नाम)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="family_member_relation[]">
+                                                <label class="form-label">Relation<span>(रिश्ता)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="family_member_age[]">
+                                                <label class="form-label">Age(In Years)<span>(उम्र (वर्ष))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
+                                    <div class="row clearfix">
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="family_member_business[]">
+                                                <label class="form-label">Business<span>(व्यवसाय)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="family_member_income[]">
+                                                <label class="form-label">Income<span>(आय)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="family_member_mob_num[]">
+                                                <label class="form-label">Mobile Number<span>(मोबाइल नं.)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="live _together[]">
+                                                <label class="form-label">Are You Live Together(Yes/No)<span>(क्या आपके साथ रहते हैं (हाँ/नहीं))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                    </div>
+                                <div id="kc-append-family-details"></div>
+                                    <a class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float kc-add kc-btnadd"><i class="material-icons">add</i></a>
                         </div>
                                </section>
        <!-------------------------------- Form Section 4 End Here ---------------------------------->
@@ -664,18 +536,18 @@
                                 <section>
                                 <div class="header">
                             <h2>
-                                Details Of Owners/Partners/Directors:
+                                Details Of Owners/Partners/Directors<span>(मालिक / भागीदारों / निदेशकों का विवरण)</span>:
                             </h2>
                                </div>
                         <div class="body">
-                            <form>
-                                <h3>Owners/Partners</h3>
+                            
+                            <h3>Owners/Partners <span>(मालिक / भागीदार)</span></h3>
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="o_p_name">
-                                                <label class="form-label">Name</label>
+                                                <label class="form-label">Name<span>(नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -683,7 +555,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="f_h_name">
-                                                <label class="form-label">Father's / Husband's Name</label>
+                                                <label class="form-label">Father's / Husband's Name<span>(पिता/ पति का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -691,7 +563,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="d_o_b">
-                                                <label class="form-label">Date Of Birth</label>
+                                                <label class="form-label">Date Of Birth<span>(जन्म तिथि)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -699,7 +571,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="sex">
-                                                <label class="form-label">Sex</label>
+                                                <label class="form-label">Sex<span>(लिंग)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -707,7 +579,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="edu_q">
-                                                <label class="form-label">Educational Qualification</label>
+                                                <label class="form-label">Educational Qualification<span>(शैक्षणिक योग्यता)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -715,7 +587,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="activities_exp">
-                                                <label class="form-label">Activities Operate Experience(In Years)</label>
+                                                <label class="form-label">Activities Operate Experience(In Years)<span>(कार्यकलाप संचालित करने का अनुभव (वर्षों में))</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -723,55 +595,55 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="connection_with_company">
-                                                <label class="form-label">Is There Any Connection With The Company's Officials? If So, Details</label>
+                                                <label class="form-label">Is There Any Connection With The Company's Officials? If So, Details<span>(क्या कंपनी  के पदाधिकारियों के साथ कोई सम्बन्ध है? यदि हाँ तो विवरण दें)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                       <span class="kc-subhead">Type Of Accommodation</span>
-										<select class="form-control show-tick" name="accommodation">
-											<option>Self</option>
-											<option>Tenant</option>
-                                            <option>Ancestral</option>
+                                       <span class="kc-subhead">Type Of Accommodation<span>(आवास का प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="accommodation">
+											<option value="Self">Self<span>(स्वयं)</span></option>
+											<option value="Tenant">Tenant<span>(किरायेदार)</span></option>
+                                            <option value="Ancestral">Ancestral<span>(पुश्तैनी)</span></option>
 										</select>
                                    </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="res_address">
-                                                <label class="form-label">Residential address</label>
+                                                <label class="form-label">Residential address<span>(आवासीय पता)</span></label>
                                             </div>
                                         </div>
                                       </div>
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                       <span class="kc-subhead">Social Ranking</span>
-										<select class="form-control show-tick" name="social_ranking">
-											<option>S.C</option>
-											<option>S.T</option>
-                                            <option>OBC</option>
-                                            <option>General</option>
+                                       <span class="kc-subhead">Social Ranking<span>(सोशल श्रेणी)</span></span>
+										<select class="form-control show-tick kc-select" name="social_ranking">
+											<option value="S.C">S.C<span>(एससी)</span></option>
+											<option value="S.T">S.T<span>(एसटी)</span></option>
+                                            <option value="OBC">OBC<span>(ओबीसी)</span></option>
+                                            <option value="General">General<span>(सामान्य )</span></option>
 										</select>
                                       </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                           <span class="kc-subhead">Religion</span>
-                                            <select class="form-control show-tick" name="religion">
-                                                <option>Buddhist</option>
-                                                <option>Parasi</option>
-                                                <option>Christian</option>
-                                                <option>Sikh</option>
-                                                <option>Jain</option>
-                                                <option>Muslim</option>
-                                                <option>Hindu</option>
-                                                <option>Other</option>
+                                           <span class="kc-subhead">Religion<span>(धर्म)</span></span>
+                                            <select class="form-control show-tick kc-select" name="religion">
+                                                <option value="Hindu">Hindu<span>(हिंदू)</span></option>
+                                                <option value="Buddhist">Buddhist<span>(बौद्ध)</span></option>
+                                                <option value="Parasi">Parasi<span>(पारसी)</span></option>
+                                                <option value="Christian">Christian<span>(ईसाई)</span></option>
+                                                <option value="Sikh">Sikh<span>(सिख)</span></option>
+                                                <option value="Jain">Jain<span>(जैन)</span></option>
+                                                <option value="Muslim">Muslim<span>(मुस्लिम)</span></option>
+                                                <option value="Other">Other<span>(अन्य)</span></option>
                                             </select>
                                        </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="o_p_mob_number">
-                                                <label class="form-label">Mobile Number</label>
+                                                <label class="form-label">Mobile Number<span>(मोबाइल नंबर)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -779,7 +651,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="pan_card">
-                                                <label class="form-label">Pan Card</label>
+                                                <label class="form-label">Pan Card<span>(पैन कार्ड)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -787,7 +659,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="aadhar_number">
-                                                <label class="form-label">Aadhar Number</label>
+                                                <label class="form-label">Aadhar Number<span>(आधार नंबर)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -795,7 +667,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="voter_id">
-                                                <label class="form-label">Voter ID</label>
+                                                <label class="form-label">Voter ID<span>(मतदाता पहचान पत्र)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -803,18 +675,18 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="din_proof">
-                                                <label class="form-label">DIN/Other Proof</label>
+                                                <label class="form-label">DIN/Other Proof<span>(डीआईएऩ /अन्य प्रमाण)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h3>Owners/Partners</h3>
+                                <h3>Owners/Partners<span>(मालिक / भागीदार)</span></h3>
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="o_p_name_1">
-                                                <label class="form-label">Name</label>
+                                                <label class="form-label">Name<span>(नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -822,7 +694,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="f_h_name_1">
-                                                <label class="form-label">Father's / Husband's Name</label>
+                                                <label class="form-label">Father's / Husband's Name<span>(पिता/ पति का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -830,7 +702,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="d_o_b_1">
-                                                <label class="form-label">Date Of Birth</label>
+                                                <label class="form-label">Date Of Birth<span>(जन्म तिथि)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -838,7 +710,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="sex_1">
-                                                <label class="form-label">Sex</label>
+                                                <label class="form-label">Sex<span>(लिंग)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -846,7 +718,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="edu_q_1">
-                                                <label class="form-label">Educational Qualification</label>
+                                                <label class="form-label">Educational Qualification<span>(शैक्षणिक योग्यता)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -854,7 +726,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="activities_exp_1">
-                                                <label class="form-label">Activities Operate Experience(In Years)</label>
+                                                <label class="form-label">Activities Operate Experience(In Years)<span>(कार्यकलाप संचालित करने का अनुभव (वर्षों में))</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -862,55 +734,55 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="connection_with_company_1">
-                                                <label class="form-label">Is There Any Connection With The Company's Officials? If So, Details</label>
+                                                <label class="form-label">Is There Any Connection With The Company's Officials? If So, Details<span>(क्या कंपनी  के पदाधिकारियों के साथ कोई सम्बन्ध है? यदि हाँ तो विवरण दें)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                       <span class="kc-subhead">Type Of Accommodation</span>
-										<select class="form-control show-tick" name="accommodation_1">
-											<option>Self</option>
-											<option>Tenant</option>
-                                            <option>Ancestral</option>
+                                       <span class="kc-subhead">Type Of Accommodation<span>(आवास का प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="accommodation_1">
+											<option value="Self">Self<span>(स्वयं)</span></option>
+											<option value="Tenant">Tenant<span>(किरायेदार)</span></option>
+                                            <option value="Ancestral">Ancestral<span>(पुश्तैनी)</span></option>
 										</select>
                                    </div>
                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="res_address_1">
-                                                <label class="form-label">Residential address</label>
+                                                <label class="form-label">Residential address<span>(आवासीय पता)</span></label>
                                             </div>
                                         </div>
                                       </div>
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                       <span class="kc-subhead">Social Ranking</span>
-										<select class="form-control show-tick" name="social_ranking_1">
-											<option>S.C</option>
-											<option>S.T</option>
-                                            <option>OBC</option>
-                                            <option>General</option>
+                                       <span class="kc-subhead">Social Ranking<span>(सोशल श्रेणी)</span></span>
+										<select class="form-control show-tick kc-select" name="social_ranking_1">
+											<option value="S.C">S.C<span>(एससी)</span></option>
+											<option value="S.T">S.T<span>(एसटी)</span></option>
+                                            <option value="OBC">OBC<span>(ओबीसी)</span></option>
+                                            <option value="General">General<span>(सामान्य)</span></option>
 										</select>
                                       </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                           <span class="kc-subhead">Religion</span>
-                                            <select class="form-control show-tick" name="religion_1">
-                                                <option>Buddhist</option>
-                                                <option>Parasi</option>
-                                                <option>Christian</option>
-                                                <option>Sikh</option>
-                                                <option>Jain</option>
-                                                <option>Muslim</option>
-                                                <option>Hindu</option>
-                                                <option>Other</option>
+                                           <span class="kc-subhead">Religion<span>(धर्म)</span></span>
+                                            <select class="form-control show-tick kc-select" name="religion_1">
+                                                <option value="Hindu">Hindu<span>(हिंदू)</span></option>
+                                                <option value="Buddhist">Buddhist<span>(बौद्ध)</span></option>
+                                                <option value="Parasi">Parasi<span>(पारसी)</span></option>
+                                                <option value="Christian">Christian<span>(ईसाई)</span></option>
+                                                <option value="Sikh">Sikh<span>(सिख)</span></option>
+                                                <option value="Jain">Jain<span>(जैन)</span></option>
+                                                <option value="Muslim">Muslim<span>(मुस्लिम)</span></option>
+                                                <option value="Other">Other<span>(अन्य)</span></option>
                                             </select>
                                        </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="o_p_mob_number_1">
-                                                <label class="form-label">Mobile Number</label>
+                                                <label class="form-label">Mobile Number<span>(मोबाइल नंबर)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -918,7 +790,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="pan_card_1">
-                                                <label class="form-label">Pan Card</label>
+                                                <label class="form-label">Pan Card<span>(पैन कार्ड)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -926,7 +798,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="aadhar_num_1">
-                                                <label class="form-label">Aadhar Number</label>
+                                                <label class="form-label">Aadhar Number<span>(आधार नंबर)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -934,7 +806,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="voter_id_1">
-                                                <label class="form-label">Voter ID</label>
+                                                <label class="form-label">Voter ID<span>(मतदाता पहचान पत्र)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -942,12 +814,12 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="din_proof_1">
-                                                <label class="form-label">DIN/Other Proof</label>
+                                                <label class="form-label">DIN/Other Proof<span>(डीआईएऩ /अन्य प्रमाण)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                           </form>
+                        
                        </div>
                                </section>
        <!-------------------------------- Form Section 5 End Here ---------------------------------->
@@ -956,17 +828,17 @@
                                 <section>
                                 <div class="header">
                             <h2>
-                                Partner Firms Name and Business Nature :
+                                Partner Firms Name and Business Nature<span>(सहयोगी फर्मों के नाम और सहयोगी फर्मों के व्यवसाय की प्रकृति)</span> :
                             </h2>
                                </div>
-                        <div class="body">
-                            <form>
+                        <div class="body kc-PartnerBusinessFormBody">
+                            <div class="kc-PartnerBusiness">
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="partner_firm_name">
-                                                <label class="form-label">Name Of Patner Firm</label>
+                                                <label class="form-label">Name Of Patner Firm<span>(सहयोगी फर्मों के नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -974,7 +846,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="partner_address">
-                                                <label class="form-label">Address Of Patner Firm</label>
+                                                <label class="form-label">Address Of Patner Firm<span>(सहयोगी फर्मों का पता)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -982,7 +854,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="current_banking_prac">
-                                                <label class="form-label">Current Bank Being Banking Practices With</label>
+                                                <label class="form-label">Current Bank Being Banking Practices With<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -990,7 +862,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="business_nature">
-                                                <label class="form-label">Patner Firm's Business Nature</label>
+                                                <label class="form-label">Patner Firm's Business Nature<span>(सहयोगी फर्म के व्यवसाय की प्रकृति)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -998,12 +870,15 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" class="form-control" name="range_of_intrest">
-                                                <label class="form-label">In Patner Firm Owner/Patner/ Or Investor's Range Of Intrest</label>
+                                                <label class="form-label">In Patner Firm Owner/Patner/ Or Investor's Range Of Intrest<span>(सहयोगी फर्म में मालिक/भागीदार/ या सिर्फ निवेशक के रूप में हित की सीमा)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                                    </div>
+                                    <div id="kc-append-Partner-Business"></div>
+                                <a class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float kc-addPartnerBusiness kc-btnadd"><i class="material-icons">add</i></a>
+                            
                         </div>
                                </section>
        <!-------------------------------- Form Section 6 End Here ---------------------------------->
@@ -1012,19 +887,375 @@
                                 <section>
                                 <div class="header">
                             <h2>
-                                Family Details Of Those Members Are Dependent On You:
+                                Current Banking Facilities (in rupees)<span>(वर्तमान बैंकिंग सुविधाएं (रुपए में))</span>:
                             </h2>
                                </div>
-                        <div class="body">
-                            <form>
+                        <div class="body kc-CurrentBankingFormBody kc-top">
+                            <div class="kc-CurrentBanking">
                                 <div class="row clearfix">
-                                    
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <span class="kc-subhead">Types Of Facilities<span>(सुविधाओं का प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="Types_Of_Facilities">
+											<option value="Savings Account">Savings Account<span>(बचत खाता)</span></option>
+											<option value="Current Account">Current Account<span>(चालू खाता)</span></option>
+                                            <option value="CC Limit">CC Limit<span>(CC लिमिट)</span></option>
+										</select>
+                                    </div>
+                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="present_bank_banking_practices">
+                                                <label class="form-label">Present Bank With You Have Banking Practices<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="bank_branch">
+                                                <label class="form-label">Bank Branch<span>(बैंक शाखा)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </form>
+                                <div class="row clearfix">
+                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="current_Account_number">
+                                                <label class="form-label">Account Number<span>(खाता सं:)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="date_of_account_opened">
+                                                <label class="form-label">Date Of Account Opened<span>(खाता प्रारम्भ करने की तिथि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="bank_balance">
+                                                <label class="form-label">Bank Balance<span>(बैंक में जमा राशि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="row clearfix">
+                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="total_employees">
+                                                <label class="form-label">How Many Employees In Your Shop?<span>(आपके दूकान में कितने कर्मचारी हैं ?)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    </div>
+                                 <div id="kc-append-Current-Banking"></div>
+                                <a class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float kc-addCurrentBanking kc-btnadd"><i class="material-icons">add</i></a>
+                         
                         </div>
                                </section>
        <!-------------------------------- Form Section 7 End Here ---------------------------------->
+       <!-------------------------------- Form Section 8 Start From Here --------------------------->
+                                <h2><span class="sr-only">8</span></h2>        
+                                <section>
+                                <div class="header">
+                            <h2>
+                                Details Of Liabilities (Commercial and  Domestic)<span>(देनदारियों का विवरण (व्यावसायिक व घरेलू))</span>:
+                            </h2>
+                               </div>
+                        <div class="body kc-liabilitiesFormBody kc-top">
+                            <div class="kc-liabilitiesDetails">
+                                <div class="row clearfix">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <span class="kc-subhead">Types Of Liabilities<span>(देनदारियों का प्रकार)</span></span>
+										<select class="form-control show-tick kc-select" name="types_of_liabilities">
+											<option value="Bank 1">Bank 1<span>(बैंक 1)</span></option>
+											<option value="Bank 2">Bank 2<span>(बैंक 2)</span></option>
+                                            <option value="Private Finance Company">Private Finance Company<span>(प्राइवेट फाइनेंस कंपनी)</span></option>
+                                            <option value="Registered NBFC/ NBFC MF">Registered NBFC/ NBFC MF<span>(रजिस्टर्ड NBFC/ NBFC MFI)</span></option>
+                                            <option value="Supplier">Supplier<span>(सप्लायर)</span></option>
+                                            <option value="Kisan Credit Card ">Kisan Credit Card<span>(किसान क्रेडिट कार्ड)</span></option>
+                                            <option value="Relative/Friend/Neighbor">Relative/Friend/Neighbor<span>(रिश्तेदार/ मित्र/ पड़ोसी)</span></option>
+                                            <option value="Financer">Financer<span>(साहुकार)</span></option>
+                                            <option value="Bank Credit Card">Bank Credit Card<span>(बैंक का क्रेडिट कार्ड)</span></option>
+                                            <option value="Loan From Other Sources">Loan From Other Sources<span>(अन्य स्रोत से ऋण)</span></option>
+										</select>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="name_in_liabilities">
+                                                <label class="form-label">Name<span>(नाम)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="objective_in_liabilities">
+                                                <label class="form-label">Objective<span>(उद्देश्य)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="original_loan_amount">
+                                                <label class="form-label">Original Loan Amount<span>(मूल ऋण राशि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="remaining_loan_amount">
+                                                <label class="form-label">Remaining Loan Amount<span>(शेष ऋण राशि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="loan_period">
+                                                <label class="form-label">Period<span>(अवधि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="rate_of_interest">
+                                                <label class="form-label">Rate Of Interest<span>(ब्याज दर)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="start_date_of_loan">
+                                                <label class="form-label">Start Date<span>(प्रारम्भ की तिथि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="amount_of_installment">
+                                                <label class="form-label">Amount Of Installment<span>(किश्त की राशि)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="installment_frequency">
+                                                <label class="form-label">Installment frequency (Daily/Weekly/Monthly/Fortnightly)<span>(किश्त की आवृत्ति (दैनिक/साप्ताहिक/ मासिक/ पाक्षिक))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="Securities_in_loan">
+                                                <label class="form-label">Securities<span>(प्रतिभूति)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="pending_legal_proceedings">
+                                                <label class="form-label">Any pending legal proceedings<span>(कोई अपूर्ण कानूनी कार्यवाही)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="informal_settlement">
+                                                <label class="form-label">Any Informal Settlement Between Borrower And Lender<span>(कोई अनौपचारिक समझौता जो उधारकर्ता और ऋणदाता में हुआ हो)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="present_situation">
+                                                <label class="form-label">Present Situation (Performing/Non-Performing)<span>(वर्तमान स्थिति(परफार्मिंग/नॉन परफार्मिंग))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    </div>
+                            <div id="kc-append-liabilities-details"></div>
+                                <a class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float kc-addDetails kc-btnadd"><i class="material-icons">add</i></a>
+                         
                         </div>
+                               </section>
+          <!-------------------------------- Form Section 8 End Here ---------------------------------->
+       <!-------------------------------- Form Section 9 Start From Here ---------------------------------->
+                                <h2><span class="sr-only">9</span></h2>        
+                                <section>
+                                <div class="header">
+                            <h2>
+                                Total Of Liabilities (Commercial and  Domestic)<span>()</span>:
+                            </h2>
+                               </div>
+                        <div class="body">
+                            
+                                <div class="row clearfix">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="sub_total_commercial_liabilities">
+                                                <label class="form-label">Sub Total (Commercial Liabilities)<span>(उप कुल (व्यावसायिक देनदारियां))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="sub_total_domestic_liabilities">
+                                                <label class="form-label">Sub Total(Domestic Liabilities)<span>(उप कुल (घरेलु देनदारियां))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="total_liabilities">
+                                                <label class="form-label">Total liabilities (iv)<span>(कुल देनदारियां (iv))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4>
+                                     Total Capacity<span>()</span>:
+                                </h4>
+                                <div class="row clearfix">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="professional_capacity">
+                                                <label class="form-label">Professional Capacity<span>(व्यावसायिक हैसियत)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="domestic_capacity">
+                                                <label class="form-label">Domestic Capacity<span>(घरेलु हैसियत)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="total_capacity">
+                                                <label class="form-label">Total Capacity (v)=(iii)-(iv)<span>(कुल हैसियत (v)=(iii)-(iv))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                       
+                        </div>
+                               </section>
+       <!-------------------------------- Form Section 9 End Here ---------------------------------->
+       <!-------------------------------- Form Section 10 Start From Here -------------------------->
+                                <h2><span class="sr-only">10</span></h2>        
+                                <section>
+                                <div class="header">
+                                <h2>
+                                    The Details Of The Monthly Household Income<span>(मासिक घरेलु आय का विवरण)</span>:
+                                </h2>
+                               </div>
+                        <div class="body">
+                           
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="rental_income">
+                                                <label class="form-label">Rental income<span>(किराये से आमदनी)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="income_by_pension">
+                                                <label class="form-label">Household Income Of Other Members By Pension<span>(घर के अन्य सदस्य के पेंशन से आमदनी)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="income_by_member_salaries">
+                                                <label class="form-label">Household Income From Salaries Of Members<span>(घर के अन्य सदस्य के वेतन से आमदनी)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="farming_income">
+                                                <label class="form-label">Farming Income<span>(खेती से आमदनी)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="Income_from_milk_products">
+                                                <label class="form-label">Income From Milk Products<span>(दुग्ध उत्पाद से आमदनी)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="income_from_other_sources">
+                                                <label class="form-label">Income From Any Other Source<span>(अन्य किसी स्रोत से आमदनी)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="gross_domestic_income">
+                                                <label class="form-label">Gross Domestic Income (vi)<span>(सकल घरेलू आय(vi))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                               </section>
+       <!-------------------------------- Form Section 10 End Here --------------------------------->
+                        </div>
+                      </form>           
                     </div>
                 </div>
             </div>
@@ -1032,3 +1263,66 @@
         </div>
      </div>
     </section>
+    <script>
+         $(document).ready(function(){
+                $('.kc-add').on( "click", function() {
+                  var clon = $('.kc-familyFormBody>.kc-familyDetails').clone();
+                  $('#kc-append-family-details').append(clon);
+                  $.AdminBSB.input.activate();
+                });                          
+                $('.kc-addDetails').on( "click", function() {
+                  var clon1 = $('.kc-liabilitiesFormBody>.kc-liabilitiesDetails').clone();
+                  $('#kc-append-liabilities-details').append(clon1);
+                  $.AdminBSB.input.activate();
+                });                          
+                $('.kc-addCurrentBanking').on( "click", function() {
+                  var clon2 = $('.kc-CurrentBankingFormBody>.kc-CurrentBanking').clone();
+                  $('#kc-append-Current-Banking').append(clon2);
+                  $.AdminBSB.input.activate();
+                });                          
+                $('.kc-addPartnerBusiness').on( "click", function() {
+                  var clon3 = $('.kc-PartnerBusinessFormBody>.kc-PartnerBusiness').clone();
+                  $('#kc-append-Partner-Business').append(clon3);
+                  $.AdminBSB.input.activate();
+                });                          
+         });
+       </script>
+    <style>
+    .kc-btnadd {
+    float: right;
+    position: relative;
+    top: -22px;
+    }
+    .kc-select {
+    display: inline-flex !important;
+    }
+    .kc-top{
+    margin-top: 10px;    
+    }
+    .kc-customerType{
+    float: left;    
+    }
+        .kc-select{
+    position: relative;
+    top: -18px;
+    }
+    span.kc-subhead {
+        position: relative;
+        top: -15px;
+    }
+    label.kc-label {
+        text-align: center;
+        float: left;
+    }
+    .wizard > .steps > ul > li {
+        width: 6% !important;
+        float: left;
+    }
+    .steps.clearfix a {
+        border-radius: 50% !important;
+        width: 50px !important;
+        height: 50px !important;
+        text-align: center;
+        line-height: normal;
+    }
+    </style>

@@ -129,10 +129,10 @@
                                     </div>
                                 </div>
                             </div>
-							<c:forEach items="${lead.leadComments}" var="leadComments" varStatus="status">
+							<c:forEach items="${lead.leadComments}" var="leadComment" varStatus="status">
 							<c:set var="itemIndex" value="${status.index}" scope="request" />
 
-							 <c:if test="${leadComments.comment == '' || fn:length(leadComments.comment)<1}">
+							 <c:if test="${leadComment.comment == '' || fn:length(leadComment.comment)<1}">
 							<div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
@@ -146,7 +146,6 @@
 							</c:if>
 							</c:forEach>
 							<input type="submit" value="Update" class="btn btn-orange m-t-15 waves-effect"/>
-							<input type="submit" value="Hold" class="btn btn-orange m-t-15 waves-effect"/>
 							</div>
                       </form:form>
                       </section>
@@ -173,33 +172,20 @@
                                     </thead>
                                     
                                     <tbody>
-                                        
+                                     <c:forEach items="${lead.leadComments}" var="leadComment" varStatus="status">
+									 
 											 <tr>
-											<td>User 1</td>
+											<td>
+											${leadComment.comment}
+											</td>
 											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
+											    <a href="<c:url value='/edit-comment-${leadComment.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
                                                 </td>
                                                
 											</tr>
-                                              <tr>
-											<td>User 2</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
-                                                </td>
-                                              </tr>
-                                             <tr>
-											<td>User 3</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
-                                                </td>
-                                              </tr>
-                                             <tr>
-											<td>User 4</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
-                                                </td>
-                                              </tr>
-										
+                                            
+										</c:forEach>
+                                            
                                     </tbody>
                                 </table>
                             </div>

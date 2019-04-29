@@ -13,6 +13,7 @@
 <!-- Morris Plugin Js -->
 <script src="vendor/raphael/raphael.min.js"></script>
 <script src="vendor/morrisjs/morris.js"></script>
+<script src="vendor/momentjs/moment.js"></script>
 <script src="vendor/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 <!-- Bootstrap Datepicker Plugin Js -->
 <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>

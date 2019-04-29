@@ -73,12 +73,9 @@
 											<td><a href="<c:url value='/delete-user-${user.mobileNumber}' />" class="btn btn-danger 
 					 
 												custom-width">delete</a></td>
-											<td>
-											<c:forEach items="${lead.leadCustomer.leadDocuments}" var="leadDocument">
-											<a href="/downloadFile/${leadDocument.id}" target="_blank"><img src="${pageContext.request.contextPath}/img/save_icon.gif" border="0" title="Download this document"/></a> 
-											</td>
+										
 											</tr>
-											</c:forEach>
+											
 										</c:forEach>
                                     </tbody>
 									

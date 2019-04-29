@@ -462,7 +462,6 @@ $(function () {
     $.AdminBSB.navbar.activate();
     $.AdminBSB.dropdownMenu.activate();
     $.AdminBSB.input.activate();
-    $.AdminBSB.select.activate();
     $.AdminBSB.search.activate();
 
     setTimeout(function () { $('.page-loader-wrapper').fadeOut(); }, 50);
@@ -474,6 +473,7 @@ $(function () {
         onInit: function (event, currentIndex) {
             setButtonWavesEffect(event);
 			 $.AdminBSB.input.activate();
+			 $.AdminBSB.select.activate();
         },
         onStepChanged: function (event, currentIndex, priorIndex) {
             setButtonWavesEffect(event);
@@ -481,5 +481,14 @@ $(function () {
         }
     });
 	
+	function setButtonWavesEffect(event) {
+		$(event.currentTarget).find('[role="menu"] li a').removeClass('waves-effect');
+		$(event.currentTarget).find('[role="menu"] li:not(.disabled) a').addClass('waves-effect');
+	}
 	
+	$('#bs_datepicker_container input').datepicker({
+        autoclose: true,
+        container: '#bs_datepicker_container'
+    });
+	$.AdminBSB.select.activate();
 });

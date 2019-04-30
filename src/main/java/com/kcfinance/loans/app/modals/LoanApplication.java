@@ -40,7 +40,7 @@ public class LoanApplication implements Serializable {
 	//bi-directional many-to-one association to LoanApplicationCustomer
 	@OneToOne
 	@JoinColumn(name="ID")
-	private LoanApplicationCustomer loanApplicationCustomers;
+	private LoanApplicationCustomer loanApplicationCustomer;
 
 	public LoanApplication() {
 	}
@@ -93,6 +93,15 @@ public class LoanApplication implements Serializable {
 		this.loanApplicationComments = loanApplicationComments;
 	}
 
+	
+	public LoanApplicationCustomer getLoanApplicationCustomer() {
+		return loanApplicationCustomer;
+	}
+
+	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
+		this.loanApplicationCustomer = loanApplicationCustomer;
+	}
+
 	public LoanApplicationComment addLoanApplicationComment(LoanApplicationComment loanApplicationComment) {
 		getLoanApplicationComments().add(loanApplicationComment);
 		loanApplicationComment.setLoanApplication(this);
@@ -105,14 +114,7 @@ public class LoanApplication implements Serializable {
 		loanApplicationComment.setLoanApplication(null);
 
 		return loanApplicationComment;
-	}
 
-	public LoanApplicationCustomer getLoanApplicationCustomers() {
-		return this.loanApplicationCustomers;
-	}
-
-	public void setLoanApplicationCustomers(LoanApplicationCustomer loanApplicationCustomers) {
-		this.loanApplicationCustomers = loanApplicationCustomers;
 	}
 
 /*	public LoanApplicationCustomer addLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {

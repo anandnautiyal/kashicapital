@@ -25,7 +25,7 @@ public class LoanCustomerPartnerDetail implements Serializable {
 	private int id;
 
 	@Column(name="AADHAR_NUMBER")
-	private BigDecimal aadharNumber;
+	private String aadharNumber;
 
 	private String cast;
 
@@ -84,11 +84,11 @@ public class LoanCustomerPartnerDetail implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getAadharNumber() {
+	public String getAadharNumber() {
 		return this.aadharNumber;
 	}
 
-	public void setAadharNumber(BigDecimal aadharNumber) {
+	public void setAadharNumber(String aadharNumber) {
 		this.aadharNumber = aadharNumber;
 	}
 

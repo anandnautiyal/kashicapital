@@ -9,13 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kcfinance.loans.Exceptions.GenericException;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.modals.LoanApplicationCustomer;
 import com.kcfinance.loans.app.modals.LoanCustomerBusiness;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 import com.kcfinance.loans.dao.LoanApplicationRepository;
 import com.kcfinance.loans.dao.LoanCustomerBusinessRepository;
+import com.kcfinance.loans.Exceptions.GenericException;
 
 /**
  * @author Gautam Kundrai

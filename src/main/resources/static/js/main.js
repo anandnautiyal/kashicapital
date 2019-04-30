@@ -491,4 +491,13 @@ $(function () {
         container: '#bs_datepicker_container'
     });
 	$.AdminBSB.select.activate();
+	
+	$('.loan-wizard .btn-circle').on('click',function(){
+        if($(this).attr('aria-expanded') === "true"){
+           $(this).find('i').text('add');
+        }
+        else{
+         $(this).find('i').text('remove');
+        }
+      });
 });

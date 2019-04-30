@@ -25,7 +25,7 @@ public class LoanCustomerBankDetail implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	@Column(name="ACCOUNT_NUMBER")
 	private String accountNumber;
@@ -63,11 +63,11 @@ public class LoanCustomerBankDetail implements Serializable {
 	public LoanCustomerBankDetail() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

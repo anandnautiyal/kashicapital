@@ -25,7 +25,7 @@ public class LoanCustomerLoanDetail implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	@Column(name="BALANCE_LOAN_AMOUNT")
 	private BigDecimal balanceLoanAmount;
@@ -83,11 +83,11 @@ public class LoanCustomerLoanDetail implements Serializable {
 	public LoanCustomerLoanDetail() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

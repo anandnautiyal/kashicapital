@@ -25,7 +25,7 @@ public class LoanCustomerPartnerDetail implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	@Column(name="AADHAR_NUMBER")
 	private String aadharNumber;
@@ -85,11 +85,11 @@ public class LoanCustomerPartnerDetail implements Serializable {
 	public LoanCustomerPartnerDetail() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

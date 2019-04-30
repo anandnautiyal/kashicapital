@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -24,10 +27,14 @@ public class LoanApplicationCustomerDocument implements Serializable {
 	private int id;
 
 	@Column(name="DATE_CREATED")
-	private Timestamp dateCreated;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateCreated;
 
 	@Column(name="DATE_MODIFIED")
-	private Timestamp dateModified;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateModified;
 
 	@Lob
 	@Column(name="DOCUMENT_IMAGE")
@@ -52,19 +59,19 @@ public class LoanApplicationCustomerDocument implements Serializable {
 		this.id = id;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return this.dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public Timestamp getDateModified() {
+	public Date getDateModified() {
 		return this.dateModified;
 	}
 
-	public void setDateModified(Timestamp dateModified) {
+	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 

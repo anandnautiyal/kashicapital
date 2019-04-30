@@ -3,6 +3,7 @@ package com.kcfinance.loans.app.modals;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,6 +16,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -52,10 +57,14 @@ public class LoanApplicationCustomer implements Serializable {
 	private String customerNumber;
 
 	@Column(name="DATE_CREATED")
-	private Timestamp dateCreated;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateCreated;
 
 	@Column(name="DATE_MODIFIED")
-	private Timestamp dateModified;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateModified;
 
 	@Column(name="DOMESTIC_INCOME")
 	private BigDecimal domesticIncome;
@@ -190,19 +199,19 @@ public class LoanApplicationCustomer implements Serializable {
 		this.customerNumber = customerNumber;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return this.dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public Timestamp getDateModified() {
+	public Date getDateModified() {
 		return this.dateModified;
 	}
 
-	public void setDateModified(Timestamp dateModified) {
+	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 

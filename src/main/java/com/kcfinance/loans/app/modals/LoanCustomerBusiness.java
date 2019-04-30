@@ -4,10 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -33,10 +36,14 @@ public class LoanCustomerBusiness implements Serializable {
 	private String city;
 
 	@Column(name="DATE_CREATED")
-	private Timestamp dateCreated;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateCreated;
 
 	@Column(name="DATE_MODIFIED")
-	private Timestamp dateModified;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateModified;
 
 	private String district;
 
@@ -126,15 +133,15 @@ public class LoanCustomerBusiness implements Serializable {
 		this.city = city;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return this.dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public Timestamp getDateModified() {
+	public Date getDateModified() {
 		return this.dateModified;
 	}
 

@@ -5,7 +5,10 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -26,10 +29,14 @@ public class LoanApplication implements Serializable {
 	private String code;
 
 	@Column(name="DATE_CREATED")
-	private Timestamp dateCreated;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateCreated;
 
 	@Column(name="DATE_MODIFIED")
-	private Timestamp dateModified;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateModified;
 
 	private String status;
 
@@ -61,19 +68,19 @@ public class LoanApplication implements Serializable {
 		this.code = code;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return this.dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public Timestamp getDateModified() {
+	public Date getDateModified() {
 		return this.dateModified;
 	}
 
-	public void setDateModified(Timestamp dateModified) {
+	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 

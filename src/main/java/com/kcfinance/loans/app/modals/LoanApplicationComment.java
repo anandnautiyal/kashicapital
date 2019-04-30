@@ -4,10 +4,13 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
 
 
 /**
@@ -30,13 +33,19 @@ public class LoanApplicationComment implements Serializable {
 	private String comments;
 
 	@Column(name="DATE_CREATED")
-	private Timestamp dateCreated;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateCreated;
 
 	@Column(name="DATE_MODIFIED")
-	private Timestamp dateModified;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateModified;
 
 	@Column(name="DATE_OF_COMMENT")
-	private Timestamp dateOfComment;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date dateOfComment;
 
 	@Column(name="LOAN_STATUS")
 	private String loanStatus;
@@ -73,23 +82,23 @@ public class LoanApplicationComment implements Serializable {
 		this.comments = comments;
 	}
 
-	public Timestamp getDateCreated() {
+	public Date getDateCreated() {
 		return this.dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
+	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
 
-	public Timestamp getDateModified() {
+	public Date getDateModified() {
 		return this.dateModified;
 	}
 
-	public void setDateModified(Timestamp dateModified) {
+	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 
-	public Timestamp getDateOfComment() {
+	public Date getDateOfComment() {
 		return this.dateOfComment;
 	}
 

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kcfinance.loans.Exceptions.GenericException;
@@ -39,5 +41,10 @@ public class LoanApplicationControllerRest {
 	LoanApplication byGstNo(@PathVariable String gstNo) {
 		return loanService.getByGstNo(gstNo);
 			//.orElseThrow(() -> new GenericException(Loan.NAME, gstNo));
+	}
+	
+	@PostMapping("/newLoanApplication")
+	LoanApplication newCustomer(@RequestBody LoanApplication loanApplication) {
+		return loanService.saveLoanApplication(loanApplication);
 	}
 }

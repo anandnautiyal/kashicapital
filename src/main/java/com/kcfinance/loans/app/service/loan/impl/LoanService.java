@@ -9,13 +9,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kcfinance.loans.Exceptions.GenericException;
+import com.kcfinance.loans.app.modals.ApplicationLoanDetail;
 import com.kcfinance.loans.app.modals.LoanApplication;
+import com.kcfinance.loans.app.modals.LoanApplicationComment;
 import com.kcfinance.loans.app.modals.LoanApplicationCustomer;
+import com.kcfinance.loans.app.modals.LoanApplicationCustomerDocument;
+import com.kcfinance.loans.app.modals.LoanCustomerAsset;
+import com.kcfinance.loans.app.modals.LoanCustomerBankDetail;
 import com.kcfinance.loans.app.modals.LoanCustomerBusiness;
+import com.kcfinance.loans.app.modals.LoanCustomerDependent;
+import com.kcfinance.loans.app.modals.LoanCustomerLoanDetail;
+import com.kcfinance.loans.app.modals.LoanCustomerPartnerDetail;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 import com.kcfinance.loans.dao.LoanApplicationRepository;
 import com.kcfinance.loans.dao.LoanCustomerBusinessRepository;
-import com.kcfinance.loans.Exceptions.GenericException;
 
 /**
  * @author Gautam Kundrai
@@ -100,5 +108,79 @@ public class LoanService implements ILoanService{
         return loanRepository.findByCode(code);
     }*/
 	
-	
+	@Override
+    public LoanApplication saveLoanApplication(LoanApplication loanApplication) {
+    	if(logger.isDebugEnabled())
+			logger.debug("saveLoanApplication start");
+    	
+    	//Setting LoanApplication reference in ApplicationLoanDetail - JsonIgnore (Need to figure out solution of Circular reference)
+    	ApplicationLoanDetail applicationLoanDetail = loanApplication.getApplicationLoanDetail();
+    	applicationLoanDetail.setLoanApplication(loanApplication);
+    	
+    	if(logger.isDebugEnabled())
+			logger.debug("applicationLoanDetail set");
+    	//Setting LoanApplication reference in LoanApplicationCustomer - JsonIgnore (Need to figure out solution of Circular reference)
+    	LoanApplicationCustomer loanApplicationCustomer = loanApplication.getLoanApplicationCustomer();
+    	loanApplicationCustomer.setLoanApplication(loanApplication);
+    	
+    	if(logger.isDebugEnabled())
+			logger.debug("loanApplicationCustomer set");
+    	//Setting LoanApplication reference in LoanApplicationCustomer
+    	for (LoanApplicationComment loanApplicationComment : loanApplication.getLoanApplicationComments()) {
+    		loanApplicationComment.setLoanApplication(loanApplication);	
+		}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanApplicationComment set");
+    	
+    	//Setting LoanApplicationCustomer reference in LoanApplicationCustomerDocument
+    	for(LoanApplicationCustomerDocument loanApplicationCustomerDocument : loanApplicationCustomer.getLoanApplicationCustomerDocuments()) {
+    		loanApplicationCustomerDocument.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanApplicationCustomerDocument set");
+    	
+    	//Setting LoanApplicationCustomer reference in LoanCustomerAsset
+    	for(LoanCustomerAsset loanCustomerAsset : loanApplicationCustomer.getLoanCustomerAssets()) {
+    		loanCustomerAsset.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanCustomerAsset set");
+    	
+      	//Setting LoanApplicationCustomer reference in LoanCustomerAsset
+    	for(LoanCustomerBankDetail loanCustomerBankDetail : loanApplicationCustomer.getLoanCustomerBankDetails()) {
+    		loanCustomerBankDetail.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanCustomerBankDetail set");
+
+      	//Setting LoanApplicationCustomer reference in LoanCustomerAsset
+    	for(LoanCustomerBusiness loanCustomerBusiness : loanApplicationCustomer.getLoanCustomerBusinesses()) {
+    		loanCustomerBusiness.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanCustomerBusiness set");
+    	
+    	//Setting LoanApplicationCustomer reference in LoanCustomerAsset
+    	for(LoanCustomerDependent loanCustomerDependent : loanApplicationCustomer.getLoanCustomerDependents()) {
+    		loanCustomerDependent.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanCustomerDependent set");
+
+    	//Setting LoanApplicationCustomer reference in LoanCustomerAsset
+    	for(LoanCustomerLoanDetail loanCustomerLoanDetail : loanApplicationCustomer.getLoanCustomerLoanDetails()) {
+    		loanCustomerLoanDetail.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanCustomerLoanDetail set");
+    	
+    	//Setting LoanApplicationCustomer reference in LoanCustomerAsset
+    	for(LoanCustomerPartnerDetail loanCustomerPartnerDetail : loanApplicationCustomer.getLoanCustomerPartnerDetails()) {
+    		loanCustomerPartnerDetail.setLoanApplicationCustomer(loanApplicationCustomer);
+    	}
+    	if(logger.isDebugEnabled())
+			logger.debug("loanCustomerPartnerDetail set and finally Persisting the loanApplication");
+    	
+    	return loanApplicationRepository.save(loanApplication);
+    }
 }

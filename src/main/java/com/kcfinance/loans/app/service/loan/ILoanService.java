@@ -20,4 +20,6 @@ public interface ILoanService {
 	
 	public LoanApplication getByGstNo(String gstNo);
 	
+	public LoanApplication saveLoanApplication(LoanApplication loanApplication);
+	
 }

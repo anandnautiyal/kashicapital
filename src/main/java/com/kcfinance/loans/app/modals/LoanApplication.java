@@ -2,7 +2,9 @@ package com.kcfinance.loans.app.modals;
 
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -36,8 +38,9 @@ public class LoanApplication implements Serializable {
 	private List<LoanApplicationComment> loanApplicationComments;
 
 	//bi-directional many-to-one association to LoanApplicationCustomer
-	@OneToMany(mappedBy="loanApplication")
-	private List<LoanApplicationCustomer> loanApplicationCustomers;
+	@OneToOne
+	@JoinColumn(name="ID")
+	private LoanApplicationCustomer loanApplicationCustomers;
 
 	public LoanApplication() {
 	}
@@ -104,15 +107,15 @@ public class LoanApplication implements Serializable {
 		return loanApplicationComment;
 	}
 
-	public List<LoanApplicationCustomer> getLoanApplicationCustomers() {
+	public LoanApplicationCustomer getLoanApplicationCustomers() {
 		return this.loanApplicationCustomers;
 	}
 
-	public void setLoanApplicationCustomers(List<LoanApplicationCustomer> loanApplicationCustomers) {
+	public void setLoanApplicationCustomers(LoanApplicationCustomer loanApplicationCustomers) {
 		this.loanApplicationCustomers = loanApplicationCustomers;
 	}
 
-	public LoanApplicationCustomer addLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
+/*	public LoanApplicationCustomer addLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		getLoanApplicationCustomers().add(loanApplicationCustomer);
 		loanApplicationCustomer.setLoanApplication(this);
 
@@ -124,6 +127,6 @@ public class LoanApplication implements Serializable {
 		loanApplicationCustomer.setLoanApplication(null);
 
 		return loanApplicationCustomer;
-	}
+	}*/
 
 }

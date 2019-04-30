@@ -11,9 +11,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -31,7 +31,7 @@ public class LoanApplicationCustomer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 
 	@Column(name="AGRICULTURAL_INCOME")
 	private BigDecimal agriculturalIncome;
@@ -99,7 +99,7 @@ public class LoanApplicationCustomer implements Serializable {
 	private BigDecimal totalHouseholdIncome;
 
 	//bi-directional many-to-one association to LoanApplication
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="LOAN_ID")
 	private LoanApplication loanApplication;
 
@@ -134,11 +134,11 @@ public class LoanApplicationCustomer implements Serializable {
 	public LoanApplicationCustomer() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

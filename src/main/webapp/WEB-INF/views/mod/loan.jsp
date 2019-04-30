@@ -1,4 +1,11 @@
-    <section class="content">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%--@ taglib uri="/WEB-INF/tlds/fmt.tld" prefix="fmt" --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
+	<section class="content">
         <div class="container-fluid">
 			<!-- Form structure Start -->
 			<div class="row clearfix">
@@ -6,26 +13,27 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Search Loan
-                                <small>With customer Name,Loan id.</small>
+                                Search Lead
+                                <small>With Loan no.</small>
                             </h2>
                         </div>
                         <div class="body">
-                            <form>
+                        <form:form method="POST" action="/getLoan">
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text"  name="loan_search" class="form-control">
+                                                <input type="text"  name="lead_search" class="form-control">
                                                 <label class="form-label">Search</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        <button type="button" class="btn btn-orange btn-lg m-l-15 waves-effect">Search</button>
+                                        
+										<input type="submit" value="Search" class="btn btn-orange btn-lg m-l-15 waves-effect"/>
                                     </div>
                                 </div>
-                            </form>
+
 							
                         </div>
                     </div>
@@ -47,29 +55,32 @@
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
+                                            <th>Loan Code</th>
+											<th>Loan Status</th>
+											<th>Applicant Name</th>
+											<th>Loan Officer Name</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
+                                    
                                     <tbody>
-                                        <tr>
-                                            <td>Cara Stevens</td>
-                                            <td>Sales Assistant</td>
-                                            <td>New York</td>
+                                         <c:forEach items="${loanList}" var="loanApplication">
+											<tr>
+												<td>status = ${loanApplication.status}</td>
+											</tr>
+										</c:forEach>
+                                    </tbody>
+									
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #END# Basic Examples -->
+        </div>
+	  </form:form>
+    </section>
+         <td>New York</td>
                                             <td>46</td>
                                             <td>2011/12/06</td>
                                             <td>$145,600</td>

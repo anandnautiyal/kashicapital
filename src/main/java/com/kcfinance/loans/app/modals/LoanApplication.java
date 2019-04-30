@@ -35,9 +35,9 @@ public class LoanApplication implements Serializable {
 	@OneToMany(mappedBy="loanApplication")
 	private List<LoanApplicationComment> loanApplicationComments;
 
-	//bi-directional many-to-one association to LoanApplicationCustomer
-	@OneToMany(mappedBy="loanApplication")
-	private List<LoanApplicationCustomer> loanApplicationCustomers;
+	//bi-directional one-to-one association to LoanApplicationCustomer
+	@OneToOne(mappedBy="loanApplication")
+	private LoanApplicationCustomer loanApplicationCustomer;
 
 	public LoanApplication() {
 	}
@@ -90,6 +90,15 @@ public class LoanApplication implements Serializable {
 		this.loanApplicationComments = loanApplicationComments;
 	}
 
+	
+	public LoanApplicationCustomer getLoanApplicationCustomer() {
+		return loanApplicationCustomer;
+	}
+
+	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
+		this.loanApplicationCustomer = loanApplicationCustomer;
+	}
+
 	public LoanApplicationComment addLoanApplicationComment(LoanApplicationComment loanApplicationComment) {
 		getLoanApplicationComments().add(loanApplicationComment);
 		loanApplicationComment.setLoanApplication(this);
@@ -102,28 +111,6 @@ public class LoanApplication implements Serializable {
 		loanApplicationComment.setLoanApplication(null);
 
 		return loanApplicationComment;
-	}
-
-	public List<LoanApplicationCustomer> getLoanApplicationCustomers() {
-		return this.loanApplicationCustomers;
-	}
-
-	public void setLoanApplicationCustomers(List<LoanApplicationCustomer> loanApplicationCustomers) {
-		this.loanApplicationCustomers = loanApplicationCustomers;
-	}
-
-	public LoanApplicationCustomer addLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
-		getLoanApplicationCustomers().add(loanApplicationCustomer);
-		loanApplicationCustomer.setLoanApplication(this);
-
-		return loanApplicationCustomer;
-	}
-
-	public LoanApplicationCustomer removeLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
-		getLoanApplicationCustomers().remove(loanApplicationCustomer);
-		loanApplicationCustomer.setLoanApplication(null);
-
-		return loanApplicationCustomer;
-	}
+	}	
 
 }

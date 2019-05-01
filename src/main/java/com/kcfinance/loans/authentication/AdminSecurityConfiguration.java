@@ -42,7 +42,7 @@ public class AdminSecurityConfiguration extends WebSecurityConfigurerAdapter {
     	.csrf()
     	.disable()
     	.authorizeRequests()
-    		.antMatchers("/fonts/**","/css/**","/images/**","/vendor/**","/js/**", "/leads/**","/users/**","/loans/**")
+    		.antMatchers("/fonts/**","/css/**","/images/**","/vendor/**","/js/**", "/leads/**","/users/**","/loan/**")
     		.permitAll()
     		.anyRequest()
     		.authenticated()

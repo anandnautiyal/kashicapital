@@ -91,13 +91,13 @@ public class LoanApplicationCustomer implements Serializable {
 	private String loanTypeCode;
 
 	@Column(name="NEW_CUSTOMER")
-	private BigDecimal newCustomer;
+	private String newCustomer;
 
 	@Column(name="OCCUPATIONAL_INCOME")
 	private BigDecimal occupationalIncome;
 
 	@Column(name="PRESENT_CUSTOMER")
-	private BigDecimal presentCustomer;
+	private String presentCustomer;
 
 	@Column(name="SAL_INCOME")
 	private BigDecimal salIncome;
@@ -279,11 +279,11 @@ public class LoanApplicationCustomer implements Serializable {
 		this.loanTypeCode = loanTypeCode;
 	}
 
-	public BigDecimal getNewCustomer() {
+	public String getNewCustomer() {
 		return this.newCustomer;
 	}
 
-	public void setNewCustomer(BigDecimal newCustomer) {
+	public void setNewCustomer(String newCustomer) {
 		this.newCustomer = newCustomer;
 	}
 
@@ -295,11 +295,11 @@ public class LoanApplicationCustomer implements Serializable {
 		this.occupationalIncome = occupationalIncome;
 	}
 
-	public BigDecimal getPresentCustomer() {
+	public String getPresentCustomer() {
 		return this.presentCustomer;
 	}
 
-	public void setPresentCustomer(BigDecimal presentCustomer) {
+	public void setPresentCustomer(String presentCustomer) {
 		this.presentCustomer = presentCustomer;
 	}
 

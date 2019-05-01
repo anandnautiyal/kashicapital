@@ -61,11 +61,16 @@ public class ApplicationLoanDetail implements Serializable{
 	private String loanAmountRequired;
 
 	@Column(name="LOAN_AMOUNT")
-	private BigDecimal loanAmount;
+	private String loanAmount;
 
 	@Column(name="LOAN_TERM")
 	private String loanTerm;
+	
 
+	@Column(name="SUPPLIER_NAME")
+	private String supplierName;
+
+	
 	@OneToOne
 	@JoinColumn(name="LOAN_ID")
 	private LoanApplication loanApplication;
@@ -151,11 +156,11 @@ public class ApplicationLoanDetail implements Serializable{
 		this.loanAmountRequired = loanAmountRequired;
 	}
 
-	public BigDecimal getLoanAmount() {
+	public String getLoanAmount() {
 		return loanAmount;
 	}
 
-	public void setLoanAmount(BigDecimal loanAmount) {
+	public void setLoanAmount(String loanAmount) {
 		this.loanAmount = loanAmount;
 	}
 
@@ -174,6 +179,15 @@ public class ApplicationLoanDetail implements Serializable{
 	public void setLoanApplication(LoanApplication loanApplication) {
 		this.loanApplication = loanApplication;
 	}
+	
+	public String getSupplierName() {
+		return supplierName;
+	}
+
+	public void setSupplierName(String supplierName) {
+		this.supplierName = supplierName;
+	}
+
 
 	
 }

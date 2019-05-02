@@ -77,6 +77,11 @@ public class LoanCustomerPartnerDetail implements Serializable {
 
 	@Column(name="YEARS_OF_EXPERIENCE")
 	private String yearsOfExperience;
+	
+	@Column(name="PARTNER_ADDRESS")
+	private String partnerAddress;
+
+	
 
 	@JsonIgnore
 	@ManyToOne
@@ -229,6 +234,14 @@ public class LoanCustomerPartnerDetail implements Serializable {
 
 	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		this.loanApplicationCustomer = loanApplicationCustomer;
+	}
+	
+	public String getPartnerAddress() {
+		return partnerAddress;
+	}
+
+	public void setPartnerAddress(String partnerAddress) {
+		this.partnerAddress = partnerAddress;
 	}
 
 }

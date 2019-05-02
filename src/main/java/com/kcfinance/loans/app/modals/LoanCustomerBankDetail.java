@@ -31,7 +31,9 @@ public class LoanCustomerBankDetail implements Serializable {
 	private String accountNumber;
 
 	@Column(name="ACCOUNT_START_DATE")
-	private Timestamp accountStartDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date accountStartDate;
 
 	@Column(name="BANK_ACCOUNT_TYPE")
 	private String bankAccountType;
@@ -79,11 +81,11 @@ public class LoanCustomerBankDetail implements Serializable {
 		this.accountNumber = accountNumber;
 	}
 
-	public Timestamp getAccountStartDate() {
+	public Date getAccountStartDate() {
 		return this.accountStartDate;
 	}
 
-	public void setAccountStartDate(Timestamp accountStartDate) {
+	public void setAccountStartDate(Date accountStartDate) {
 		this.accountStartDate = accountStartDate;
 	}
 

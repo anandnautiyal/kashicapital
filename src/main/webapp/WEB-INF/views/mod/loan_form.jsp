@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                                    	<form:select path="loanApplicationCustomer.loanTypeCode">
+                                    	<form:select path="loanApplicationCustomer.loanPurpose">
    											<form:option value="NONE" label="कृपया चुने ऋण का उद्देश्य"/>
    											<form:option value="कार्यशील हेतु" label="For Working(कार्यशील हेतु)"/>
    											<form:option value="निवेश हेतु" label="For Investment(निवेश हेतु)"/>
@@ -142,7 +142,7 @@
 									<div class="row clearfix">
 										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								             <span class="kc-subhead">Types Of Loan<span>(सुविधाओं का प्रकार)</span></span>
-										<form:select  class="form-control show-tick kc-select" path="applicationLoanDetail.loanTypeId">
+										<form:select  class="form-control show-tick kc-select" path="applicationLoanDetail.loanType">
    											<form:option value="2" label="Term Loan(सावधि ऋण)"/>
    											<form:option value="1" label="Other Loans(अन्य ऋण)"/>
    										</form:select>
@@ -616,46 +616,53 @@
                                     </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                        <span class="kc-subhead">Type Of Accommodation<span>(आवास का प्रकार)</span></span>
-										<select class="form-control show-tick kc-select" name="accommodation">
-											<option value="स्वयं">Self<span>(स्वयं)</span></option>
-											<option value="किरायेदार">Tenant<span>(किरायेदार)</span></option>
-                                            <option value="पुश्तैनी">Ancestral<span>(पुश्तैनी)</span></option>
-										</select>
+										
+										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].typeOfAccomodation">
+   											<form:option value="स्वयं" label="Self(स्वयं)"/>
+   											<form:option value="किरायेदार" label="Tenant(किरायेदार)"/>
+   											<form:option value="पुश्तैनी" label="Ancestral(पुश्तैनी)"/>
+   											
+   										</form:select>
+										                                                                    
                                    </div>
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="res_address">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].partnerAddress" />
                                                 <label class="form-label">Residential address<span>(आवासीय पता)</span></label>
                                             </div>
                                         </div>
                                       </div>
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                        <span class="kc-subhead">Social Ranking<span>(सोशल श्रेणी)</span></span>
-										<select class="form-control show-tick kc-select" name="social_ranking">
-											<option value="एससी">S.C<span>(एससी)</span></option>
-											<option value="एसटी">S.T<span>(एसटी)</span></option>
-                                            <option value="ओबीसी">OBC<span>(ओबीसी)</span></option>
-                                            <option value="सामान्य">General<span>(सामान्य )</span></option>
-										</select>
+                                       <form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].caste">
+   											<form:option value="एससी" label="S.C(एससी)"/>
+   											<form:option value="एसटी" label="S.T(एसटी)"/>
+   											<form:option value="ओबीसी" label="OBC(ओबीसी)"/>
+   											<form:option value="सामान्य" label="General(सामान्य )"/>
+   											
+   										</form:select>
+										
                                       </div>
                                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                            <span class="kc-subhead">Religion<span>(धर्म)</span></span>
-                                            <select class="form-control show-tick kc-select" name="religion">
-                                                <option value="हिंदू">Hindu<span>(हिंदू)</span></option>
-                                                <option value="बौद्ध">Buddhist<span>(बौद्ध)</span></option>
-                                                <option value="पारसी">Parasi<span>(पारसी)</span></option>
-                                                <option value="ईसाई">Christian<span>(ईसाई)</span></option>
-                                                <option value="सिख">Sikh<span>(सिख)</span></option>
-                                                <option value="जैन">Jain<span>(जैन)</span></option>
-                                                <option value="मुस्लिम">Muslim<span>(मुस्लिम)</span></option>
-                                                <option value="अन्य">Other<span>(अन्य)</span></option>
-                                            </select>
+                                           <form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].religion">
+   											<form:option value="हिंदू" label="Hindu(हिंदू)"/>
+   											<form:option value="बौद्ध" label="Buddhist(बौद्ध)"/>
+   											<form:option value="पारसी" label="Parasi(पारसी)"/>
+   											<form:option value="ईसाई" label="Christian(ईसाई)"/>
+   											<form:option value="सिख" label="Sikh(सिख)"/>
+   											<form:option value="जैन" label="Jain(जैन)"/>
+   											<form:option value="मुस्लिम" label="Muslim(मुस्लिम)"/>
+   											<form:option value="अन्य" label="Other(अन्य)"/>
+   											
+   											</form:select>
+										
                                        </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="o_p_mob_number">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].mobileNumber" />
                                                 <label class="form-label">Mobile Number<span>(मोबाइल नंबर)</span></label>
                                             </div>
                                         </div>
@@ -663,7 +670,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="pan_card">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].panNumber" />
                                                 <label class="form-label">Pan Card<span>(पैन कार्ड)</span></label>
                                             </div>
                                         </div>
@@ -671,7 +678,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="aadhar_number">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].aadharNumber" />
                                                 <label class="form-label">Aadhar Number<span>(आधार नंबर)</span></label>
                                             </div>
                                         </div>
@@ -679,7 +686,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="voter_id">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].voterCardNo" />
                                                 <label class="form-label">Voter ID<span>(मतदाता पहचान पत्र)</span></label>
                                             </div>
                                         </div>
@@ -687,7 +694,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="din_proof">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].dinNumber" />
                                                 <label class="form-label">DIN/Other Proof<span>(डीआईएऩ /अन्य प्रमाण)</span></label>
                                             </div>
                                         </div>
@@ -705,21 +712,22 @@
                                 Partner Firms Name and Business Nature<span>(सहयोगी फर्मों के नाम और सहयोगी फर्मों के व्यवसाय की प्रकृति)</span> :
                             </h2>
                                </div>
+        			<c:forEach items="${loanData.loanApplicationCustomer.loanCustomerPartnerFirmDetails}" var="loanCustomerPartnerFirmDetails" varStatus="status">
                         <div class="body">
                                 <div class="row clearfix">
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="partner_firm_name">
-                                                <label class="form-label">Name Of Patner Firm<span>(सहयोगी फर्म का नाम)</span></label>
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].partnerFirmName" />
+                                                <label class="form-label">Name Of Partner Firm<span>(सहयोगी फर्म का नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="partner_address">
-                                                <label class="form-label">Address Of Patner Firm<span>(सहयोगी फर्म का पता)</span></label>
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].firmAddress" />
+                                                <label class="form-label">Address Of Partner Firm<span>(सहयोगी फर्म का पता)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -729,7 +737,7 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-9">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="current_banking_prac">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].partnerFirmBankName" />
                                                 <label class="form-label">Current Bank Being Banking Practices With<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
                                             </div>
                                         </div>
@@ -737,22 +745,23 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="business_nature">
-                                                <label class="form-label">Patner Firm's Business Nature<span>(सहयोगी फर्म के व्यवसाय की प्रकृति)</span></label>
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].firmBusinessNature" />
+                                                <label class="form-label">Partner Firm's Business Nature<span>(सहयोगी फर्म के व्यवसाय की प्रकृति)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="range_of_intrest">
-                                                <label class="form-label">In Patner Firm Owner/Patner/ Or Investor's Range Of Intrest<span>(सहयोगी फर्म में मालिक/भागीदार/ या सिर्फ निवेशक के रूप में हित की सीमा)</span></label>
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].firmOwnerShipRange" />
+                                                <label class="form-label">In Partner Firm Owner/Partner/ Or Investor's Range Of Interest<span>(सहयोगी फर्म में मालिक/भागीदार/या सिर्फ निवेशक के रूप में हित की सीमा)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                         </div>
                                </section>
+           </c:forEach>
        <!-------------------------------- Form Section 6 End Here ---------------------------------->
        <!-------------------------------- Form Section 7 Start From Here ---------------------------------->
                                 <h2><span class="sr-only">7</span></h2>        
@@ -762,21 +771,23 @@
                                 Current Banking Facilities (in rupees)<span>(वर्तमान बैंकिंग सुविधाएं (रुपए में))</span>:
                             </h2>
                                </div>
+            <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerBankDetails}" var="loanCustomerBankDetails" varStatus="status">
                         <div class="body kc-top">
                                 <div class="row clearfix">
                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <span class="kc-subhead">Types Of Facilities<span>(सुविधाओं का प्रकार)</span></span>
-										<select class="form-control show-tick kc-select" name="Types_Of_Facilities">
-											<option value="बचत खाता">Savings Account<span>(बचत खाता)</span></option>
-											<option value="चालू खाता">Current Account<span>(चालू खाता)</span></option>
-                                            <option value="CC लिमिट">CC Limit<span>(CC लिमिट)</span></option>
-										</select>
+                                        <form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankAccountType">
+   											<form:option value="बचत खाता" label="Savings Account(बचत खाता)"/>
+   											<form:option value="चालू खाता" label="Current Account(चालू खाता)"/>
+   											<form:option value="CC लिमिट" label="CC Limit<span>(CC लिमिट)"/>
+   											
+   										</form:select>
                                     </div>
                                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="present_bank_banking_practices">
-                                                <label class="form-label">Present Bank With You Have Banking Practices<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankName" />
+                                                <label class="form-label">Present Bank Name With Whom You Have Banking Practices<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -786,7 +797,7 @@
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="bank_branch">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankBranchNumber" />
                                                 <label class="form-label">Bank Branch<span>(बैंक शाखा)</span></label>
                                             </div>
                                         </div>
@@ -794,7 +805,7 @@
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="current_Account_number">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].accountNumber" />
                                                 <label class="form-label">Account Number<span>(खाता सं:)</span></label>
                                             </div>
                                         </div>
@@ -802,7 +813,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="date_of_account_opened">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].accountStartDate" />
                                                 <label class="form-label">Date Of Account Opened<span>(खाता प्रारम्भ करने की तिथि)</span></label>
                                             </div>
                                         </div>
@@ -810,21 +821,15 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="bank_balance">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].depositAmount" />
                                                 <label class="form-label">Bank Balance<span>(बैंक में जमा राशि)</span></label>
                                             </div>
                                         </div>
                                     </div>
-                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="total_employees">
-                                                <label class="form-label">How Many Employees In Your Shop?<span>(आपके दूकान में कितने कर्मचारी हैं ?)</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                         </div>
+                 </c:forEach>
                                </section>
        <!-------------------------------- Form Section 7 End Here ---------------------------------->
        <!-------------------------------- Form Section 8 Start From Here --------------------------->
@@ -835,27 +840,31 @@
                                 Details Of Liabilities (Commercial and  Domestic)<span>(देनदारियों का विवरण (व्यावसायिक व घरेलू))</span>:
                             </h2>
                                </div>
+             <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerLoanDetails}" var="loanCustomerLoanDetails" varStatus="status">
                         <div class="body kc-top">
                                 <div class="row clearfix">
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                         <span class="kc-subhead">Types Of Liabilities<span>(देनदारियों का प्रकार)</span></span>
-										<select class="form-control show-tick kc-select" name="types_of_liabilities">
-											<option value="बैंक 1">Bank 1<span>(बैंक 1)</span></option>
-											<option value="बैंक 2">Bank 2<span>(बैंक 2)</span></option>
-                                            <option value="प्राइवेट फाइनेंस कंपनी">Private Finance Company<span>(प्राइवेट फाइनेंस कंपनी)</span></option>
-                                            <option value="रजिस्टर्ड NBFC/ NBFC MFI">Registered NBFC/ NBFC MF<span>(रजिस्टर्ड NBFC/ NBFC MFI)</span></option>
-                                            <option value="सप्लायर">Supplier<span>(सप्लायर)</span></option>
-                                            <option value="किसान क्रेडिट कार्ड">Kisan Credit Card<span>(किसान क्रेडिट कार्ड)</span></option>
-                                            <option value="रिश्तेदार/ मित्र/ पड़ोसी">Relative/Friend/Neighbor<span>(रिश्तेदार/ मित्र/ पड़ोसी)</span></option>
-                                            <option value="साहुकार">Financer<span>(साहुकार)</span></option>
-                                            <option value="बैंक का क्रेडिट कार्ड">Bank Credit Card<span>(बैंक का क्रेडिट कार्ड)</span></option>
-                                            <option value="अन्य स्रोत से ऋण">Loan From Other Sources<span>(अन्य स्रोत से ऋण)</span></option>
-										</select>
+                                        
+                                        <form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].bankAccountType">
+   											<form:option value="बैंक " label="Bank(बैंक)"/>
+   											<form:option value="प्राइवेट फाइनेंस कंपनी" label="Private Finance Company(प्राइवेट फाइनेंस कंपनी)"/>
+   											<form:option value="जिस्टर्ड NBFC/ NBFC MFI" label="Registered NBFC/ NBFC MF(रजिस्टर्ड NBFC/ NBFC MFI)"/>
+   											<form:option value="सप्लायर" label="Supplier(सप्लायर)"/>
+   											<form:option value="किसान क्रेडिट कार्ड" label="Kisan Credit Card(किसान क्रेडिट कार्ड)"/>
+   											<form:option value="रिश्तेदार/ मित्र/ पड़ोसी" label="Relative/Friend/Neighbor(रिश्तेदार/ मित्र/ पड़ोसी)"/>
+   											<form:option value="साहुकार" label="Financer(साहुकार)"/>
+   											<form:option value="बैंक का क्रेडिट कार्ड" label="Bank Credit Card(बैंक का क्रेडिट कार्ड)"/>
+   											<form:option value="अन्य स्रोत से ऋण" label="Loan From Other Sources(अन्य स्रोत से ऋण)"/>
+   											
+   											
+   										</form:select>
+										
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="name_in_liabilities">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanCompanyName" />
                                                 <label class="form-label">Name<span>(नाम)</span></label>
                                             </div>
                                         </div>
@@ -863,7 +872,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="objective_in_liabilities">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].purpose" />
                                                 <label class="form-label">Objective<span>(उद्देश्य)</span></label>
                                             </div>
                                         </div>
@@ -874,7 +883,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="original_loan_amount">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanAmount" />
                                                 <label class="form-label">Original Loan Amount<span>(मूल ऋण राशि)</span></label>
                                             </div>
                                         </div>
@@ -882,7 +891,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="remaining_loan_amount">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].balanceLoanAmount" />
                                                 <label class="form-label">Remaining Loan Amount<span>(शेष ऋण राशि)</span></label>
                                             </div>
                                         </div>
@@ -890,7 +899,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="loan_period">
+                                               <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanTerm" />
                                                 <label class="form-label">Period<span>(अवधि)</span></label>
                                             </div>
                                         </div>
@@ -898,7 +907,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="rate_of_interest">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanInterestRate" />
                                                 <label class="form-label">Rate Of Interest<span>(ब्याज दर)</span></label>
                                             </div>
                                         </div>
@@ -906,7 +915,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="start_date_of_loan">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanStartDate" />
                                                 <label class="form-label">Start Date<span>(प्रारम्भ की तिथि)</span></label>
                                             </div>
                                         </div>
@@ -914,7 +923,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="amount_of_installment">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanEmiAmount" />
                                                 <label class="form-label">Amount Of Installment<span>(किश्त की राशि)</span></label>
                                             </div>
                                         </div>
@@ -922,7 +931,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="installment_frequency">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanEmiType" />
                                                 <label class="form-label">Installment frequency (Daily/Weekly/Monthly/Fortnightly)<span>(किश्त की आवृत्ति (दैनिक/साप्ताहिक/ मासिक/ पाक्षिक))</span></label>
                                             </div>
                                         </div>
@@ -930,7 +939,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="Securities_in_loan">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanSecurity" />
                                                 <label class="form-label">Securities<span>(प्रतिभूति)</span></label>
                                             </div>
                                         </div>
@@ -938,7 +947,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="pending_legal_proceedings">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].legalStatus" />
                                                 <label class="form-label">Any pending legal proceedings<span>(कोई अपूर्ण कानूनी कार्यवाही)</span></label>
                                             </div>
                                         </div>
@@ -946,7 +955,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="informal_settlement">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanAgreementIncorporated" />
                                                 <label class="form-label">Any Informal Settlement Between Borrower And Lender<span>(कोई अनौपचारिक समझौता जो उधारकर्ता और ऋणदाता में हुआ हो)</span></label>
                                             </div>
                                         </div>
@@ -954,14 +963,16 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="present_situation">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].presentLoanStatus" />
                                                 <label class="form-label">Present Situation (Performing/Non-Performing)<span>(वर्तमान स्थिति(परफार्मिंग/नॉन परफार्मिंग))</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>       
                         </div>
+                  </c:forEach>
                                </section>
+                   
           <!-------------------------------- Form Section 8 End Here ---------------------------------->
        <!-------------------------------- Form Section 9 Start From Here ---------------------------------->
                                 <h2><span class="sr-only">9</span></h2>        
@@ -977,7 +988,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="sub_total_commercial_liabilities">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.totalCommercialLiability" class="form-control"/>
                                                 <label class="form-label">Sub Total (Commercial Liabilities)<span>(उप कुल (व्यावसायिक देनदारियां))</span></label>
                                             </div>
                                         </div>
@@ -985,7 +996,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="sub_total_domestic_liabilities">
+                                               <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.totalDomesticLiability" class="form-control"/>
                                                 <label class="form-label">Sub Total(Domestic Liabilities)<span>(उप कुल (घरेलु देनदारियां))</span></label>
                                             </div>
                                         </div>
@@ -993,7 +1004,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="total_liabilities">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.totalLiability" class="form-control"/>
                                                 <label class="form-label">Total liabilities (iv)<span>(कुल देनदारियां (iv))</span></label>
                                             </div>
                                         </div>
@@ -1008,7 +1019,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="professional_capacity">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.occupationalIncome" class="form-control"/>
                                                 <label class="form-label">Professional Capacity<span>(व्यावसायिक हैसियत)</span></label>
                                             </div>
                                         </div>
@@ -1016,7 +1027,7 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="domestic_capacity">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.domesticCapacity" class="form-control"/>
                                                 <label class="form-label">Domestic Capacity<span>(घरेलु हैसियत)</span></label>
                                             </div>
                                         </div>
@@ -1024,8 +1035,8 @@
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="total_capacity">
-                                                <label class="form-label">Total Capacity (v)=(iii)-(iv)<span>(कुल हैसियत (v)=(iii)-(iv))</span></label>
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.totalCapacity" class="form-control"/>
+                                                <label class="form-label">Total Capacity<span>(कुल हैसियत )</span></label>
                                             </div>
                                         </div>
                                     </div>
@@ -1048,7 +1059,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="rental_income">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.incomeFromRent" class="form-control"/>
                                                 <label class="form-label">Rental income<span>(किराये से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1056,7 +1067,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="income_by_pension">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.incomeFromOtherMember" class="form-control"/>
                                                 <label class="form-label">Household Income Of Other Members By Pension<span>(घर के अन्य सदस्य के पेंशन से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1066,7 +1077,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="income_by_member_salaries">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.salIncome" class="form-control"/>
                                                 <label class="form-label">Household Income From Salaries Of Members<span>(घर के अन्य सदस्य के वेतन से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1074,7 +1085,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="farming_income">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.agriculturalIncome" class="form-control"/>
                                                 <label class="form-label">Farming Income<span>(खेती से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1084,7 +1095,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="Income_from_milk_products">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.incomeFromMilk" class="form-control"/>
                                                 <label class="form-label">Income From Milk Products<span>(दुग्ध उत्पाद से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1092,7 +1103,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="income_from_other_sources">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.incomeFromOtherSource" class="form-control"/>
                                                 <label class="form-label">Income From Any Other Source<span>(अन्य किसी स्रोत से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1102,7 +1113,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="gross_domestic_income">
+                                                <form:input type="text" path="loanApplicationCustomer.existingCustomerDetail" id="loanApplicationCustomer.domesticIncome" class="form-control"/>
                                                 <label class="form-label">Gross Domestic Income (vi)<span>(सकल घरेलू आय(vi))</span></label>
                                             </div>
                                         </div>

@@ -48,6 +48,10 @@ public class LoanCustomerPartnerFirmDetail {
 	@Column(name="PARTNER_FIRM_BUSINESS_NATURE")
 	private String firmBusinessNature;
 	
+	@Column(name="PARTNER_FIRM_OWNERSHIP_RANGE")
+	private String firmOwnerShipRange;
+	
+	
 	//bi-directional many-to-one association to LoanApplicationCustomer
 	@ManyToOne
 	@JoinColumn(name="LOAN_CUSTOMER_ID")
@@ -119,6 +123,15 @@ public class LoanCustomerPartnerFirmDetail {
 	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		this.loanApplicationCustomer = loanApplicationCustomer;
 	}
+	
+	public String getFirmOwnerShipRange() {
+		return firmOwnerShipRange;
+	}
+
+	public void setFirmOwnerShipRange(String firmOwnerShipRange) {
+		this.firmOwnerShipRange = firmOwnerShipRange;
+	}
+
 
 	
 }

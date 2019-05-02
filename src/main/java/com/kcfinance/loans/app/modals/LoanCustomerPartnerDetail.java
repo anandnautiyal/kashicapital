@@ -30,7 +30,8 @@ public class LoanCustomerPartnerDetail implements Serializable {
 	@Column(name="AADHAR_NUMBER")
 	private String aadharNumber;
 
-	private String cast;
+	@Column(name="CASTE")
+	private String caste;
 
 	@Column(name="DATE_CREATED")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -77,7 +78,7 @@ public class LoanCustomerPartnerDetail implements Serializable {
 	@Column(name="YEARS_OF_EXPERIENCE")
 	private String yearsOfExperience;
 
-	//bi-directional many-to-one association to LoanApplicationCustomer
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="LOAN_CUSTOMER_ID")
 	private LoanApplicationCustomer loanApplicationCustomer;
@@ -101,12 +102,16 @@ public class LoanCustomerPartnerDetail implements Serializable {
 		this.aadharNumber = aadharNumber;
 	}
 
-	public String getCast() {
-		return this.cast;
+	public String getCaste() {
+		return caste;
 	}
 
-	public void setCast(String cast) {
-		this.cast = cast;
+	public void setCaste(String caste) {
+		this.caste = caste;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 
 	public Date getDateCreated() {
@@ -128,11 +133,7 @@ public class LoanCustomerPartnerDetail implements Serializable {
 	public Date getDateOfBirth() {
 		return this.dateOfBirth;
 	}
-
-	public void setDateOfBirth(Timestamp dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
+	
 	public String getDinNumber() {
 		return this.dinNumber;
 	}

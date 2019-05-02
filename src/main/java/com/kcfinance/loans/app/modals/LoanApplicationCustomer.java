@@ -6,8 +6,10 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -87,9 +89,6 @@ public class LoanApplicationCustomer implements Serializable {
 	@Column(name="LOAN_OFFICER_NAME")
 	private String loanOfficerName;
 
-	@Column(name="LOAN_TYPE_CODE")
-	private String loanTypeCode;
-
 	@Column(name="NEW_CUSTOMER")
 	private String newCustomer;
 
@@ -108,36 +107,36 @@ public class LoanApplicationCustomer implements Serializable {
 	private BigDecimal totalHouseholdIncome;
 
 	//bi-directional many-to-one association to LoanApplication
-	@OneToOne
-	@JoinColumn(name="LOAN_ID")
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(unique = true, name="LOAN_ID")
 	private LoanApplication loanApplication;
 
 	//bi-directional many-to-one association to LoanApplicationCustomerDocument
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanApplicationCustomerDocument> loanApplicationCustomerDocuments;
 
 	//bi-directional many-to-one association to LoanCustomerAsset
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerAsset> loanCustomerAssets;
 
 	//bi-directional many-to-one association to LoanCustomerBankDetail
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerBankDetail> loanCustomerBankDetails;
 
 	//bi-directional many-to-one association to LoanCustomerBusiness
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerBusiness> loanCustomerBusinesses;
 
 	//bi-directional many-to-one association to LoanCustomerDependent
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerDependent> loanCustomerDependents;
 
 	//bi-directional many-to-one association to LoanCustomerLoanDetail
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerLoanDetail> loanCustomerLoanDetails;
 
 	//bi-directional many-to-one association to LoanCustomerPartnerDetail
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerPartnerDetail> loanCustomerPartnerDetails;
 	
 	//bi-directional many-to-one association to LoanCustomerPartnerDetail
@@ -283,16 +282,8 @@ public class LoanApplicationCustomer implements Serializable {
 		this.loanOfficerName = loanOfficerName;
 	}
 
-	public String getLoanTypeCode() {
-		return this.loanTypeCode;
-	}
-
-	public void setLoanTypeCode(String loanTypeCode) {
-		this.loanTypeCode = loanTypeCode;
-	}
-
 	public String getNewCustomer() {
-		return this.newCustomer;
+		return newCustomer;
 	}
 
 	public void setNewCustomer(String newCustomer) {

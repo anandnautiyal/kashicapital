@@ -2,6 +2,9 @@ package com.kcfinance.loans.app.modals;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -56,6 +59,7 @@ public class CustomerAsset implements Serializable {
 		this.assetTypeName = assetTypeName;
 	}
 
+	@JsonIgnore
 	public List<LoanCustomerAsset> getLoanCustomerAssets() {
 		return this.loanCustomerAssets;
 	}

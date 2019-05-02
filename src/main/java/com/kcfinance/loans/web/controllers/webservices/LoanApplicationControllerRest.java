@@ -43,7 +43,7 @@ public class LoanApplicationControllerRest {
 			//.orElseThrow(() -> new GenericException(Loan.NAME, gstNo));
 	}
 	
-	@PostMapping("/newLoanApplication")
+	@PostMapping("/loans")
 	LoanApplication newCustomer(@RequestBody LoanApplication loanApplication) {
 		return loanService.saveLoanApplication(loanApplication);
 	}

@@ -7,10 +7,12 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,6 +20,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="application_loan_detail")
@@ -39,24 +43,25 @@ public class ApplicationLoanDetail implements Serializable{
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateModified;
 
-	@Column(name="LOAN_TYPE_ID")
-	private String loanTypeId;
-	
+	@ManyToOne
+	@JoinColumn(name="LOAN_TYPE_ID")
+	private LoanType loanType;
+
 	@Column(name="DEVICE_TYPE")
 	private String deviceType;
-	
+
 	@Column(name="DEVICE_LOAN_OBJECTIVE")
 	private String deviceLoanObjective;
-	
+
 	@Column(name="LOAN_OBJECTIVE")
 	private String loanObjective;
-	
+
 	@Column(name="COST_OF_MACHINE")
 	private String costOfMachine;
-	
+
 	@Column(name="CUSTOMER_CONTRIBUTION_AMOUNT")
 	private String customerContributionAmount;
-	
+
 	@Column(name="LOAN_AMOUNT_REQUIRED")
 	private String loanAmountRequired;
 
@@ -70,12 +75,11 @@ public class ApplicationLoanDetail implements Serializable{
 	@Column(name="SUPPLIER_NAME")
 	private String supplierName;
 
-	
-	@OneToOne
-	@JoinColumn(name="LOAN_ID")
+	@OneToOne(fetch=FetchType.LAZY)
+	@JoinColumn(unique = true, name="LOAN_ID")
 	private LoanApplication loanApplication;
-	
-	
+
+
 	public Long getId() {
 		return id;
 	}
@@ -100,12 +104,12 @@ public class ApplicationLoanDetail implements Serializable{
 		this.dateModified = dateModified;
 	}
 
-	public String getLoanTypeId() {
-		return loanTypeId;
+	public LoanType getLoanType() {
+		return loanType;
 	}
 
-	public void setLoanTypeId(String loanTypeId) {
-		this.loanTypeId = loanTypeId;
+	public void setLoanType(LoanType loanType) {
+		this.loanType = loanType;
 	}
 
 	public String getDeviceType() {
@@ -172,6 +176,7 @@ public class ApplicationLoanDetail implements Serializable{
 		this.loanTerm = loanTerm;
 	}
 
+	@JsonIgnore
 	public LoanApplication getLoanApplication() {
 		return loanApplication;
 	}
@@ -189,5 +194,5 @@ public class ApplicationLoanDetail implements Serializable{
 	}
 
 
-	
+
 }

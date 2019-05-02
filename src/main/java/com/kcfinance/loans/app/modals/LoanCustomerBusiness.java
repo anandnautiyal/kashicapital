@@ -95,7 +95,6 @@ public class LoanCustomerBusiness implements Serializable {
 	@Column(name="TYPE_OF_COMPANY")
 	private String typeOfCompany;
 
-	//bi-directional many-to-one association to LoanApplicationCustomer
 	@ManyToOne
 	@JoinColumn(name="LOAN_CUSTOMER_ID")
 	private LoanApplicationCustomer loanApplicationCustomer;

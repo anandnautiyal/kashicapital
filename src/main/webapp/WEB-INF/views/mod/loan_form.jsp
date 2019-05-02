@@ -474,7 +474,7 @@
                                 Family Details Of Those Members Are Dependent On You<span>(पारिवारिक विवरण उन सदस्यों का जो आप पर आश्रित हैं)</span>:
                             </h2>
                                </div>
-                        <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerDependents}" var="loanCustomerDependents" varStatus="status">
+                     <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerDependents}" var="loanCustomerDependents" varStatus="status">
                         <div class="body">
                                 <div class="row clearfix">
                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -549,6 +549,7 @@
                                 Details Of Owners/Partners/Directors<span>(मालिक / भागीदारों / निदेशकों का विवरण)</span>:
                             </h2>
                                </div>
+              <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerPartnerDetails}" var="loanCustomerPartnerDetails" varStatus="status">     
                         <div class="body">
                             <div class="kc-heading">
                             <h3>Owners/Partners <span>(मालिक / भागीदार)</span></h3>
@@ -557,7 +558,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="o_p_name">
+                                             <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].partnerName" />
                                                 <label class="form-label">Name<span>(नाम)</span></label>
                                             </div>
                                         </div>
@@ -565,7 +566,7 @@
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="f_h_name">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].partnerGurdianName" />
                                                 <label class="form-label">Father's / Husband's Name<span>(पिता/ पति का नाम)</span></label>
                                             </div>
                                         </div>
@@ -573,7 +574,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="d_o_b">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].dateOfBirth" />
                                                 <label class="form-label">Date Of Birth<span>(जन्म तिथि)</span></label>
                                             </div>
                                         </div>
@@ -581,7 +582,7 @@
                                     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="sex">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].gender" />
                                                 <label class="form-label">Sex<span>(लिंग)</span></label>
                                             </div>
                                         </div>
@@ -592,7 +593,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="edu_q">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].qualification" />
                                                 <label class="form-label">Educational Qualification<span>(शैक्षणिक योग्यता)</span></label>
                                             </div>
                                         </div>
@@ -600,7 +601,7 @@
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="activities_exp">
+                                               <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].yearsOfExperience" />
                                                 <label class="form-label">Activities Operate Experience(In Years)<span>(कार्यकलाप संचालित करने का अनुभव (वर्षों में))</span></label>
                                             </div>
                                         </div>
@@ -608,7 +609,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" name="connection_with_company">
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].yearsOfExperience" />
                                                 <label class="form-label">Is There Any Connection With The Company's Officials? If So, Details<span>(क्या कंपनी  के पदाधिकारियों के साथ कोई सम्बन्ध है? यदि हाँ तो विवरण दें)</span></label>
                                             </div>
                                         </div>
@@ -693,6 +694,7 @@
                                     </div>
                                 </div>
                        </div>
+                    </c:forEach>
                                </section>
        <!-------------------------------- Form Section 5 End Here ---------------------------------->
        <!-------------------------------- Form Section 6 Start Here ---------------------------------->

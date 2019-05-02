@@ -139,6 +139,18 @@ public class LoanApplicationCustomer implements Serializable {
 	//bi-directional many-to-one association to LoanCustomerPartnerDetail
 	@OneToMany(mappedBy="loanApplicationCustomer")
 	private List<LoanCustomerPartnerDetail> loanCustomerPartnerDetails;
+	
+	//bi-directional many-to-one association to LoanCustomerPartnerDetail
+	@OneToMany(mappedBy="loanApplicationCustomer")
+	private List<LoanCustomerPartnerFirmDetail> loanCustomerPartnerFirmDetail;
+
+	public List<LoanCustomerPartnerFirmDetail> getLoanCustomerPartnerFirmDetail() {
+		return loanCustomerPartnerFirmDetail;
+	}
+
+	public void setLoanCustomerPartnerFirmDetail(List<LoanCustomerPartnerFirmDetail> loanCustomerPartnerFirmDetail) {
+		this.loanCustomerPartnerFirmDetail = loanCustomerPartnerFirmDetail;
+	}
 
 	public LoanApplicationCustomer() {
 	}

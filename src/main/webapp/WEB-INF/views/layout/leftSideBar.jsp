@@ -34,18 +34,7 @@
                             <span>Loan</span>
                         </a>
                     </li>
-					<li>
-                        <a href="leadform">
-                            <i class="material-icons">assignment</i>
-                            <span>Lead Form</span>
-                        </a>
-                    </li>
-					<li>
-                        <a href="loanform">
-                            <i class="material-icons">assignment</i>
-                            <span>Loan form</span>
-                        </a>
-                    </li>
+					
                 </ul>
             </div>
             <!-- #Menu -->

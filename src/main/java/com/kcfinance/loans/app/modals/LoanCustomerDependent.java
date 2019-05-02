@@ -1,10 +1,12 @@
 package com.kcfinance.loans.app.modals;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -40,7 +42,8 @@ public class LoanCustomerDependent implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateModified;
 
-	private String income;
+	
+	private BigDecimal income;
 
 	@Column(name="LIVING_STATUS")
 	private String livingStatus;
@@ -100,11 +103,11 @@ public class LoanCustomerDependent implements Serializable {
 		this.dateModified = dateModified;
 	}
 
-	public String getIncome() {
+	public BigDecimal getIncome() {
 		return this.income;
 	}
 
-	public void setIncome(String income) {
+	public void setIncome(BigDecimal income) {
 		this.income = income;
 	}
 

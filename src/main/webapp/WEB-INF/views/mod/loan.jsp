@@ -69,6 +69,7 @@
                                             <td>${loanApplication.status}</td>
                                             <td>${loanApplication.loanApplicationCustomer.applicantName}</td>
                                             <td>${loanApplication.loanApplicationCustomer.loanOfficerName}</td>
+                                            <td><a href="<c:url value='/edit-loan-${loanApplication.id}' />" class="btn btn-success custom-width">edit</a></td>
 											</tr>
 										</c:forEach>
                                     </tbody>

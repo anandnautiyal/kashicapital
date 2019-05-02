@@ -46,18 +46,8 @@ public class LoanApplication implements Serializable {
 	@OneToOne(mappedBy="loanApplication", cascade = CascadeType.ALL)
 	private LoanApplicationCustomer loanApplicationCustomer;
 	
-	//bi-directional many-to-one association to LoanApplicationCustomer
 	@OneToOne(mappedBy="loanApplication", cascade = CascadeType.ALL)
-	private ApplicationLoanDetail applicationLoanDetail;
-
-
-	public ApplicationLoanDetail getApplicationLoanDetail() {
-		return applicationLoanDetail;
-	}
-
-	public void setApplicationLoanDetail(ApplicationLoanDetail applicationLoanDetail) {
-		this.applicationLoanDetail = applicationLoanDetail;
-	}
+	private ApplicationLoanDetail applicationLoanDetail;	
 
 	public LoanApplication() {
 	}
@@ -147,5 +137,13 @@ public class LoanApplication implements Serializable {
 
 		return loanApplicationCustomer;
 	}*/
+	
+	public ApplicationLoanDetail getApplicationLoanDetail() {
+		return applicationLoanDetail;
+	}
+
+	public void setApplicationLoanDetail(ApplicationLoanDetail applicationLoanDetail) {
+		this.applicationLoanDetail = applicationLoanDetail;
+	}
 
 }

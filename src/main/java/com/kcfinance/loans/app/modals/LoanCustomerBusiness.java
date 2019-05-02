@@ -53,7 +53,7 @@ public class LoanCustomerBusiness implements Serializable {
 	private String enterpriseName;
 
 	@Column(name="GST_EXIST")
-	private BigDecimal gstExist;
+	private String gstExist;
 
 	@Column(name="GST_NUMBER")
 	private String gstNumber;
@@ -86,7 +86,9 @@ public class LoanCustomerBusiness implements Serializable {
 	private String registeredUnit;
 
 	@Column(name="START_DATE")
-	private Timestamp startDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date startDate;
 
 	private String state;
 
@@ -172,11 +174,11 @@ public class LoanCustomerBusiness implements Serializable {
 		this.enterpriseName = enterpriseName;
 	}
 
-	public BigDecimal getGstExist() {
+	public String getGstExist() {
 		return this.gstExist;
 	}
 
-	public void setGstExist(BigDecimal gstExist) {
+	public void setGstExist(String gstExist) {
 		this.gstExist = gstExist;
 	}
 
@@ -260,11 +262,11 @@ public class LoanCustomerBusiness implements Serializable {
 		this.registeredUnit = registeredUnit;
 	}
 
-	public Timestamp getStartDate() {
+	public Date getStartDate() {
 		return this.startDate;
 	}
 
-	public void setStartDate(Timestamp startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 

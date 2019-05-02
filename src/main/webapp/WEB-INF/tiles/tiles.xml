@@ -53,14 +53,8 @@
 		<put-attribute name="body" value=".tile.body.loan" />
 	</definition>
 	
-	<definition name="loanform" extends=".tile.mainLayout">
-		<put-attribute name="body" value=".tile.body.loanform" />
-	</definition>
 	
-	<definition name="leadform" extends=".tile.mainLayout">
-		<put-attribute name="body" value=".tile.body.leadform" />
-	</definition>
-
+	
 	<definition name="index" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.dashboard" />
 	</definition>
@@ -85,7 +79,6 @@
 	
 	<definition name=".tile.body.loan" template="/WEB-INF/views/mod/loan.jsp"/>
 	
-	<definition name=".tile.body.loanform" template="/WEB-INF/views/mod/loan_form.jsp"/>
 	
 	<definition name=".tile.body.leadform" template="/WEB-INF/views/mod/lead_form.jsp"/>
 	
@@ -94,7 +87,8 @@
 	<definition name="lead" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.lead" />
 	</definition>
-	<definition name="loanform" extends=".tile.mainLayout">
+	<definition name="editLoan" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.loanform" />
 	</definition>
+	
 </tiles-definitions>

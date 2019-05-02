@@ -59,11 +59,8 @@ public class LoanCustomerAsset implements Serializable {
 	//bi-directional many-to-one association to CustomerAsset
 	@ManyToOne
 	@JoinColumn(name="CUSTOMER_ASSET_TYPE_ID")
-	@JsonIgnore
 	private CustomerAsset customerAsset;
 
-	//bi-directional many-to-one association to LoanApplicationCustomer
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="LOAN_CUSTOMER_ID")
 	private LoanApplicationCustomer loanApplicationCustomer;
@@ -143,12 +140,10 @@ public class LoanCustomerAsset implements Serializable {
 		this.totalHomeAsset = totalHomeAsset;
 	}
 
-	@JsonIgnore
 	public CustomerAsset getCustomerAsset() {
 		return this.customerAsset;
 	}
 
-	@JsonProperty
 	public void setCustomerAsset(CustomerAsset customerAsset) {
 		this.customerAsset = customerAsset;
 	}
@@ -158,7 +153,6 @@ public class LoanCustomerAsset implements Serializable {
 		return this.loanApplicationCustomer;
 	}
 
-	@JsonProperty
 	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		this.loanApplicationCustomer = loanApplicationCustomer;
 	}

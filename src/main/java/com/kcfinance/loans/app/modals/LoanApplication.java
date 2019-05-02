@@ -40,18 +40,14 @@ public class LoanApplication implements Serializable {
 
 	private String status;
 
-	//bi-directional many-to-one association to LoanApplicationComment
 	@OneToMany(mappedBy="loanApplication")
 	private List<LoanApplicationComment> loanApplicationComments;
 
-	//bi-directional many-to-one association to LoanApplicationCustomer
-	@OneToOne
-	@JoinColumn(name="ID")
+	@OneToOne(mappedBy="loanApplication", cascade = CascadeType.ALL)
 	private LoanApplicationCustomer loanApplicationCustomer;
 	
 	//bi-directional many-to-one association to LoanApplicationCustomer
-	@OneToOne
-	@JoinColumn(name="ID")
+	@OneToOne(mappedBy="loanApplication", cascade = CascadeType.ALL)
 	private ApplicationLoanDetail applicationLoanDetail;
 
 

@@ -106,7 +106,7 @@ public class LoanCustomerLoanDetail implements Serializable {
 		this.balanceLoanAmount = balanceLoanAmount;
 	}
 
-	
+
 	public String getLoanAgreementIncorporated() {
 		return this.loanAgreementIncorporated;
 	}

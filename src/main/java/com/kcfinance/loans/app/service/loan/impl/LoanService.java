@@ -129,10 +129,11 @@ public class LoanService implements ILoanService{
 
 		//Setting LoanApplication reference in ApplicationLoanDetail - JsonIgnore (Need to figure out solution of Circular reference)
 		ApplicationLoanDetail applicationLoanDetail = loanApplication.getApplicationLoanDetail();
-		LoanType loanType = loanTypeRepository.findByLoanTypeCode(applicationLoanDetail.getLoanType().getLoanTypeCode());
-		applicationLoanDetail.setLoanType(loanType);
-		applicationLoanDetail.setLoanApplication(loanApplication);
-
+		if(applicationLoanDetail != null) {
+			LoanType loanType = loanTypeRepository.findByLoanTypeCode(applicationLoanDetail.getLoanType().getLoanTypeCode());
+			applicationLoanDetail.setLoanType(loanType);
+			applicationLoanDetail.setLoanApplication(loanApplication);
+		}
 		if(logger.isDebugEnabled())
 			logger.debug("applicationLoanDetail set");
 		//Setting LoanApplication reference in LoanApplicationCustomer - JsonIgnore (Need to figure out solution of Circular reference)

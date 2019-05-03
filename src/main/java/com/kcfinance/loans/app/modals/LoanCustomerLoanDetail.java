@@ -110,16 +110,8 @@ public class LoanCustomerLoanDetail implements Serializable {
 		return this.dateCreated;
 	}
 
-	public void setDateCreated(Timestamp dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
 	public Date getDateModified() {
 		return this.dateModified;
-	}
-
-	public void setDateModified(Timestamp dateModified) {
-		this.dateModified = dateModified;
 	}
 
 	public String getLoanAgreementIncorporated() {

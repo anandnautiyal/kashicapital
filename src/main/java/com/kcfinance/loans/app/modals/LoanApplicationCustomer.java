@@ -105,6 +105,17 @@ public class LoanApplicationCustomer implements Serializable {
 
 	@Column(name="TOTAL_HOUSEHOLD_INCOME")
 	private BigDecimal totalHouseholdIncome;
+	
+	@Column(name="LOAN_PURPOSE")
+	private String loanPurpose;
+
+	public String getLoanPurpose() {
+		return loanPurpose;
+	}
+
+	public void setLoanPurpose(String loanPurpose) {
+		this.loanPurpose = loanPurpose;
+	}
 
 	//bi-directional many-to-one association to LoanApplication
 	@OneToOne(fetch=FetchType.LAZY)
@@ -138,6 +149,28 @@ public class LoanApplicationCustomer implements Serializable {
 	//bi-directional many-to-one association to LoanCustomerPartnerDetail
 	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerPartnerDetail> loanCustomerPartnerDetails;
+	
+	//bi-directional many-to-one association to LoanCustomerPartnerDetail
+	@OneToMany(mappedBy="loanApplicationCustomer")
+	private List<LoanCustomerPartnerFirmDetail> loanCustomerPartnerFirmDetails;
+
+	@Column(name="TOTAL_COMMERCIAL_LIABILITY")
+	private BigDecimal totalCommercialLiability;
+	
+	@Column(name="TOTAL_DOMESTIC_LIABILITY")
+	private BigDecimal totalDomesticLiability;
+	
+	@Column(name="TOTAL_LIABILITY")
+	private BigDecimal totalLiability;
+	
+	@Column(name="TOTAL_CAPACITY")
+	private BigDecimal totalCapacity;
+	
+	@Column(name="DOMESTIC_CAPACITY")
+	private BigDecimal domesticCapacity;
+
+	
+	
 
 	public LoanApplicationCustomer() {
 	}
@@ -480,5 +513,56 @@ public class LoanApplicationCustomer implements Serializable {
 
 		return loanCustomerPartnerDetail;
 	}
+	
+	public List<LoanCustomerPartnerFirmDetail> getLoanCustomerPartnerFirmDetails() {
+		return loanCustomerPartnerFirmDetails;
+	}
+
+	public void setLoanCustomerPartnerFirmDetails(List<LoanCustomerPartnerFirmDetail> loanCustomerPartnerFirmDetails) {
+		this.loanCustomerPartnerFirmDetails = loanCustomerPartnerFirmDetails;
+	}
+	
+	public BigDecimal getTotalCommercialLiability() {
+		return totalCommercialLiability;
+	}
+
+	public void setTotalCommercialLiability(BigDecimal totalCommercialLiability) {
+		this.totalCommercialLiability = totalCommercialLiability;
+	}
+
+	public BigDecimal getTotalDomesticLiability() {
+		return totalDomesticLiability;
+	}
+
+	public void setTotalDomesticLiability(BigDecimal totalDomesticLiability) {
+		this.totalDomesticLiability = totalDomesticLiability;
+	}
+
+	public BigDecimal getTotalLiability() {
+		return totalLiability;
+	}
+
+	public void setTotalLiability(BigDecimal totalLiability) {
+		this.totalLiability = totalLiability;
+	}
+	
+
+	public BigDecimal getTotalCapacity() {
+		return totalCapacity;
+	}
+
+	public void setTotalCapacity(BigDecimal totalCapacity) {
+		this.totalCapacity = totalCapacity;
+	}
+	
+	public BigDecimal getDomesticCapacity() {
+		return domesticCapacity;
+	}
+
+	public void setDomesticCapacity(BigDecimal domesticCapacity) {
+		this.domesticCapacity = domesticCapacity;
+	}
+
+
 
 }

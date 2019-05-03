@@ -40,6 +40,8 @@ public class LoanCustomerLoanDetail implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dateModified;
 
+	
+
 	@Column(name="LOAN_AGREEMENT_INCORPORATED")
 	private String loanAgreementIncorporated;
 
@@ -66,7 +68,10 @@ public class LoanCustomerLoanDetail implements Serializable {
 
 	@Column(name="LOAN_TERM")
 	private String loanTerm;
-
+	
+	@Column(name="LEGAL_STATUS")
+	private String legalStatus;
+	
 	@Column(name="PRESENT_LOAN_STATUS")
 	private String presentLoanStatus;
 
@@ -74,6 +79,8 @@ public class LoanCustomerLoanDetail implements Serializable {
 
 	@Column(name="TYPE_OF_LOAN")
 	private String typeOfLoan;
+	
+	
 
 	//bi-directional many-to-one association to LoanApplicationCustomer
 	@ManyToOne
@@ -218,6 +225,22 @@ public class LoanCustomerLoanDetail implements Serializable {
 
 	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		this.loanApplicationCustomer = loanApplicationCustomer;
+	}
+	
+	public void setDateModified(Date dateModified) {
+		this.dateModified = dateModified;
+	}
+	
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+	
+	public String getLegalStatus() {
+		return legalStatus;
+	}
+
+	public void setLegalStatus(String legalStatus) {
+		this.legalStatus = legalStatus;
 	}
 
 }

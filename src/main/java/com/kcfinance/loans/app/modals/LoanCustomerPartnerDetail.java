@@ -76,7 +76,12 @@ public class LoanCustomerPartnerDetail implements Serializable {
 	private String voterCardNo;
 
 	@Column(name="YEARS_OF_EXPERIENCE")
-	private BigDecimal yearsOfExperience;
+	private String yearsOfExperience;
+	
+	@Column(name="PARTNER_ADDRESS")
+	private String partnerAddress;
+
+	
 
 	@JsonIgnore
 	@ManyToOne
@@ -214,11 +219,11 @@ public class LoanCustomerPartnerDetail implements Serializable {
 		this.voterCardNo = voterCardNo;
 	}
 
-	public BigDecimal getYearsOfExperience() {
+	public String getYearsOfExperience() {
 		return this.yearsOfExperience;
 	}
 
-	public void setYearsOfExperience(BigDecimal yearsOfExperience) {
+	public void setYearsOfExperience(String yearsOfExperience) {
 		this.yearsOfExperience = yearsOfExperience;
 	}
 
@@ -229,6 +234,14 @@ public class LoanCustomerPartnerDetail implements Serializable {
 
 	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		this.loanApplicationCustomer = loanApplicationCustomer;
+	}
+	
+	public String getPartnerAddress() {
+		return partnerAddress;
+	}
+
+	public void setPartnerAddress(String partnerAddress) {
+		this.partnerAddress = partnerAddress;
 	}
 
 }

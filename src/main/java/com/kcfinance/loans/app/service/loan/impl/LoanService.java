@@ -1,5 +1,6 @@
 package com.kcfinance.loans.app.service.loan.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kcfinance.loans.Exceptions.GenericException;
+import com.kcfinance.loans.app.common.ResponseConstants;
 import com.kcfinance.loans.app.modals.ApplicationLoanDetail;
 import com.kcfinance.loans.app.modals.CustomerAsset;
+import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.modals.LoanApplicationComment;
 import com.kcfinance.loans.app.modals.LoanApplicationCustomer;
@@ -25,9 +28,11 @@ import com.kcfinance.loans.app.modals.LoanCustomerPartnerDetail;
 import com.kcfinance.loans.app.modals.LoanType;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 import com.kcfinance.loans.dao.CustomerAssetTypeRepository;
+import com.kcfinance.loans.dao.LoanApplicationCustomerRepository;
 import com.kcfinance.loans.dao.LoanApplicationRepository;
 import com.kcfinance.loans.dao.LoanCustomerBusinessRepository;
 import com.kcfinance.loans.dao.LoanTypeRepository;
+import com.kcfinance.loans.web.controllers.webservices.LoanApplicationResponse;
 
 /**
  * @author Gautam Kundrai
@@ -38,7 +43,7 @@ import com.kcfinance.loans.dao.LoanTypeRepository;
 @Transactional
 public class LoanService implements ILoanService{
 
-	private Logger logger = LoggerFactory.getLogger(LoanService.class);
+	private Logger logger = LoggerFactory.getLogger(LoanService.class);	
 
 	@Autowired
 	private LoanApplicationRepository loanApplicationRepository ;
@@ -47,8 +52,11 @@ public class LoanService implements ILoanService{
 	private LoanCustomerBusinessRepository loanCustomerBusinessRepository;
 
 	@Autowired
+	private LoanApplicationCustomerRepository loanApplicationCustomerRepository;
+
+	@Autowired
 	private LoanTypeRepository loanTypeRepository;
-	
+
 	@Autowired
 	private CustomerAssetTypeRepository customerAssetTypeRepository;
 
@@ -112,10 +120,7 @@ public class LoanService implements ILoanService{
 		return loanDetail;
 	}
 
-	/*	@Override
-    public Optional<Loan> findByCode(String code) {
-        return loanRepository.findByCode(code);
-    }*/
+
 
 	@Override
 	public LoanApplication saveLoanApplication(LoanApplication loanApplication) {
@@ -213,10 +218,49 @@ public class LoanService implements ILoanService{
 				loanCustomerPartnerDetail.setLoanApplicationCustomer(loanApplicationCustomer);
 			}
 		}
-		
+
 		if(logger.isDebugEnabled())
 			logger.debug("loanCustomerPartnerDetail set and finally Persisting the loanApplication");
 
 		return loanApplicationRepository.save(loanApplication);
+	}
+
+
+	@Override
+	public Optional<LoanApplication> getByCode(String code) {
+		return loanApplicationRepository.findByCode(code);
+	}
+
+
+	@Override
+	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData) {
+
+		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
+		try {
+
+			LoanApplication loanApplication = loanApplicationRepository.findByCode(customerDocumentData.getCode()).orElse(null);
+
+			if(loanApplication != null) {
+
+				LoanApplicationCustomer loanApplicationCustomer = loanApplication.getLoanApplicationCustomer();
+				List<LoanApplicationCustomerDocument> customerDocuments = customerDocumentData.getLoanApplicationCustomerDocuments();
+
+				for(LoanApplicationCustomerDocument customerDocument : customerDocuments) {
+					customerDocument.setLoanApplicationCustomer(loanApplicationCustomer);			
+					loanApplicationCustomer.getLoanApplicationCustomerDocuments().add(customerDocument);
+				}
+
+				loanApplicationCustomerRepository.saveAndFlush(loanApplicationCustomer);
+				applicationResponse.setStatus(ResponseConstants.SUCCESS_KEY);
+				applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_SUCCESS_MSG);
+			}
+
+		} catch (Exception e) {
+			applicationResponse.setStatus(ResponseConstants.FAILURE_KEY);
+			applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_FAILURE_MSG);
+			applicationResponse.setErrors(Arrays.asList(e.getMessage()));
+		}
+
+		return applicationResponse;
 	}
 }

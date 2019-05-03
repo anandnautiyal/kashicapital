@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kcfinance.loans.Exceptions.LeadNotFoundException;
+import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.service.lead.impl.LeadService;
+import com.kcfinance.loans.app.service.loan.ILeadService;
 
 /**
  * Rest controller for all the lead URL's
@@ -25,7 +25,7 @@ import com.kcfinance.loans.app.service.lead.impl.LeadService;
 public class LeadControllerRest {
 
 	@Autowired
-	private LeadService leadService;
+	private ILeadService leadService;
 	
 	// Aggregate root
 	@GetMapping("/leads")
@@ -53,5 +53,10 @@ public class LeadControllerRest {
 	@DeleteMapping("/leads/{id}")
 	void deleteLead(@PathVariable Long id) {
 		leadService.deleteLead(id);
+	}
+	
+	@PostMapping("/leads/docs/{code}")
+	LeadResponse updateCustomerDocuments(@RequestBody CustomerDocumentData customerDocumentData) {
+		return leadService.addCustomerDocuments(customerDocumentData);
 	}
 }

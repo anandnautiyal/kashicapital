@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kcfinance.loans.Exceptions.GenericException;
+import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 
@@ -31,10 +32,16 @@ public class LoanApplicationControllerRest {
 		return loanService.getAllLoans();
 	}
 	
-	@GetMapping("/loans/{id}")
-	LoanApplication byId(@PathVariable Long id) {
-		return loanService.getById(id)
-			.orElseThrow(() -> new GenericException("LoanApplication", String.valueOf(id)));
+	/*
+	 * @GetMapping("/loans/{id}") public LoanApplication byId(@PathVariable Long id)
+	 * { return loanService.getById(id) .orElseThrow(() -> new
+	 * GenericException("LoanApplication", String.valueOf(id))); }
+	 */
+	
+	@GetMapping("/loans/{code}")
+	public LoanApplication byId(@PathVariable String code) {
+		return loanService.getByCode(code)
+			.orElseThrow(() -> new GenericException("LoanApplication", String.valueOf(code)));
 	}
 	
 	@GetMapping("/loans/gst/{gstNo}")
@@ -46,5 +53,10 @@ public class LoanApplicationControllerRest {
 	@PostMapping("/loans")
 	LoanApplication newCustomer(@RequestBody LoanApplication loanApplication) {
 		return loanService.saveLoanApplication(loanApplication);
+	}
+	
+	@PostMapping("/loans/docs/{code}")
+	LoanApplicationResponse updateCustomerDocuments(@RequestBody CustomerDocumentData customerDocumentData) {
+		return loanService.addCustomerDocuments(customerDocumentData);
 	}
 }

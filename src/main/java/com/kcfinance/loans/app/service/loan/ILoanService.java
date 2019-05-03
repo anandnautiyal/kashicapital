@@ -3,7 +3,9 @@ package com.kcfinance.loans.app.service.loan;
 import java.util.List;
 import java.util.Optional;
 
+import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LoanApplication;
+import com.kcfinance.loans.web.controllers.webservices.LoanApplicationResponse;
 
 /**
  * @author Gautam Kundrai
@@ -20,6 +22,10 @@ public interface ILoanService {
 	
 	public LoanApplication getByGstNo(String gstNo);
 	
+	public Optional<LoanApplication> getByCode(String code);
+	
 	public LoanApplication saveLoanApplication(LoanApplication loanApplication);
+	
+	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
 	
 }

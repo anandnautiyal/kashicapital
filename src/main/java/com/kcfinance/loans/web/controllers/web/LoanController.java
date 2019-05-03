@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.modals.LeadComment;
+
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.service.loan.impl.LoanService;
 

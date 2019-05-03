@@ -106,22 +106,7 @@ public class LoanCustomerLoanDetail implements Serializable {
 		this.balanceLoanAmount = balanceLoanAmount;
 	}
 
-	public Date getDateCreated() {
-		return this.dateCreated;
-	}
-
-	public void setDateCreated(Timestamp dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public Date getDateModified() {
-		return this.dateModified;
-	}
-
-	public void setDateModified(Timestamp dateModified) {
-		this.dateModified = dateModified;
-	}
-
+	
 	public String getLoanAgreementIncorporated() {
 		return this.loanAgreementIncorporated;
 	}
@@ -227,13 +212,26 @@ public class LoanCustomerLoanDetail implements Serializable {
 		this.loanApplicationCustomer = loanApplicationCustomer;
 	}
 	
-	public void setDateModified(Date dateModified) {
-		this.dateModified = dateModified;
+	public Date getDateCreated() {
+		return this.dateCreated;
 	}
 	
 	public void setDateCreated(Date dateCreated) {
 		this.dateCreated = dateCreated;
 	}
+
+	public Date getDateModified() {
+		return this.dateModified;
+	}
+
+
+	
+	public void setDateModified(Date dateModified) {
+		this.dateModified = dateModified;
+	}
+	
+	
+	
 	
 	public String getLegalStatus() {
 		return legalStatus;

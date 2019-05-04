@@ -28,4 +28,6 @@ public interface ILoanService {
 	
 	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
 	
+	public void updateLoanApplication(LoanApplication loanApplication, String loanId);
+	
 }

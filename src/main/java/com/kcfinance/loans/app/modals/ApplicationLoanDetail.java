@@ -57,19 +57,19 @@ public class ApplicationLoanDetail implements Serializable{
 	private String loanObjective;
 
 	@Column(name="COST_OF_MACHINE")
-	private String costOfMachine;
+	private BigDecimal costOfMachine;
 
 	@Column(name="CUSTOMER_CONTRIBUTION_AMOUNT")
-	private String customerContributionAmount;
+	private BigDecimal customerContributionAmount;
 
 	@Column(name="LOAN_AMOUNT_REQUIRED")
-	private String loanAmountRequired;
+	private BigDecimal loanAmountRequired;
 
 	@Column(name="LOAN_AMOUNT")
-	private String loanAmount;
+	private BigDecimal loanAmount;
 
 	@Column(name="LOAN_TERM")
-	private String loanTerm;
+	private BigDecimal loanTerm;
 	
 
 	@Column(name="SUPPLIER_NAME")
@@ -136,43 +136,43 @@ public class ApplicationLoanDetail implements Serializable{
 		this.loanObjective = loanObjective;
 	}
 
-	public String getCostOfMachine() {
+	public BigDecimal getCostOfMachine() {
 		return costOfMachine;
 	}
 
-	public void setCostOfMachine(String costOfMachine) {
+	public void setCostOfMachine(BigDecimal costOfMachine) {
 		this.costOfMachine = costOfMachine;
 	}
 
-	public String getCustomerContributionAmount() {
+	public BigDecimal getCustomerContributionAmount() {
 		return customerContributionAmount;
 	}
 
-	public void setCustomerContributionAmount(String customerContributionAmount) {
+	public void setCustomerContributionAmount(BigDecimal customerContributionAmount) {
 		this.customerContributionAmount = customerContributionAmount;
 	}
 
-	public String getLoanAmountRequired() {
+	public BigDecimal getLoanAmountRequired() {
 		return loanAmountRequired;
 	}
 
-	public void setLoanAmountRequired(String loanAmountRequired) {
+	public void setLoanAmountRequired(BigDecimal loanAmountRequired) {
 		this.loanAmountRequired = loanAmountRequired;
 	}
 
-	public String getLoanAmount() {
+	public BigDecimal getLoanAmount() {
 		return loanAmount;
 	}
 
-	public void setLoanAmount(String loanAmount) {
+	public void setLoanAmount(BigDecimal loanAmount) {
 		this.loanAmount = loanAmount;
 	}
 
-	public String getLoanTerm() {
+	public BigDecimal getLoanTerm() {
 		return loanTerm;
 	}
 
-	public void setLoanTerm(String loanTerm) {
+	public void setLoanTerm(BigDecimal loanTerm) {
 		this.loanTerm = loanTerm;
 	}
 

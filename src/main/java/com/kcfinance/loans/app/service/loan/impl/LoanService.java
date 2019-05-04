@@ -127,6 +127,13 @@ public class LoanService implements ILoanService{
 		if(logger.isDebugEnabled())
 			logger.debug("saveLoanApplication start");
 
+		setParentReference(loanApplication);
+
+		return loanApplicationRepository.save(loanApplication);
+	}
+
+
+	private void setParentReference(LoanApplication loanApplication) {
 		//Setting LoanApplication reference in ApplicationLoanDetail - JsonIgnore (Need to figure out solution of Circular reference)
 		ApplicationLoanDetail applicationLoanDetail = loanApplication.getApplicationLoanDetail();
 		if(applicationLoanDetail != null) {
@@ -222,8 +229,6 @@ public class LoanService implements ILoanService{
 
 		if(logger.isDebugEnabled())
 			logger.debug("loanCustomerPartnerDetail set and finally Persisting the loanApplication");
-
-		return loanApplicationRepository.save(loanApplication);
 	}
 
 
@@ -264,4 +269,12 @@ public class LoanService implements ILoanService{
 
 		return applicationResponse;
 	}
+	
+	@Override
+	public void updateLoanApplication(LoanApplication loanApplication, String loanApplicationId) {
+		if(logger.isDebugEnabled())
+			logger.debug("updateLoanApplication starte");
+		//setParentReference(loanApplication);
+        loanApplicationRepository.saveAndFlush(loanApplication);
+    }
 }

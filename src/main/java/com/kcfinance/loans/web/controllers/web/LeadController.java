@@ -92,7 +92,7 @@ public class LeadController {
 		// Check if file is actually retrieved from database.  
 		try{
 			if (file.get().getDocumentImage() != null) {  
-				response.setContentType("image/jpeg");  
+				response.setContentType("image/png");  
 				response.setHeader("Content-Length",  
 						String.valueOf(file.get().getDocumentImage().length));  
 				// Write file content to response.  

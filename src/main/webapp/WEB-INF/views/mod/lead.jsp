@@ -42,6 +42,7 @@
 			<!-- Form structure End -->
 			
 			<!-- Basic Examples -->
+			
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -51,6 +52,7 @@
                             </h2>
                         </div>
                         <div class="body">
+                        <c:forEach items="${leadList}" var="lead">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
@@ -63,7 +65,7 @@
                                     </thead>
                                     
                                     <tbody>
-                                         <c:forEach items="${leadList}" var="lead">
+                                         
 											<tr>
 											<td>${lead.leadCustomer.firstName}</td>
 											<td>${lead.leadCustomer.lastName}</td>
@@ -76,7 +78,7 @@
 										
 											</tr>
 											
-										</c:forEach>
+										
                                     </tbody>
 									
 									
@@ -87,10 +89,16 @@
 									
                                 </table>
                             </div>
+                             </c:forEach>
+                             <c:if test="${not empty noRecords}">
+           	 					${noRecords}
+           					 </c:if>
                         </div>
                     </div>
                 </div>
             </div>
+           
+            
             <!-- #END# Basic Examples -->
         </div>
 	  </form:form>

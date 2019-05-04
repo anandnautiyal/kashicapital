@@ -1,7 +1,5 @@
 package com.kcfinance.loans.web.controllers.web;
 
-
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,18 +25,17 @@ import com.kcfinance.loans.app.service.lead.impl.LeadService;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes ("lead")
+@SessionAttributes("lead")
 public class LeadController {
 
 	@Autowired
 	LeadService leadService;
 
-
 	@Autowired
 	MessageSource messageSource;
 
-	@RequestMapping(value="/lead", method = RequestMethod.GET)
-	public String showHomePage(ModelMap model){
+	@RequestMapping(value = "/lead", method = RequestMethod.GET)
+	public String showHomePage(ModelMap model) {
 		return "lead";
 	}
 
@@ -51,7 +48,6 @@ public class LeadController {
 		List<Lead> leads = leadService.findAllLeads();
 		model.addAttribute("leadList", leads);
 
-
 		return "lead";
 	}
 
@@ -59,14 +55,17 @@ public class LeadController {
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/findLead" }, method = RequestMethod.POST)
-	public String findLead(@ModelAttribute ("lead") Lead lead,ModelMap model) {
+	public String findLead(@ModelAttribute("lead") Lead lead, ModelMap model) {
 
-		Optional<Lead> tempLead= leadService.findByCode(lead.getCode());
-		
-		List<Lead> leads = new ArrayList<Lead>();
-		leads.add(tempLead.get());
-		model.addAttribute("leadList", leads);
-
+		Optional<Lead> tempLead = leadService.findByCode(lead.getCode());
+		if(tempLead.isPresent()){
+			List<Lead> leads = new ArrayList<Lead>();
+			leads.add(tempLead.get());
+			model.addAttribute("leadList", leads);
+		}else{
+			model.addAttribute("noRecords", "No records are found for the given lead no");
+			
+		}
 
 		return "lead";
 	}
@@ -77,8 +76,7 @@ public class LeadController {
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String leadId, ModelMap model) {
 		Optional<Lead> lead = leadService.findById(Long.parseLong(leadId));
-		
-		LeadComment comments = new LeadComment("","open");
+		LeadComment comments = new LeadComment("", "open");
 		comments.setLead(lead.get());
 		lead.get().getLeadComments().add(comments);
 		model.addAttribute("lead", lead.get());
@@ -87,39 +85,39 @@ public class LeadController {
 	}
 
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute ("lead") Lead lead, BindingResult result,
-			ModelMap model, @PathVariable String leadId) {
+	public String updateUser(@ModelAttribute("lead") Lead lead, BindingResult result, ModelMap model,
+			@PathVariable String leadId) {
 
 		if (result.hasErrors()) {
 			return "registration";
 		}
 
-		leadService.updateLead(lead,leadId);
+		leadService.updateLead(lead, leadId);
 
-		model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "+ lead.getLeadCustomer().getLastName() + " updated successfully");
+		model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "
+				+ lead.getLeadCustomer().getLastName() + " updated successfully");
 		return "leadSuccess";
 	}
 
 	@RequestMapping("/downloadFile/{fileId}")
-	public String  downloadFile(@PathVariable String fileId,HttpServletResponse response) {
+	public String downloadFile(@PathVariable String fileId, HttpServletResponse response) {
 		// Load file from database
-		Optional<LeadDocument> file = leadService.findByDocumentId(fileId);  
+		Optional<LeadDocument> file = leadService.findByDocumentId(fileId);
 
-		// Check if file is actually retrieved from database.  
-		try{
-			if (file.get().getDocumentImage() != null) {  
-				response.setContentType("image/png");  
-				response.setHeader("Content-Length",  
-						String.valueOf(file.get().getDocumentImage().length));  
-				// Write file content to response.  
-				response.getOutputStream().write(file.get().getDocumentImage());  
-			} 
+		// Check if file is actually retrieved from database.
+		try {
+			if (file.get().getDocumentImage() != null) {
+				response.setContentType("image/png");
+				response.setHeader("Content-Length", String.valueOf(file.get().getDocumentImage().length));
+				// Write file content to response.
+				response.getOutputStream().write(file.get().getDocumentImage());
+			}
 
-		} catch (IOException e) {  
-			e.printStackTrace();  
-		}  
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return null;
-	}	
+	}
 
 	@ModelAttribute("lead")
 	public Lead createLeadForm() {

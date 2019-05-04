@@ -216,32 +216,18 @@
                                     </thead>
                                     
                                     <tbody>
-                                         <c:forEach items="${leadList}" var="lead">
+                                        <c:forEach items="${lead.leadCustomer.leadDocuments}" var="leadDocument" varStatus="status">
 											 <tr>
-											<td>Document 1</td>
+											<td>${leadDocument.documentName}</td>
 											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange  btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">link</i></a>
+											    <a href="<c:url value='/downloadFile/${leadDocument.id}'/>" 
+											    class="btn bg-orange  btn-circle-lg waves-effect waves-circle waves-float" target="_blank">
+											    <i class="material-icons">link</i></a>
                                                 </td>
                                                
 											</tr>
-                                              <tr>
-											<td>Document 2</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange  btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">link</i></a>
-                                                </td>
-                                              </tr>
-                                             <tr>
-											<td>Document 3</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange  btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">link</i></a>
-                                                </td>
-                                              </tr>
-                                             <tr>
-											<td>Document 4</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-user-${lead.id}' />" class="btn bg-orange  btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">link</i></a>
-                                                </td>
-                                              </tr>
+                                              
+											
 										</c:forEach>
                                     </tbody>
                                 </table>

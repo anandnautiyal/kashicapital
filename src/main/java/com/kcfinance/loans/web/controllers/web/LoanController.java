@@ -7,21 +7,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.modals.LeadComment;
 import com.kcfinance.loans.app.modals.LoanApplication;
-import com.kcfinance.loans.app.service.loan.impl.LoanService;
+import com.kcfinance.loans.app.service.loan.ILoanService;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes ("loanData")
 public class LoanController {
 	
 	@Autowired
-	LoanService loanService;
+	ILoanService loanService;
 
 
 	@Autowired
@@ -56,4 +58,17 @@ public class LoanController {
 		return "editLoan";
 	}
 
+	@RequestMapping(value = { "/edit-loan-{loanId}" }, method = RequestMethod.POST)
+	public String updateLoanApplication(@ModelAttribute ("loanData") LoanApplication loanApplication, BindingResult result,
+			ModelMap model, @PathVariable String loanId) {
+
+		if (result.hasErrors()) {
+			return "editLoan";
+		}
+
+		loanService.updateLoanApplication(loanApplication, loanId);
+
+		model.addAttribute("success", "Loan Application with - " + loanApplication.getCode() + "updated successfully");
+		return ".tile.loanApplicationSuccess";
+	}
 }

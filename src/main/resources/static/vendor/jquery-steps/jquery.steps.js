@@ -795,6 +795,7 @@ function paginationClickHandler(event)
 
         case "finish":
             finishStep(wizard, state);
+	    document.getElementById("loanApplicationForm").submit();
             break;
 
         case "next":

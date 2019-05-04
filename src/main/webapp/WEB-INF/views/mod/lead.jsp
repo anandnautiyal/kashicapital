@@ -18,12 +18,12 @@
                             </h2>
                         </div>
                         <div class="body">
-                        <form:form method="POST" action="/list" modelAttribute="lead" >
+                        <form:form method="POST" action="/findLead" modelAttribute="lead" >
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text"  name="lead_search" class="form-control">
+                                               <form:input type="text" path="code"  class="form-control"/>
                                                 <label class="form-label">Search</label>
                                             </div>
                                         </div>

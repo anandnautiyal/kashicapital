@@ -3,6 +3,7 @@ package com.kcfinance.loans.web.controllers.web;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +45,7 @@ public class LeadController {
 	/**
 	 * This method will list all existing users.
 	 */
-	@RequestMapping(value = { "/list", "/list" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/list" }, method = RequestMethod.POST)
 	public String listUsers(ModelMap model) {
 
 		List<Lead> leads = leadService.findAllLeads();
@@ -54,6 +55,21 @@ public class LeadController {
 		return "lead";
 	}
 
+	/**
+	 * This method will list all existing users.
+	 */
+	@RequestMapping(value = { "/findLead" }, method = RequestMethod.POST)
+	public String findLead(@ModelAttribute ("lead") Lead lead,ModelMap model) {
+
+		Optional<Lead> tempLead= leadService.findByCode(lead.getCode());
+		
+		List<Lead> leads = new ArrayList<Lead>();
+		leads.add(tempLead.get());
+		model.addAttribute("leadList", leads);
+
+
+		return "lead";
+	}
 
 	/**
 	 * This method will provide the medium to update an existing user.

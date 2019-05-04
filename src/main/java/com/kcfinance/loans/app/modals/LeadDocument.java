@@ -34,7 +34,7 @@ public class LeadDocument{
 	/**
 	 * Date entity created.
 	 */
-	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
+	@Column(name="DATE_CREATED", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 

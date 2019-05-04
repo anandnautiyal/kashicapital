@@ -39,7 +39,7 @@ public class LoanApplicationControllerRest {
 	 */
 	
 	@GetMapping("/loans/{code}")
-	public LoanApplication byId(@PathVariable String code) {
+	public LoanApplication byCode(@PathVariable String code) {
 		return loanService.getByCode(code)
 			.orElseThrow(() -> new GenericException("LoanApplication", String.valueOf(code)));
 	}

@@ -55,7 +55,7 @@ public class LeadControllerRest {
 		leadService.deleteLead(id);
 	}
 	
-	@PostMapping("/leads/docs/{code}")
+	@PostMapping("/leads/docs")
 	LeadResponse updateCustomerDocuments(@RequestBody CustomerDocumentData customerDocumentData) {
 		return leadService.addCustomerDocuments(customerDocumentData);
 	}

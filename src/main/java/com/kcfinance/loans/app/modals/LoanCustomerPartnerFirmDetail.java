@@ -16,6 +16,8 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="loan_customer_partner_firm")
 @NamedQuery(name="LoanCustomerPartnerFirmDetail.findAll", query="SELECT l FROM LoanCustomerPartnerFirmDetail l")
@@ -116,6 +118,7 @@ public class LoanCustomerPartnerFirmDetail {
 		this.firmBusinessNature = firmBusinessNature;
 	}
 
+	@JsonIgnore
 	public LoanApplicationCustomer getLoanApplicationCustomer() {
 		return loanApplicationCustomer;
 	}
@@ -131,7 +134,4 @@ public class LoanCustomerPartnerFirmDetail {
 	public void setFirmOwnerShipRange(String firmOwnerShipRange) {
 		this.firmOwnerShipRange = firmOwnerShipRange;
 	}
-
-
-	
 }

@@ -39,10 +39,13 @@ public class LeadComment {
 	private String leadStatus;
 
 
+	@Column(name="COMMENT_BY_USER", nullable=true)
+	private String commentByUser;
+	
 	/**
 	 * Date entity created.
 	 */
-	@Column(name="CREATE_DATE", nullable=true, insertable = false, updatable= false)
+	@Column(name="DATE_CREATED", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 
@@ -50,7 +53,7 @@ public class LeadComment {
 	/**
 	 * Date entity last modified.
 	 */
-	@Column(name="MODIFIED_DATE", nullable=true, insertable = false, updatable= false)
+	@Column(name="DATE_MODIFIED", nullable=true, insertable = false, updatable= false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedDate;
 
@@ -59,12 +62,16 @@ public class LeadComment {
 	private Lead lead;
 
 	
+	public LeadComment() {		
+	}
 
+	
 	public LeadComment(String comment, String leadStatus) {
 		super();
 		this.comment = comment;
 		this.leadStatus = leadStatus;
-	}		
+	}
+
 
 	@JsonIgnore
 	public Lead getLead() {
@@ -114,6 +121,14 @@ public class LeadComment {
 
 	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
+	}
+	
+	public String getCommentByUser() {
+		return commentByUser;
+	}
+
+	public void setCommentByUser(String commentByUser) {
+		this.commentByUser = commentByUser;
 	}
 
 	@Override

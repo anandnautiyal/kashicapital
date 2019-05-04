@@ -103,6 +103,10 @@ public class LeadService implements ILeadService {
 				leadCustomerRepository.saveAndFlush(leadCustomer);
 				leadResponse.setStatus(ResponseConstants.SUCCESS_KEY);
 				leadResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_SUCCESS_MSG);
+			} else {
+				leadResponse.setStatus(ResponseConstants.FAILURE_KEY);
+				leadResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_FAILURE_MSG);
+				leadResponse.setErrors(Arrays.asList("No lead found with code:" + customerDocumentData.getCode()));
 			}
 
 		} catch (Exception e) {

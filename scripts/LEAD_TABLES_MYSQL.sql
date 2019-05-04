@@ -25,7 +25,8 @@ CREATE TABLE kashicapital.LEAD_MASTER (
 CREATE TABLE kashicapital.LEAD_CUSTOMER (
 	ID int NOT NULL AUTO_INCREMENT, 
 	lead_id int NOT NULL,
-	name nvarchar(100),
+	first_name nvarchar(100),
+	last_name nvarchar(100),
 	nature_of_business nvarchar(50),
 	phone nvarchar(10),
 	aadhar_no nvarchar(20),
@@ -41,12 +42,12 @@ CREATE TABLE kashicapital.LEAD_CUSTOMER (
 	CONSTRAINT LEAD_FK01 FOREIGN KEY (LEAD_ID) REFERENCES kashicapital.LEAD_MASTER (ID)
 );
 
-CREATE TABLE kashicapital.LEAD_COMMENT (
+CREATE TABLE kashicapital.LEAD_COMMENTS (
 	ID int NOT NULL AUTO_INCREMENT, 
 	LEAD_ID int NOT NULL,
 	LEAD_STATUS nvarchar(50),
 	COMMENTS nvarchar(255),
-	COMMENT_BY_USER numeric(10),
+	COMMENT_BY_USER nvarchar(50),
 	DATE_OF_COMMENT TIMESTAMP (6),
 	DATE_CREATED TIMESTAMP (6), 
 	DATE_MODIFIED TIMESTAMP (6),
@@ -54,7 +55,7 @@ CREATE TABLE kashicapital.LEAD_COMMENT (
 	CONSTRAINT LEAD_COMMENTS_FK01 FOREIGN KEY(LEAD_ID) REFERENCES kashicapital.LEAD_MASTER(ID) 
 );
 
-CREATE TABLE kashicapital.LEAD_CUSTOMER_DOCUMENT (
+CREATE TABLE kashicapital.LEAD_CUSTOMER_DOCUMENTS (
 	ID int NOT NULL AUTO_INCREMENT,
 	LEAD_CUSTOMER_ID int NOT NULL,
 	DOCUMENT_NAME nvarchar(50),

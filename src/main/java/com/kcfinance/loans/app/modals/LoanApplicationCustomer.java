@@ -151,7 +151,7 @@ public class LoanApplicationCustomer implements Serializable {
 	private List<LoanCustomerPartnerDetail> loanCustomerPartnerDetails;
 	
 	//bi-directional many-to-one association to LoanCustomerPartnerDetail
-	@OneToMany(mappedBy="loanApplicationCustomer")
+	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanCustomerPartnerFirmDetail> loanCustomerPartnerFirmDetails;
 
 	@Column(name="TOTAL_COMMERCIAL_LIABILITY")

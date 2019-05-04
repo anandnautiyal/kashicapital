@@ -51,7 +51,7 @@ public class LoanApplicationControllerRest {
 	}
 	
 	@PostMapping("/loans")
-	LoanApplication newCustomer(@RequestBody LoanApplication loanApplication) {
+	LoanApplicationResponse newCustomer(@RequestBody LoanApplication loanApplication) {
 		return loanService.saveLoanApplication(loanApplication);
 	}
 	

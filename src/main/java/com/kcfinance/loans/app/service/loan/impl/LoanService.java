@@ -25,6 +25,7 @@ import com.kcfinance.loans.app.modals.LoanCustomerBusiness;
 import com.kcfinance.loans.app.modals.LoanCustomerDependent;
 import com.kcfinance.loans.app.modals.LoanCustomerLoanDetail;
 import com.kcfinance.loans.app.modals.LoanCustomerPartnerDetail;
+import com.kcfinance.loans.app.modals.LoanCustomerPartnerFirmDetail;
 import com.kcfinance.loans.app.modals.LoanType;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 import com.kcfinance.loans.dao.CustomerAssetTypeRepository;
@@ -123,13 +124,25 @@ public class LoanService implements ILoanService{
 
 
 	@Override
-	public LoanApplication saveLoanApplication(LoanApplication loanApplication) {
+	public LoanApplicationResponse saveLoanApplication(LoanApplication loanApplication) {
 		if(logger.isDebugEnabled())
 			logger.debug("saveLoanApplication start");
 
-		setParentReference(loanApplication);
+		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
+		
+		try {
+			setParentReference(loanApplication);
+			loanApplicationRepository.save(loanApplication);
+			applicationResponse.setStatus(ResponseConstants.SUCCESS_KEY);
+			applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_SUCCESS_MSG);
+		}catch(Exception e) {
+			e.printStackTrace();
+			applicationResponse.setStatus(ResponseConstants.FAILURE_KEY);
+			applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_FAILURE_MSG);
+			applicationResponse.setErrors(Arrays.asList(e.getMessage()));
+		}
 
-		return loanApplicationRepository.save(loanApplication);
+		return applicationResponse;
 	}
 
 
@@ -227,6 +240,12 @@ public class LoanService implements ILoanService{
 			}
 		}
 
+		//Setting LoanApplicationCustomer reference in LoanCustomerpartner Firm
+		if(loanApplicationCustomer.getLoanCustomerPartnerFirmDetails() != null) {
+			for(LoanCustomerPartnerFirmDetail loanCustomerPartnerFirmDetail : loanApplicationCustomer.getLoanCustomerPartnerFirmDetails()) {
+				loanCustomerPartnerFirmDetail.setLoanApplicationCustomer(loanApplicationCustomer);
+			}
+		}
 		if(logger.isDebugEnabled())
 			logger.debug("loanCustomerPartnerDetail set and finally Persisting the loanApplication");
 	}
@@ -269,12 +288,12 @@ public class LoanService implements ILoanService{
 
 		return applicationResponse;
 	}
-	
+
 	@Override
 	public void updateLoanApplication(LoanApplication loanApplication, String loanApplicationId) {
 		if(logger.isDebugEnabled())
 			logger.debug("updateLoanApplication starte");
 		//setParentReference(loanApplication);
-        loanApplicationRepository.saveAndFlush(loanApplication);
-    }
+		loanApplicationRepository.saveAndFlush(loanApplication);
+	}
 }

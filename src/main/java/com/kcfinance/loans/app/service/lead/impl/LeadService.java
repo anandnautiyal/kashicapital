@@ -1,5 +1,6 @@
 package com.kcfinance.loans.app.service.lead.impl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kcfinance.loans.app.common.ResponseConstants;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.Lead;
+import com.kcfinance.loans.app.modals.LeadComment;
 import com.kcfinance.loans.app.modals.LeadCustomer;
 import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.service.loan.ILeadService;
@@ -70,6 +72,16 @@ public class LeadService implements ILeadService {
     
     
     public void updateLead(Lead lead, String leadId) {
+    	List<LeadComment>leadComments = new ArrayList<LeadComment>();
+    	for(LeadComment leadComment:lead.getLeadComments()){
+    		
+    		if(!leadComment.getComment().isEmpty()){
+    			leadComments.add(leadComment);
+    		}
+    		
+    	}
+    	lead.setLeadComments(null);
+    	lead.setLeadComments(leadComments);
         leadRepository.saveAndFlush(lead);
     }
  

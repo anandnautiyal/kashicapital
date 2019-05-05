@@ -1121,6 +1121,29 @@
                         </div>
                                </section>
        <!-------------------------------- Form Section 10 End Here --------------------------------->
+         <h2><span class="sr-only">11</span></h2>        
+                                <section>
+                                <div class="header kc-header">
+                                <h2>
+                                    Comments:
+                                </h2>
+                               </div>
+                        <div class="body">
+                           <c:forEach items="${loanData.loanApplicationComments}" var="loanApplicationComment" varStatus="status">
+                               <div class="row clearfix">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                               ${loanApplicationComment.comments}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                               </section>
+       <!-------------------------------- Form Section 10 End Here --------------------------------->
+    
                         </div>
                       </form>           
                     </div>

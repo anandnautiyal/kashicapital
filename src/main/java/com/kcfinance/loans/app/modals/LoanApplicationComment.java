@@ -23,8 +23,9 @@ import java.util.Date;
 public class LoanApplicationComment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id 
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="ID", nullable=false,insertable = false,updatable= false)
 	private Long id;
 
 	@Column(name="COMMENT_BY_USER")
@@ -57,7 +58,7 @@ public class LoanApplicationComment implements Serializable {
 
 	public LoanApplicationComment() {
 	}
-
+	
 	public Long getId() {
 		return this.id;
 	}

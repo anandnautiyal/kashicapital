@@ -14,7 +14,7 @@
                             <h2>Business Loan Application Form <span>(व्यवसाय  ऋण आवेदन पत्र)</span></h2>
                         </div>
                         <div class="body">
-                    <form:form method="POST" modelAttribute="loanData" class="form-horizontal" id="loanApplicationForm">
+                    <form:form method="POST" modelAttribute="loan" class="form-horizontal" id="loanApplicationForm">
                           <form:input type="hidden" path="id" id="id"/>
                             <div id="wizard_horizontal">
             
@@ -268,7 +268,7 @@
                             </h2>
                         </div>
                         <div class="body">
-                           <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerBusinesses}" var="loanCustomerBusinesses" varStatus="status">
+                           <c:forEach items="${loan.loanApplicationCustomer.loanCustomerBusinesses}" var="loanCustomerBusinesses" varStatus="status">
                                 <div class="row clearfix">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                         <div class="form-group form-float">
@@ -472,7 +472,7 @@
                                 Family Details Of Those Members Are Dependent On You<span>(पारिवारिक विवरण उन सदस्यों का जो आप पर आश्रित हैं)</span>:
                             </h2>
                                </div>
-                     <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerDependents}" var="loanCustomerDependents" varStatus="status">
+                     <c:forEach items="${loan.loanApplicationCustomer.loanCustomerDependents}" var="loanCustomerDependents" varStatus="status">
                         <div class="body">
                                 <div class="row clearfix">
                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -547,7 +547,7 @@
                                 Details Of Owners/Partners/Directors<span>(मालिक / भागीदारों / निदेशकों का विवरण)</span>:
                             </h2>
                                </div>
-              <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerPartnerDetails}" var="loanCustomerPartnerDetails" varStatus="status">     
+              <c:forEach items="${loan.loanApplicationCustomer.loanCustomerPartnerDetails}" var="loanCustomerPartnerDetails" varStatus="status">     
                         <div class="body">
                             <div class="kc-heading">
                             <h3>Owners/Partners <span>(मालिक / भागीदार)</span></h3>
@@ -703,7 +703,7 @@
                                 Partner Firms Name and Business Nature<span>(सहयोगी फर्मों के नाम और सहयोगी फर्मों के व्यवसाय की प्रकृति)</span> :
                             </h2>
                                </div>
-        			<c:forEach items="${loanData.loanApplicationCustomer.loanCustomerPartnerFirmDetails}" var="loanCustomerPartnerFirmDetails" varStatus="status">
+        			<c:forEach items="${loan.loanApplicationCustomer.loanCustomerPartnerFirmDetails}" var="loanCustomerPartnerFirmDetails" varStatus="status">
                         <div class="body">
                                 <div class="row clearfix">
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -762,7 +762,7 @@
                                 Current Banking Facilities (in rupees)<span>(वर्तमान बैंकिंग सुविधाएं (रुपए में))</span>:
                             </h2>
                                </div>
-            <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerBankDetails}" var="loanCustomerBankDetails" varStatus="status">
+            <c:forEach items="${loan.loanApplicationCustomer.loanCustomerBankDetails}" var="loanCustomerBankDetails" varStatus="status">
                         <div class="body kc-top">
                                 <div class="row clearfix">
                                      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
@@ -831,7 +831,7 @@
                                 Details Of Liabilities (Commercial and  Domestic)<span>(देनदारियों का विवरण (व्यावसायिक व घरेलू))</span>:
                             </h2>
                                </div>
-             <c:forEach items="${loanData.loanApplicationCustomer.loanCustomerLoanDetails}" var="loanCustomerLoanDetails" varStatus="status">
+             <c:forEach items="${loan.loanApplicationCustomer.loanCustomerLoanDetails}" var="loanCustomerLoanDetails" varStatus="status">
                         <div class="body kc-top">
                                 <div class="row clearfix">
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
@@ -1131,7 +1131,7 @@
                                     </thead>
                                     
                                     <tbody>
-                           <c:forEach items="${loanData.loanApplicationComments}" var="loanApplicationComment" varStatus="status">
+                           <c:forEach items="${loan.loanApplicationComments}" var="loanApplicationComment" varStatus="status">
                                <div class="row clearfix">
                                   <div class="form-line">
                                   <c:choose>

@@ -40,7 +40,7 @@ public class LoanApplication implements Serializable {
 
 	private String status;
 
-	@OneToMany(mappedBy="loanApplication")
+	@OneToMany(mappedBy = "loanApplication",cascade = CascadeType.ALL)
 	private List<LoanApplicationComment> loanApplicationComments;
 
 	@OneToOne(mappedBy="loanApplication", cascade = CascadeType.ALL)
@@ -51,6 +51,9 @@ public class LoanApplication implements Serializable {
 
 	public LoanApplication() {
 	}
+	
+
+
 
 	public Long getId() {
 		return this.id;

@@ -81,13 +81,13 @@ public class LoanController {
 		LoanApplicationComment comment = new LoanApplicationComment();
 		comment.setLoanApplication(loanData.get());
 		loanData.get().getLoanApplicationComments().add(comment);
-		model.addAttribute("loanData",  loanData.get());
+		model.addAttribute("loan",  loanData.get());
 		model.addAttribute("edit", true);
 		return "editLoan";
 	}
 
 	@RequestMapping(value = { "/edit-loan-{loanId}" }, method = RequestMethod.POST)
-	public String updateLoanApplication(@ModelAttribute ("loanData") LoanApplication loanApplication, BindingResult result,
+	public String updateLoanApplication(@ModelAttribute ("loan") LoanApplication loanApplication, BindingResult result,
 			ModelMap model, @PathVariable String loanId) {
 
 		if (result.hasErrors()) {

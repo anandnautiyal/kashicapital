@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kcfinance.loans.app.modals.Lead;
+import com.kcfinance.loans.app.modals.LeadComment;
 import com.kcfinance.loans.app.modals.LoanApplication;
+import com.kcfinance.loans.app.modals.LoanApplicationComment;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 
 @Controller
@@ -60,6 +62,7 @@ public class LoanController {
 		if(tempLoan.isPresent()){
 			List<LoanApplication> loans = new ArrayList<LoanApplication>();
 			loans.add(tempLoan.get());
+			
 			model.addAttribute("loanList", loans);
 		}else{
 			model.addAttribute("noRecords", "No records are found for the given Loan Application number");
@@ -75,6 +78,9 @@ public class LoanController {
 	@RequestMapping(value = { "/edit-loan-{loanId}" }, method = RequestMethod.GET)
 	public String editUser(@PathVariable String loanId, ModelMap model) {
 		Optional<LoanApplication> loanData = loanService.getById(Long.parseLong(loanId));
+		LoanApplicationComment comment = new LoanApplicationComment();
+		comment.setLoanApplication(loanData.get());
+		loanData.get().getLoanApplicationComments().add(comment);
 		model.addAttribute("loanData",  loanData.get());
 		model.addAttribute("edit", true);
 		return "editLoan";

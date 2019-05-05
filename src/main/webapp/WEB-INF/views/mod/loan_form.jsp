@@ -1122,17 +1122,43 @@
                                 </h2>
                                </div>
                         <div class="body">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
                            <c:forEach items="${loanData.loanApplicationComments}" var="loanApplicationComment" varStatus="status">
                                <div class="row clearfix">
-                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                               ${loanApplicationComment.comments}
+                                  <div class="form-line">
+                                  <c:choose>
+                                  <c:when test="${loanApplicationComment.comments != '' && fn:length(loanApplicationComment.comments)>0}">
+                                           <tr>
+											<td>
+											${loanApplicationComment.comments}
+											</td>
+											<td id="actionIcons">                                         
+											    <a href="<c:url value='/edit-comment-${loanApplicationComment.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
+                                            </td>
+                                               
+											</tr>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
+                            	</c:when>
+                             	<c:otherwise>
+									<div class="form-line">
+                                            <form:textarea rows="4" class="form-control no-resize" path="loanApplicationComments[${status.index}].comments" />
+											<label class="form-label">Please type your Comment</label>
+                                 	</div>
+                                    
+								</c:otherwise>
+								</c:choose>
                             </c:forEach>
+                          </tbody>
+                                </table>
                         </div>
                                </section>
        <!-------------------------------- Form Section 10 End Here --------------------------------->

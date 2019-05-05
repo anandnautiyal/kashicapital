@@ -90,5 +90,11 @@
 	<definition name="editLoan" extends=".tile.mainLayout">
 		<put-attribute name="body" value=".tile.body.loanform" />
 	</definition>
-	
+
+	<definition name=".tile.loanApplicationSuccess" extends=".tile.mainLayout">
+		<put-attribute name="body" value=".tile.body.loanApplicationSuccess" />
+	</definition>
+
+	<definition name=".tile.body.loanApplicationSuccess" template="/WEB-INF/views/layout/loanApplicationSuccess.jsp"/>
+
 </tiles-definitions>

@@ -24,8 +24,10 @@ public interface ILoanService {
 	
 	public Optional<LoanApplication> getByCode(String code);
 	
-	public LoanApplication saveLoanApplication(LoanApplication loanApplication);
+	public LoanApplicationResponse saveLoanApplication(LoanApplication loanApplication);
 	
 	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
+	
+	public void updateLoanApplication(LoanApplication loanApplication, String loanId);
 	
 }

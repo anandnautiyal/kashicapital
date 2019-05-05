@@ -39,13 +39,13 @@ public class Lead {
 	/**
 	 * Date entity created.
 	 */
-	@Column(name="CREATE_DATE", nullable=true)
+	@Column(name="DATE_CREATED", nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	/**
 	 * Date entity last modified.
 	 */
-	@Column(name="MODIFIED_DATE", nullable=true)
+	@Column(name="DATE_MODIFIED", nullable=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedDate;
 

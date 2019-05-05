@@ -14,7 +14,7 @@
                             <h2>Business Loan Application Form <span>(व्यवसाय  ऋण आवेदन पत्र)</span></h2>
                         </div>
                         <div class="body">
-                    <form:form method="POST" modelAttribute="loanData" class="form-horizontal">
+                    <form:form method="POST" modelAttribute="loanData" class="form-horizontal" id="loanApplicationForm">
                           <form:input type="hidden" path="id" id="id"/>
                             <div id="wizard_horizontal">
             

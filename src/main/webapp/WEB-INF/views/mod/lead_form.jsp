@@ -128,6 +128,18 @@
                                         </div>
                                     </div>
                                 </div>
+                                
+                               <div class="col-md-4">
+                                    <div class="form-group form-float">
+                                    	<span>Lead Status<span>(लीड की स्थिति)</span></span>
+                                      		<form:select path="status">
+   												<form:option value="नया" label="New(नया)"/>
+   												<form:option value="होल्ड" label="On Hold(होल्ड पर)"/>
+   												<form:option value="मंजूर की" label="Approved(मंजूर की)"/>
+   												<form:option value="अस्वीकृत" label="Rejected(अस्वीकृत)"/>
+											</form:select>                         
+                                	</div>
+                            </div>
                             </div>
 							<c:forEach items="${lead.leadComments}" var="leadComment" varStatus="status">
 							<c:set var="itemIndex" value="${status.index}" scope="request" />
@@ -145,6 +157,7 @@
                             </div>
 							</c:if>
 							</c:forEach>
+						
 							<input type="submit" value="Update" class="btn btn-orange m-t-15 waves-effect"/>
 							</div>
                       </form:form>
@@ -173,8 +186,8 @@
                                     
                                     <tbody>
                                      <c:forEach items="${lead.leadComments}" var="leadComment" varStatus="status">
-									 
-											 <tr>
+									 <c:if test="${leadComment.comment != '' || fn:length(leadComment.comment)>0}">
+											<tr>
 											<td>
 											${leadComment.comment}
 											</td>
@@ -183,7 +196,7 @@
                                                 </td>
                                                
 											</tr>
-                                            
+                                         </c:if>   
 										</c:forEach>
                                             
                                     </tbody>

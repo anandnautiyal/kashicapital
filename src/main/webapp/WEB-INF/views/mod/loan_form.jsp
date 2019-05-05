@@ -141,7 +141,7 @@
 								
 									<div class="row clearfix">
 										<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-								             <span class="kc-subhead">Types Of Loan<span>(सुविधाओं का प्रकार)</span></span>
+								        <span class="kc-subhead">Types Of Loan<span>(सुविधाओं का प्रकार)</span></span>
 										<form:select  class="form-control show-tick kc-select" path="applicationLoanDetail.loanType">
    											<form:option value="1" label="Term Loan(सावधि ऋण)"/>
    											<form:option value="2" label="Other Loans(अन्य ऋण)"/>
@@ -604,14 +604,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].yearsOfExperience" />
-                                                <label class="form-label">Is There Any Connection With The Company's Officials? If So, Details<span>(क्या कंपनी  के पदाधिकारियों के साथ कोई सम्बन्ध है? यदि हाँ तो विवरण दें)</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                        <span class="kc-subhead">Type Of Accommodation<span>(आवास का प्रकार)</span></span>
 										

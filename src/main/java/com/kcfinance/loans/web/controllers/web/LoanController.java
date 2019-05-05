@@ -1,5 +1,6 @@
 package com.kcfinance.loans.web.controllers.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 
 @Controller
 @RequestMapping("/")
-@SessionAttributes ("loanData")
+@SessionAttributes ("loan")
 public class LoanController {
 	
 	@Autowired
@@ -37,12 +39,32 @@ public class LoanController {
 	/**
 	 * This method will list all existing users.
 	 */
-	@RequestMapping(value="/getLoan", method = RequestMethod.POST)
+	@RequestMapping(value="/getLoans", method = RequestMethod.POST)
 	public String listLoan(ModelMap model) {
 
 		List<LoanApplication> loanList = loanService.getAllLoans();
 		model.addAttribute("loanList", loanList);
 
+
+		return "loan";
+	}
+	
+
+	/**
+	 * This method will list all existing users.
+	 */
+	@RequestMapping(value = { "/getLoan" }, method = RequestMethod.POST)
+	public String findLead(@ModelAttribute("loan") LoanApplication loan, ModelMap model) {
+
+		Optional<LoanApplication> tempLoan = loanService.getByCode(loan.getCode());
+		if(tempLoan.isPresent()){
+			List<LoanApplication> loans = new ArrayList<LoanApplication>();
+			loans.add(tempLoan.get());
+			model.addAttribute("loanList", loans);
+		}else{
+			model.addAttribute("noRecords", "No records are found for the given Loan Application number");
+			
+		}
 
 		return "loan";
 	}
@@ -70,5 +92,10 @@ public class LoanController {
 
 		model.addAttribute("success", "Loan Application with - " + loanApplication.getCode() + "updated successfully");
 		return ".tile.loanApplicationSuccess";
+	}
+	
+	@ModelAttribute("loan")
+	public LoanApplication createLeadForm() {
+		return new LoanApplication();
 	}
 }

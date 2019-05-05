@@ -18,19 +18,18 @@
                             </h2>
                         </div>
                         <div class="body">
-                        <form:form method="POST" action="/getLoan">
+                        <form:form method="POST" action="/getLoan" modelAttribute="loan">
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <input type="text"  name="lead_search" class="form-control">
+                                                <form:input type="text" path="code"  class="form-control"/>
                                                 <label class="form-label">Search</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                        
-										<input type="submit" value="Search" class="btn btn-orange btn-lg m-l-15 waves-effect"/>
+                                        <input type="submit" value="Search" class="btn btn-orange btn-lg m-l-15 waves-effect"/>
                                     </div>
                                 </div>
 
@@ -51,6 +50,7 @@
                             </h2>
                         </div>
                         <div class="body">
+                        <c:forEach items="${loanList}" var="loanApplication">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
@@ -63,7 +63,7 @@
                                     </thead>
                                     
                                     <tbody>
-                                         <c:forEach items="${loanList}" var="loanApplication">
+                                         
 											<tr>
 											<td>${loanApplication.code}</td>
                                             <td>${loanApplication.status}</td>
@@ -71,11 +71,15 @@
                                             <td>${loanApplication.loanApplicationCustomer.loanOfficerName}</td>
                                             <td><a href="<c:url value='/edit-loan-${loanApplication.id}' />" class="btn btn-success custom-width">edit</a></td>
 											</tr>
-										</c:forEach>
+										
                                     </tbody>
 									
                                 </table>
                             </div>
+                            </c:forEach>
+                            <c:if test="${not empty noRecords}">
+           	 					${noRecords}
+           					 </c:if>
                         </div>
                     </div>
                 </div>

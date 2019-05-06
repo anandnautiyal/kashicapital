@@ -16,6 +16,7 @@ import com.kcfinance.loans.app.modals.ApplicationLoanDetail;
 import com.kcfinance.loans.app.modals.CustomerAsset;
 import com.kcfinance.loans.app.modals.CommentsData;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
+import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.modals.LoanApplicationComment;
 import com.kcfinance.loans.app.modals.LoanApplicationCustomer;
@@ -30,6 +31,7 @@ import com.kcfinance.loans.app.modals.LoanCustomerPartnerFirmDetail;
 import com.kcfinance.loans.app.modals.LoanType;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 import com.kcfinance.loans.dao.CustomerAssetTypeRepository;
+import com.kcfinance.loans.dao.LoanApplicationCustomerDocumentRepository;
 import com.kcfinance.loans.dao.LoanApplicationCustomerRepository;
 import com.kcfinance.loans.dao.LoanApplicationRepository;
 import com.kcfinance.loans.dao.LoanCustomerBusinessRepository;
@@ -61,6 +63,10 @@ public class LoanService implements ILoanService{
 
 	@Autowired
 	private CustomerAssetTypeRepository customerAssetTypeRepository;
+	
+	@Autowired
+	private LoanApplicationCustomerDocumentRepository loanApplicationCustomerDocumentRepository;
+
 
 	@Override
 	public List<LoanApplication> getAllLoans() {
@@ -331,4 +337,8 @@ public class LoanService implements ILoanService{
 		//setParentReference(loanApplication);
 		loanApplicationRepository.saveAndFlush(loanApplication);
 	}
+	
+	public Optional<LoanApplicationCustomerDocument> findByDocumentId(String fileId) {	   
+		   return loanApplicationCustomerDocumentRepository.findById(Long.parseLong(fileId));	  
+	   }
 }

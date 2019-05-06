@@ -29,7 +29,7 @@ public class LoanApplicationComment implements Serializable {
 	private Long id;
 
 	@Column(name="COMMENT_BY_USER")
-	private BigDecimal commentByUser;
+	private String commentByUser;
 
 	private String comments;
 
@@ -67,11 +67,11 @@ public class LoanApplicationComment implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getCommentByUser() {
+	public String getCommentByUser() {
 		return this.commentByUser;
 	}
 
-	public void setCommentByUser(BigDecimal commentByUser) {
+	public void setCommentByUser(String commentByUser) {
 		this.commentByUser = commentByUser;
 	}
 

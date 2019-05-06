@@ -24,6 +24,7 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
@@ -123,6 +124,7 @@ public class LoanApplicationCustomer implements Serializable {
 	private LoanApplication loanApplication;
 
 	//bi-directional many-to-one association to LoanApplicationCustomerDocument
+	@JsonIgnore
 	@OneToMany(mappedBy="loanApplicationCustomer",cascade = CascadeType.ALL)
 	private List<LoanApplicationCustomerDocument> loanApplicationCustomerDocuments;
 
@@ -360,10 +362,12 @@ public class LoanApplicationCustomer implements Serializable {
 		this.loanApplication = loanApplication;
 	}
 
+	@JsonIgnore
 	public List<LoanApplicationCustomerDocument> getLoanApplicationCustomerDocuments() {
 		return this.loanApplicationCustomerDocuments;
 	}
 
+	@JsonProperty
 	public void setLoanApplicationCustomerDocuments(List<LoanApplicationCustomerDocument> loanApplicationCustomerDocuments) {
 		this.loanApplicationCustomerDocuments = loanApplicationCustomerDocuments;
 	}

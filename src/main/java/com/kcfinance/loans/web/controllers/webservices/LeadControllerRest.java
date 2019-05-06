@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.kcfinance.loans.Exceptions.LeadNotFoundException;
+import com.kcfinance.loans.app.modals.CommentsData;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.service.loan.ILeadService;
@@ -58,5 +58,10 @@ public class LeadControllerRest {
 	@PostMapping("/leads/docs")
 	LeadResponse updateCustomerDocuments(@RequestBody CustomerDocumentData customerDocumentData) {
 		return leadService.addCustomerDocuments(customerDocumentData);
+	}
+	
+	@PostMapping("/leads/comments")
+	LeadResponse updateCustomerDocuments(@RequestBody CommentsData customerDocumentData) {
+		return leadService.addLeadComments(customerDocumentData);
 	}
 }

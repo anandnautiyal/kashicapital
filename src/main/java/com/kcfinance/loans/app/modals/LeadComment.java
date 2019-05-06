@@ -63,6 +63,11 @@ public class LeadComment {
 
 	
 
+	public LeadComment() {
+
+	}
+
+
 	public LeadComment(String comment, String leadStatus) {
 		super();
 		this.comment = comment;

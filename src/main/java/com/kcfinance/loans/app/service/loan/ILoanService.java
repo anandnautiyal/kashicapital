@@ -3,6 +3,7 @@ package com.kcfinance.loans.app.service.loan;
 import java.util.List;
 import java.util.Optional;
 
+import com.kcfinance.loans.app.modals.CommentsData;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.web.controllers.webservices.LoanApplicationResponse;
@@ -27,6 +28,8 @@ public interface ILoanService {
 	public LoanApplicationResponse saveLoanApplication(LoanApplication loanApplication);
 	
 	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
+	
+	public LoanApplicationResponse addCustomerComments(CommentsData customerCommentData);
 	
 	public void updateLoanApplication(LoanApplication loanApplication, String loanId);
 	

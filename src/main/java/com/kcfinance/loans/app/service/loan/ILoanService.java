@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LoanApplication;
+import com.kcfinance.loans.app.modals.LoanApplicationCustomerDocument;
 import com.kcfinance.loans.web.controllers.webservices.LoanApplicationResponse;
 
 /**
@@ -29,5 +30,7 @@ public interface ILoanService {
 	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
 	
 	public void updateLoanApplication(LoanApplication loanApplication, String loanId);
+	
+	public Optional<LoanApplicationCustomerDocument> findByDocumentId(String ld);
 	
 }

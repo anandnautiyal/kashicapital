@@ -273,7 +273,12 @@ Insert into KASHICAPITAL.loan_customer_bank_detail (ID,LOAN_CUSTOMER_ID,BANK_ACC
 INSERT INTO KASHICAPITAL.loan_customer_asset (ID, LOAN_CUSTOMER_ID, ASSET_TYPE, CUSTOMER_ASSET_TYPE_ID, ASSET_QUANTITY, ASSET_COST, ASSET_DESCRIPTION, TOTAL_BUSINESS_ASSET, TOTAL_HOME_ASSET,DATE_CREATED,DATE_MODIFIED) VALUES ('1', '1110', 'AST1', '1', '2', '500000', 'Home land', '0', '2',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
 
 INSERT INTO KASHICAPITAL.LOAN_CUSTOMER_PARTNER_FIRM (ID, LOAN_CUSTOMER_ID, PARTNER_FIRM_NAME,FIRM_ADDRESS,PARTNER_FIRM_BANK_NAME,PARTNER_FIRM_BUSINESS_NATURE,DATE_CREATED,DATE_MODIFIED) VALUES ('1', '1110', 'kashi finance', 'Gomti nagar lucknow', 'ICICI', 'giving loan',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);
+
 alter table kashicapital.lead_customer_documents drop column document_image;
 alter table kashicapital.lead_customer_documents add column document_image LONGBLOB;
+
+alter table kashicapital.loan_application_customer_document drop column document_image;
+
+alter table kashicapital.loan_application_customer_document add column document_image LONGBLOB;
 
 

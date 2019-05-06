@@ -1,8 +1,11 @@
 package com.kcfinance.loans.web.controllers.web;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -17,8 +20,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.modals.LeadComment;
+import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.modals.LoanApplicationComment;
+import com.kcfinance.loans.app.modals.LoanApplicationCustomerDocument;
 import com.kcfinance.loans.app.service.loan.ILoanService;
 
 @Controller
@@ -98,6 +103,26 @@ public class LoanController {
 
 		model.addAttribute("success", "Loan Application with - " + loanApplication.getCode() + "updated successfully");
 		return ".tile.loanApplicationSuccess";
+	}
+	
+	@RequestMapping("/downloadLoanFile/{fileId}")
+	public String downloadFile(@PathVariable String fileId, HttpServletResponse response) {
+		// Load file from database
+		Optional<LoanApplicationCustomerDocument> file = loanService.findByDocumentId(fileId);
+
+		// Check if file is actually retrieved from database.
+		try {
+			if (file.get().getDocumentImage() != null) {
+				response.setContentType("image/png");
+				response.setHeader("Content-Length", String.valueOf(file.get().getDocumentImage().length));
+				// Write file content to response.
+				response.getOutputStream().write(file.get().getDocumentImage());
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	@ModelAttribute("loan")

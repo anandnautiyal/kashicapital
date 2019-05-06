@@ -1161,11 +1161,49 @@
                                 </table>
                         </div>
                                </section>
-       <!-------------------------------- Form Section 10 End Here --------------------------------->
-    
+                               
+                          
+       <!-------------------------------- Form Section 11 End Here --------------------------------->
+        <h2><span class="sr-only">12</span></h2>        
+               <section>
+                                <div class="header kc-header">
+                                <h2>
+                                Documents :
+                            </h2>
                         </div>
-                      </form>           
-                    </div>
+                        <div class="body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Serial Number</th>
+                                            <th>Link</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <c:forEach items="${loan.loanApplicationCustomer.loanApplicationCustomerDocuments}" var="loanApplicationCustomerDocument" varStatus="status">
+											 <tr>
+											<td>${loanApplicationCustomerDocument.documentName}</td>
+											<td id="actionIcons">                                         
+											    <a href="<c:url value='/downloadLoanFile/${loanApplicationCustomerDocument.id}'/>" 
+											    class="btn bg-orange  btn-circle-lg waves-effect waves-circle waves-float" target="_blank">
+											    <i class="material-icons">link</i></a>
+                                                </td>
+                                               
+											</tr>
+                                              
+											
+										</c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                 
+       		</section>
+       
+    
+                     
                 </div>
             </div>
             <!-- #END# Basic Example | Horizontal Layout -->

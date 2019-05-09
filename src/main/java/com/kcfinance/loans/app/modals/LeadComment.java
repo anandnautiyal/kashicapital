@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@NoArgsConstructor
 @Table(name="lead_comments")
 public class LeadComment {
 

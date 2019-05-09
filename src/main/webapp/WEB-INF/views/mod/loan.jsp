@@ -13,7 +13,7 @@
                     <div class="card">
                         <div class="header">
                             <h2>
-                                Search Lead
+                                Search Loan
                                 <small>With Loan no.</small>
                             </h2>
                         </div>
@@ -24,7 +24,7 @@
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <form:input type="text" path="code"  class="form-control"/>
-                                                <label class="form-label">Search</label>
+                                                <label class="form-label">Enter Loan no.</label>
                                             </div>
                                         </div>
                                     </div>
@@ -40,7 +40,7 @@
             </div>
 			<!-- Form structure End -->
 			
-			<!-- Basic Examples -->
+			<!-- Basic Examples --> <c:if test="${not empty loanList}">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <!-- #END# Basic Examples -->
+			</c:if>
         </div>
 	  </form:form>
     </section>
-  

@@ -14,7 +14,6 @@ import com.kcfinance.loans.Exceptions.GenericException;
 import com.kcfinance.loans.app.common.ResponseConstants;
 import com.kcfinance.loans.app.modals.ApplicationLoanDetail;
 import com.kcfinance.loans.app.modals.CustomerAsset;
-import com.kcfinance.loans.app.modals.CommentsData;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.modals.LoanApplication;
@@ -136,7 +135,7 @@ public class LoanService implements ILoanService{
 			logger.debug("saveLoanApplication start");
 
 		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
-
+		
 		try {
 			setParentReference(loanApplication);
 			loanApplicationRepository.save(loanApplication);
@@ -285,40 +284,6 @@ public class LoanService implements ILoanService{
 				loanApplicationCustomerRepository.saveAndFlush(loanApplicationCustomer);
 				applicationResponse.setStatus(ResponseConstants.SUCCESS_KEY);
 				applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_SUCCESS_MSG);
-			}
-
-		} catch (Exception e) {
-			applicationResponse.setStatus(ResponseConstants.FAILURE_KEY);
-			applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_FAILURE_MSG);
-			applicationResponse.setErrors(Arrays.asList(e.getMessage()));
-		}
-
-		return applicationResponse;
-	}
-
-	@Override
-	public LoanApplicationResponse addCustomerComments(CommentsData customerCommentData) {
-
-		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
-		try {
-
-			LoanApplication loanApplication = loanApplicationRepository.findByCode(customerCommentData.getCode()).orElse(null);
-
-			if(loanApplication != null) {
-
-				List<LoanApplicationComment> loanComments = customerCommentData.getLoanApplicationComments();
-				
-				if(loanComments != null) {
-					
-					for(LoanApplicationComment loanComment : loanComments) {
-						loanComment.setLoanApplication(loanApplication);			
-						loanApplication.getLoanApplicationComments().add(loanComment);
-					}
-
-					loanApplicationRepository.saveAndFlush(loanApplication);
-					applicationResponse.setStatus(ResponseConstants.SUCCESS_KEY);
-					applicationResponse.setMessage(ResponseConstants.ADD_DOCUMENTS_SUCCESS_MSG);
-				}
 			}
 
 		} catch (Exception e) {

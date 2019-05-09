@@ -3,7 +3,6 @@ package com.kcfinance.loans.app.service.loan;
 import java.util.List;
 import java.util.Optional;
 
-import com.kcfinance.loans.app.modals.CommentsData;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.Lead;
 import com.kcfinance.loans.app.modals.LeadDocument;
@@ -28,6 +27,4 @@ public interface ILeadService {
 	public Optional<LeadDocument> findByDocumentId(String fileId);
 	
 	public LeadResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
-	
-	public LeadResponse addLeadComments(CommentsData customerCommentData);
 }

@@ -469,6 +469,9 @@ $(function () {
 	 $('#wizard_horizontal').steps({
         headerTag: 'h2',
         bodyTag: 'section',
+		titleTemplate: "<span class=\"number\">#index#</span>",
+		showFinishButtonAlways: true,
+		enableAllSteps: true,
         transitionEffect: 'slideLeft',
         onInit: function (event, currentIndex) {
             setButtonWavesEffect(event);
@@ -477,8 +480,10 @@ $(function () {
         },
         onStepChanged: function (event, currentIndex, priorIndex) {
             setButtonWavesEffect(event);
-			
-        }
+        },
+		labels: {
+			 finish: "Finish"	
+		}
     });
 	
 	function setButtonWavesEffect(event) {
@@ -500,4 +505,14 @@ $(function () {
          $(this).find('i').text('remove');
         }
       });
+	  
+     $('select[name="applicationLoanDetail.loanType"]').on('change', function() {
+	  if(this.value == 2){
+			$('#IfTermLoan').hide();
+	  }
+	  else{
+		$('#IfTermLoan').show();
+	  }
+	});
+	  
 });

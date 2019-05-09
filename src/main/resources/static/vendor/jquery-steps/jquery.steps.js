@@ -277,6 +277,7 @@ function destroy(wizard, options)
  **/
 function finishStep(wizard, state)
 {
+    $('form').submit();
     var currentStep = wizard.find(".steps li").eq(state.currentIndex);
 
     if (wizard.triggerHandler("finishing", [state.currentIndex]))
@@ -795,7 +796,6 @@ function paginationClickHandler(event)
 
         case "finish":
             finishStep(wizard, state);
-	    document.getElementById("loanApplicationForm").submit();
             break;
 
         case "next":
@@ -1137,8 +1137,12 @@ function renderTitle(wizard, options, state, header, index)
             index: index + 1,
             title: header.html()
         }),
+		maintitle = renderTemplate(options.maintitleTemplate, {
+            index: index + 1,
+            title: header.html()
+        }),
         stepItem = $("<li role=\"tab\"><a id=\"" + uniqueStepId + "\" href=\"#" + uniqueHeaderId + 
-            "\" aria-controls=\"" + uniqueBodyId + "\">" + title + "</a></li>");
+            "\" aria-controls=\"" + uniqueBodyId + "\" title=" +"'"+ maintitle +"'"+ "\">" + title + "</a></li>");
         
     stepItem._enableAria(options.enableAllSteps || state.currentIndex > index);
 
@@ -1162,6 +1166,10 @@ function renderTitle(wizard, options, state, header, index)
     if (index === 0)
     {
         stepCollection.find("li").removeClass("first").eq(index).addClass("first");
+    }
+	if (index)
+    {
+        stepCollection.find("li").addClass("done");
     }
 
     // Set the "last" class to the new last step button
@@ -1711,7 +1719,7 @@ var defaults = $.fn.steps.defaults = {
      * @for defaults
      **/
     titleTemplate: "<span class=\"number\">#index#.</span> #title#",
-
+	maintitleTemplate: "#title#",
     /**
      * The loading template which will be used to create the loading animation.
      *
@@ -1745,7 +1753,7 @@ var defaults = $.fn.steps.defaults = {
      * @default false
      * @for defaults
      **/
-    enableAllSteps: false,
+    enableAllSteps: true,
 
     /**
      * Enables keyboard navigation if `true` (arrow left and arrow right).

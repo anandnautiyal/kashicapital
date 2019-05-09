@@ -133,10 +133,10 @@
                                     <div class="form-group form-float">
                                     	<span>Lead Status<span>(लीड की स्थिति)</span></span>
                                       		<form:select path="status">
-   												<form:option value="नया" label="New(नया)"/>
-   												<form:option value="होल्ड" label="On Hold(होल्ड पर)"/>
-   												<form:option value="मंजूर की" label="Approved(मंजूर की)"/>
-   												<form:option value="अस्वीकृत" label="Rejected(अस्वीकृत)"/>
+   												<form:option value="NEW" label="New(नया)"/>
+   												<form:option value="ON_HOLD" label="On Hold(होल्ड पर)"/>
+   												<form:option value="APPROVED" label="Approved(मंजूर की)"/>
+   												<form:option value="REJECTED" label="Rejected(अस्वीकृत)"/>
 											</form:select>                         
                                 	</div>
                             </div>

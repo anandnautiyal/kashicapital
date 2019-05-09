@@ -21,6 +21,7 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
+@NoArgsConstructor
 @Table(name="lead_comments")
 public class LeadComment {
 
@@ -61,6 +62,7 @@ public class LeadComment {
 	private Lead lead;
 
 	
+
 	public LeadComment(String comment, String leadStatus) {
 		super();
 		this.comment = comment;

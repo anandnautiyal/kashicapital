@@ -6243,9 +6243,9 @@ fieldset[disabled] .form-control {
   background-color: #F44336 !important; }
 
 .wizard .steps .current a {
-  background-color: #009688; }
+  background-color: #000; }
   .wizard .steps .current a:active, .wizard .steps .current a:focus, .wizard .steps .current a:hover {
-    background-color: #009688; }
+    background-color: #FFC107; }
 
 /* Waves ======================================= */
 .waves-effect.waves-red .waves-ripple {
@@ -8227,3 +8227,24 @@ html.ie11 .dropdown-menu ul.menu li a {
 
 html.ie11 .bs-searchbox .form-control {
   width: 90%; }
+
+#loanApplicationForm.form-horizontal .form-group{
+	padding-top: 15px;
+} 
+#loanApplicationForm .btn-group.bootstrap-select {
+    margin-top: 18px;
+}
+.form-control-label label{
+	font-weight: normal !important;	
+}
+.kc-heading h4,.kc-heading h3,.kc-heading h2{
+    font-weight: normal !important;
+}
+.card .header h2 span {
+    display: inline-block;
+    padding-top: 5px;
+} 
+li.current[aria-selected="true"] a {
+    background: #000 !important;
+}
+  

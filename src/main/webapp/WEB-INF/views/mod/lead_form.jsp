@@ -180,7 +180,7 @@
                                     <thead>
                                         <tr>
                                             <th>Username</th>
-                                            <th>Action</th>
+                                           
                                         </tr>
                                     </thead>
                                     
@@ -191,9 +191,7 @@
 											<td>
 											${leadComment.comment}
 											</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-comment-${leadComment.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
-                                                </td>
+											
                                                
 											</tr>
                                          </c:if>   

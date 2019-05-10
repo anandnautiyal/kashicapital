@@ -46,11 +46,15 @@
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
-                        <div class="header">
+                    <c:if test="${empty success}">
+           	 					
+           				<div class="header">
                             <h2>
+                            
                                 Search Result
                             </h2>
                         </div>
+                      </c:if>
                         <div class="body">
                         <c:forEach items="${leadList}" var="lead">
                             <div class="table-responsive">
@@ -72,9 +76,7 @@
 											<td>${lead.leadCustomer.phone}</td>
 											<td>${lead.leadCustomer.meetingDate}</td>
 											<td><a href="<c:url value='/edit-user-${lead.id}' />" class="btn btn-success custom-width">edit</a></td>
-											<td><a href="<c:url value='/delete-user-${user.mobileNumber}' />" class="btn btn-danger 
-					 
-												custom-width">delete</a></td>
+											
 										
 											</tr>
 											
@@ -92,6 +94,10 @@
                              </c:forEach>
                              <c:if test="${not empty noRecords}">
            	 					${noRecords}
+           					 </c:if>
+           					 
+           					 <c:if test="${not empty success}">
+           	 					${success}
            					 </c:if>
                         </div>
                     </div>

@@ -1036,6 +1036,78 @@
                        
                         </div>
                                </section>
+                               
+                               
+                           	<!-------------------------------- Form Section new  --------------------------------->	
+					   <h2> Description Of Assets (परिसम्पत्तियों का विवरण )</h2>        
+                             <section>
+                                <div class="header kc-header">
+                                <h2>
+                                    Description Of Assets<span>( परिसम्पत्तियों का विवरण )</span>:
+                                </h2>
+                               </div>
+                   <c:forEach items="${loan.loanApplicationCustomer.loanCustomerAssets}" var="loanCustomerAsset" varStatus="status">
+                        <div class="body">
+                           
+                                <div class="row clearfix">
+                                    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+                                        <span class="kc-subhead">Types Of Assets<span>( परिसम्पत्तियों का प्रकार)</span></span>
+										
+										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].customerAsset">
+   											<form:option value="1" label="Business(व्यावसायिक)"/>
+   											<form:option value="2" label="Household(घरेलू )"/>
+   										</form:select>
+										
+									
+                                    </div>
+									 <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+                                        <span class="kc-subhead">Types<span>( प्रकार)</span></span>
+										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetType">
+											<form:option value="अचल" label="Immovable(अचल)"/>
+   											<form:option value="चल" label="Running(चल)"/>
+   											<form:option value="वर्तमान संपत्ति" label="Present property(वर्तमान संपत्ति)"/>
+   											<form:option value="अन्य" label="Others(अन्य)"/>
+										</form:select>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="B_Assest">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" class="form-control"/>
+                                                <label class="form-label">Assest<span>(संपत्ति)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+									
+								</div>	
+								<div class="row clearfix">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetQuantity" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetQuantity" class="form-control"/>
+                                                <label class="form-label">Number<span>(संख्या)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetCost" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetCost" class="form-control"/>
+                                                <label class="form-label">Price(In Rs.)<span>(मूल्य (रु॰में))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" class="form-control"/>
+                                                <label class="form-label">Description<span>(विवरण)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                             </c:forEach> 
+                               </section>  
        <!-------------------------------- Form Section 9 End Here ---------------------------------->
        <!-------------------------------- Form Section 10 Start From Here -------------------------->
                                 <h2>The Details Of The Monthly Household Income (मासिक घरेलु आय का विवरण)</h2>        
@@ -1126,8 +1198,8 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Username</th>
-                                            <th>Action</th>
+                                            <th>Previous Comment</th>
+                                            
                                         </tr>
                                     </thead>
                                     
@@ -1140,9 +1212,7 @@
 											<td>
 											${loanApplicationComment.comments}
 											</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-comment-${loanApplicationComment.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
-                                            </td>
+											
                                                
 											</tr>
                                         
@@ -1203,73 +1273,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div>
-                 
-					</section>
-					<!-------------------------------- Form Section new  --------------------------------->	
-					   <h2> Description Of Assets (परिसम्पत्तियों का विवरण )</h2>        
-                             <section>
-                                <div class="header kc-header">
-                                <h2>
-                                    Description Of Assets<span>( परिसम्पत्तियों का विवरण )</span>:
-                                </h2>
-                               </div>
-                        <div class="body">
-                           
-                                <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
-                                        <span class="kc-subhead">Types Of Assets<span>( परिसम्पत्तियों का प्रकार)</span></span>
-										<select class="form-control show-tick kc-select" name="types_of_Bussiness_assests">
-											<option value="व्यावसायिक">Business<span>(व्यावसायिक)</span></option>
-											<option value="घरेलू ">Household<span>(घरेलू )</span></option>
-										</select>
-                                    </div>
-									 <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
-                                        <span class="kc-subhead">Types<span>( प्रकार)</span></span>
-										<select class="form-control show-tick kc-select" name="types_of_Bussiness_assests">
-											<option value="अचल">Immovable<span>(अचल)</span></option>
-											<option value="चल">Running<span>(चल)</span></option>
-                                            <option value="वर्तमान संपत्ति">Present property<span>(वर्तमान संपत्ति)</span></option>
-                                            <option value="अन्य">Others<span>(अन्य)</span></option>
-										</select>
-                                    </div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="B_Assest">
-                                                <label class="form-label">Assest<span>(संपत्ति)</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-									
-								</div>	
-								<div class="row clearfix">
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="B_Assest_number">
-                                                <label class="form-label">Number<span>(संख्या)</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="B_Assest_Price">
-                                                <label class="form-label">Price(In Rs.)<span>(मूल्य (रु॰में))</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="B_Assest_Description">
-                                                <label class="form-label">Description<span>(विवरण)</span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="col-md-4">
+                              <div class="col-md-4">
                                     <div class="form-group form-float">
                                     	<span>Loan Status<span>(ऋण आवेदन की स्थिति)</span></span>
                                       		<form:select path="status">
@@ -1279,8 +1283,11 @@
    												<form:option value="REJECTED" label="Rejected(अस्वीकृत)"/>
 											</form:select>                         
                                 	</div> 
+                        	  </div>
                         </div>
-                               </section>        
+                 
+					</section>
+				      
                      
                 </div>
             </div>

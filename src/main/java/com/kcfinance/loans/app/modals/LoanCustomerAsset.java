@@ -30,7 +30,11 @@ public class LoanCustomerAsset implements Serializable {
 
 	@Column(name="ASSET_COST")
 	private BigDecimal assetCost;
-
+	
+	@Column(name="ASSET")
+	private String asset;
+	
+	
 	@Column(name="ASSET_DESCRIPTION")
 	private String assetDescription;
 
@@ -156,5 +160,14 @@ public class LoanCustomerAsset implements Serializable {
 	public void setLoanApplicationCustomer(LoanApplicationCustomer loanApplicationCustomer) {
 		this.loanApplicationCustomer = loanApplicationCustomer;
 	}
+	
+	public String getAsset() {
+		return asset;
+	}
+
+	public void setAsset(String asset) {
+		this.asset = asset;
+	}
+
 
 }

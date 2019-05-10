@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kcfinance.loans.Exceptions.GenericException;
@@ -131,6 +132,7 @@ public class LoanService implements ILoanService{
 
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public LoanApplicationResponse saveLoanApplication(LoanApplication loanApplication) {
 		if(logger.isDebugEnabled())
 			logger.debug("saveLoanApplication start");
@@ -265,6 +267,7 @@ public class LoanService implements ILoanService{
 
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData) {
 
 		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
@@ -297,6 +300,7 @@ public class LoanService implements ILoanService{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public LoanApplicationResponse addCustomerComments(CommentsData customerCommentData) {
 
 		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
@@ -331,6 +335,7 @@ public class LoanService implements ILoanService{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public void updateLoanApplication(LoanApplication loanApplication, String loanApplicationId) {
 		if(logger.isDebugEnabled())
 			logger.debug("updateLoanApplication starte");

@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 
 
 @Entity
-@NoArgsConstructor
 @Table(name="lead_comments")
 public class LeadComment {
 
@@ -61,12 +60,10 @@ public class LeadComment {
 	@JoinColumn(unique = true)
 	private Lead lead;
 
-	
-
-	public LeadComment() {
-
-	}
-
+	 public LeadComment() {
+	  
+	 }
+	 
 
 	public LeadComment(String comment, String leadStatus) {
 		super();

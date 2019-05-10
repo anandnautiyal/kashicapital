@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kcfinance.loans.app.common.ResponseConstants;
@@ -55,6 +56,7 @@ public class LeadService implements ILeadService {
 		return leadRepository.findAll();
 	}
 
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public Lead saveLead(Lead lead) {
 
 		LeadCustomer leadCustomer = lead.getLeadCustomer();
@@ -66,12 +68,13 @@ public class LeadService implements ILeadService {
 		return leadRepository.save(lead);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public void deleteLead(Long id) {
 		leadRepository.deleteById(id);
 	}
 
 
-
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public void updateLead(Lead lead, String leadId) {
 		List<LeadComment>leadComments = new ArrayList<LeadComment>();
 		for(LeadComment leadComment:lead.getLeadComments()){
@@ -97,6 +100,7 @@ public class LeadService implements ILeadService {
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public LeadResponse addCustomerDocuments(CustomerDocumentData customerDocumentData) {
 
 		LeadResponse leadResponse = new LeadResponse();
@@ -135,6 +139,7 @@ public class LeadService implements ILeadService {
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW, readOnly = false)
 	public LeadResponse addLeadComments(CommentsData commentsData) {
 
 		LeadResponse leadResponse = new LeadResponse();

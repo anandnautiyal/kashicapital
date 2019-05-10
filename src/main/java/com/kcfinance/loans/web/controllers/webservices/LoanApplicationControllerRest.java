@@ -55,7 +55,7 @@ public class LoanApplicationControllerRest {
 		return loanService.saveLoanApplication(loanApplication);
 	}
 	
-	@PostMapping("/loans/docs/{code}")
+	@PostMapping("/loans/docs}")
 	LoanApplicationResponse updateCustomerDocuments(@RequestBody CustomerDocumentData customerDocumentData) {
 		return loanService.addCustomerDocuments(customerDocumentData);
 	}

@@ -64,7 +64,9 @@ public class LoanCustomerLoanDetail implements Serializable {
 	private String loanSecurity;
 
 	@Column(name="LOAN_START_DATE")
-	private Timestamp loanStartDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	private Date loanStartDate;
 
 	@Column(name="LOAN_TERM")
 	private String loanTerm;
@@ -163,11 +165,11 @@ public class LoanCustomerLoanDetail implements Serializable {
 		this.loanSecurity = loanSecurity;
 	}
 
-	public Timestamp getLoanStartDate() {
+	public Date getLoanStartDate() {
 		return this.loanStartDate;
 	}
 
-	public void setLoanStartDate(Timestamp loanStartDate) {
+	public void setLoanStartDate(Date loanStartDate) {
 		this.loanStartDate = loanStartDate;
 	}
 

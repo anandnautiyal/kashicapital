@@ -146,7 +146,7 @@ public class LoanCustomerBusiness implements Serializable {
 		return this.dateModified;
 	}
 
-	public void setDateModified(Timestamp dateModified) {
+	public void setDateModified(Date dateModified) {
 		this.dateModified = dateModified;
 	}
 

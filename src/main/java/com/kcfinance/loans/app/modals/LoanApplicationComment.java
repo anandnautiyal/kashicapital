@@ -103,7 +103,7 @@ public class LoanApplicationComment implements Serializable {
 		return this.dateOfComment;
 	}
 
-	public void setDateOfComment(Timestamp dateOfComment) {
+	public void setDateOfComment(Date dateOfComment) {
 		this.dateOfComment = dateOfComment;
 	}
 

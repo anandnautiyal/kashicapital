@@ -60,10 +60,14 @@ public class LeadComment {
 	@JoinColumn(unique = true)
 	private Lead lead;
 
+<<<<<<< HEAD
 	 public LeadComment() {
 	  
 	 }
 	 
+=======
+	
+>>>>>>> dd8707250ad0f270564f98f4ea67e5b777f3debc
 
 	public LeadComment(String comment, String leadStatus) {
 		super();

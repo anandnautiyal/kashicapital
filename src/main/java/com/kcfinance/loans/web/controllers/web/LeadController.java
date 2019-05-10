@@ -85,7 +85,7 @@ public class LeadController {
 	}
 
 	@RequestMapping(value = { "/edit-user-{leadId}" }, method = RequestMethod.POST)
-	public String updateUser(@ModelAttribute("lead") Lead lead, BindingResult result, ModelMap model,
+	public String updateLead(@ModelAttribute("lead") Lead lead, BindingResult result, ModelMap model,
 			@PathVariable String leadId) {
 
 		if (result.hasErrors()) {
@@ -94,9 +94,9 @@ public class LeadController {
 
 		leadService.updateLead(lead, leadId);
 
-		model.addAttribute("success", "User " + lead.getLeadCustomer().getFirstName() + " "
-				+ lead.getLeadCustomer().getLastName() + " updated successfully");
-		return "leadSuccess";
+		model.addAttribute("success", "Lead record " + lead.getCode() + " "
+				+ " updated successfully");
+		return "lead";
 	}
 
 	@RequestMapping("/downloadFile/{fileId}")

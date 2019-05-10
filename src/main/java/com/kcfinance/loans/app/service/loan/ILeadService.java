@@ -29,5 +29,5 @@ public interface ILeadService {
 	
 	public LeadResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
 	
-	public LeadResponse addLeadComments(CommentsData customerCommentData);
+	public LeadResponse addLeadComments(CommentsData commentsData);
 }

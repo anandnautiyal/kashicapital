@@ -1,5 +1,6 @@
 package com.kcfinance.loans.app.service.loan.impl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -14,10 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kcfinance.loans.Exceptions.GenericException;
 import com.kcfinance.loans.app.common.ResponseConstants;
 import com.kcfinance.loans.app.modals.ApplicationLoanDetail;
-import com.kcfinance.loans.app.modals.CustomerAsset;
 import com.kcfinance.loans.app.modals.CommentsData;
+import com.kcfinance.loans.app.modals.CustomerAsset;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
-import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.modals.LoanApplicationComment;
 import com.kcfinance.loans.app.modals.LoanApplicationCustomer;
@@ -138,7 +138,7 @@ public class LoanService implements ILoanService{
 			logger.debug("saveLoanApplication start");
 
 		LoanApplicationResponse applicationResponse = new LoanApplicationResponse();
-
+		
 		try {
 			setParentReference(loanApplication);
 			loanApplicationRepository.save(loanApplication);
@@ -340,6 +340,17 @@ public class LoanService implements ILoanService{
 		if(logger.isDebugEnabled())
 			logger.debug("updateLoanApplication starte");
 		//setParentReference(loanApplication);
+		
+		List<LoanApplicationComment>loanComments = new ArrayList<LoanApplicationComment>();
+    	for(LoanApplicationComment loanComment:loanApplication.getLoanApplicationComments()){
+    		
+    		if(!loanComment.getComments().isEmpty()){
+    			loanComments.add(loanComment);
+    		}
+    		
+    	}
+    	loanApplication.setLoanApplicationComments(null);
+    	loanApplication.setLoanApplicationComments(loanComments);
 		loanApplicationRepository.saveAndFlush(loanApplication);
 	}
 	

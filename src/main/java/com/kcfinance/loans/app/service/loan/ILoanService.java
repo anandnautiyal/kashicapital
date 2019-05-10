@@ -30,10 +30,9 @@ public interface ILoanService {
 	
 	public LoanApplicationResponse addCustomerDocuments(CustomerDocumentData customerDocumentData);
 	
-	public LoanApplicationResponse addCustomerComments(CommentsData customerCommentData);
-	
 	public void updateLoanApplication(LoanApplication loanApplication, String loanId);
 	
 	public Optional<LoanApplicationCustomerDocument> findByDocumentId(String ld);
 	
+	public LoanApplicationResponse addCustomerComments(CommentsData customerCommentData);
 }

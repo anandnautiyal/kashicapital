@@ -19,7 +19,7 @@
                             <div id="wizard_horizontal">
             
         <!-------------------------------- Form Section 1 start from here ---------------------------------->
-			           <h2><span class="sr-only">1</span></h2>
+			           <h2>For Office Use(कार्यालय उपयोग हेतु)</h2>
                                 <section>
                         <div class="header kc-header">
                             <h2>
@@ -131,7 +131,7 @@
                                 
 		 
 <!-------------------------------- Form Section 2 Start From Here ---------------------------------->
-							<h2><span class="sr-only">2</span></h2>
+							<h2>Proposed Credit Facilities(प्रस्तावित ऋण सुविधाएं)</h2>
 							<section>  
 							<div class="header kc-header">
 								<h2>
@@ -260,7 +260,8 @@
         </section> 
                         
       <!-------------------------------- Form Section 2 End Here ---------------------------------->
-      <!-------------------------------- Form Section 3 Start From Here ---------------------------------->                                                <h2><span class="sr-only">3</span></h2>
+      <!-------------------------------- Form Section 3 Start From Here ---------------------------------->  
+							<h2>Business Information(व्यवसाय संबंधी जानकारी)</h2>
                                 <section>  
                                    <div class="header kc-header">
                             <h2>
@@ -465,7 +466,7 @@
                                 </section>
        <!-------------------------------- Form Section 3 End Here ---------------------------------->
        <!-------------------------------- Form Section 4 Start From Here ---------------------------------->
-                                <h2><span class="sr-only">4</span></h2>        
+                                <h2>Family Details Of Those Members Are Dependent On You(पारिवारिक विवरण उन सदस्यों का जो आप पर आश्रित हैं)</h2>        
                                 <section>
                                 <div class="header kc-header">
                             <h2>
@@ -540,7 +541,7 @@
                                </section>
        <!-------------------------------- Form Section 4 End Here ---------------------------------->
        <!-------------------------------- Form Section 5 Start From Here ---------------------------------->
-                                <h2><span class="sr-only">5</span></h2>        
+                                <h2>Details Of Owners/Partners/Directors(मालिक / भागीदारों / निदेशकों का विवरण)</h2>        
                                 <section>
                                 <div class="header">
                             <h2>
@@ -696,7 +697,7 @@
                                </section>
        <!-------------------------------- Form Section 5 End Here ---------------------------------->
        <!-------------------------------- Form Section 6 Start Here ---------------------------------->
-                                 <h2><span class="sr-only">6</span></h2>        
+                                 <h2>Partner Firms Name and Business Nature (सहयोगी फर्मों के नाम और सहयोगी फर्मों के व्यवसाय की प्रकृति) </h2>        
                                 <section>
                                 <div class="header kc-header">
                             <h2>
@@ -755,7 +756,7 @@
            </c:forEach>
        <!-------------------------------- Form Section 6 End Here ---------------------------------->
        <!-------------------------------- Form Section 7 Start From Here ---------------------------------->
-                                <h2><span class="sr-only">7</span></h2>        
+                                <h2>Current Banking Facilities (in rupees) (वर्तमान बैंकिंग सुविधाएं (रुपए में))</h2>        
                                 <section>
                                 <div class="header kc-header">
                             <h2>
@@ -824,7 +825,7 @@
                                </section>
        <!-------------------------------- Form Section 7 End Here ---------------------------------->
        <!-------------------------------- Form Section 8 Start From Here --------------------------->
-                                <h2><span class="sr-only">8</span></h2>        
+                                <h2>Details Of Liabilities (Commercial and  Domestic) (देनदारियों का विवरण (व्यावसायिक व घरेलू))</h2>        
                                 <section>
                                 <div class="header kc-header">
                             <h2>
@@ -966,7 +967,7 @@
                    
           <!-------------------------------- Form Section 8 End Here ---------------------------------->
        <!-------------------------------- Form Section 9 Start From Here ---------------------------------->
-                                <h2><span class="sr-only">9</span></h2>        
+                                <h2>Total Of Liabilities (Commercial and  Domestic) (कुल देनदारियां (व्यावसायिक व घरेलू))</h2>        
                                 <section>
                                 <div class="header kc-header">
                             <h2>
@@ -1035,9 +1036,81 @@
                        
                         </div>
                                </section>
+                               
+                               
+                           	<!-------------------------------- Form Section new  --------------------------------->	
+					   <h2> Description Of Assets (परिसम्पत्तियों का विवरण )</h2>        
+                             <section>
+                                <div class="header kc-header">
+                                <h2>
+                                    Description Of Assets<span>( परिसम्पत्तियों का विवरण )</span>:
+                                </h2>
+                               </div>
+                   <c:forEach items="${loan.loanApplicationCustomer.loanCustomerAssets}" var="loanCustomerAsset" varStatus="status">
+                        <div class="body">
+                           
+                                <div class="row clearfix">
+                                    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+                                        <span class="kc-subhead">Types Of Assets<span>( परिसम्पत्तियों का प्रकार)</span></span>
+										
+										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].customerAsset">
+   											<form:option value="1" label="Business(व्यावसायिक)"/>
+   											<form:option value="2" label="Household(घरेलू )"/>
+   										</form:select>
+										
+									
+                                    </div>
+									 <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+                                        <span class="kc-subhead">Types<span>( प्रकार)</span></span>
+										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetType">
+											<form:option value="अचल" label="Immovable(अचल)"/>
+   											<form:option value="चल" label="Running(चल)"/>
+   											<form:option value="वर्तमान संपत्ति" label="Present property(वर्तमान संपत्ति)"/>
+   											<form:option value="अन्य" label="Others(अन्य)"/>
+										</form:select>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="B_Assest">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" class="form-control"/>
+                                                <label class="form-label">Assest<span>(संपत्ति)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+									
+								</div>	
+								<div class="row clearfix">
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetQuantity" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetQuantity" class="form-control"/>
+                                                <label class="form-label">Number<span>(संख्या)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetCost" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetCost" class="form-control"/>
+                                                <label class="form-label">Price(In Rs.)<span>(मूल्य (रु॰में))</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                                        <div class="form-group form-float">
+                                            <div class="form-line">
+                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" class="form-control"/>
+                                                <label class="form-label">Description<span>(विवरण)</span></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                             </c:forEach> 
+                               </section>  
        <!-------------------------------- Form Section 9 End Here ---------------------------------->
        <!-------------------------------- Form Section 10 Start From Here -------------------------->
-                                <h2><span class="sr-only">10</span></h2>        
+                                <h2>The Details Of The Monthly Household Income (मासिक घरेलु आय का विवरण)</h2>        
                                 <section>
                                 <div class="header kc-header">
                                 <h2>
@@ -1114,7 +1187,7 @@
                         </div>
                                </section>
        <!-------------------------------- Form Section 10 End Here --------------------------------->
-         <h2><span class="sr-only">11</span></h2>        
+								<h2>12</h2>        
                                 <section>
                                 <div class="header kc-header">
                                 <h2>
@@ -1125,47 +1198,49 @@
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Username</th>
-                                            <th>Action</th>
+                                            <th>Previous Comment</th>
+                                            
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
                            <c:forEach items="${loan.loanApplicationComments}" var="loanApplicationComment" varStatus="status">
-                               <div class="row clearfix">
-                                  <div class="form-line">
+                               
                                   <c:choose>
                                   <c:when test="${loanApplicationComment.comments != '' && fn:length(loanApplicationComment.comments)>0}">
                                            <tr>
 											<td>
 											${loanApplicationComment.comments}
 											</td>
-											<td id="actionIcons">                                         
-											    <a href="<c:url value='/edit-comment-${loanApplicationComment.id}' />" class="btn bg-orange btn-circle-lg waves-effect waves-circle waves-float"><i class="material-icons">description</i></a>
-                                            </td>
+											
                                                
 											</tr>
-                                            </div>
-                                        </div>
+                                        
+                                  
                             	</c:when>
                              	<c:otherwise>
-									<div class="form-line">
-                                            <form:textarea rows="4" class="form-control no-resize" path="loanApplicationComments[${status.index}].comments" />
-											<label class="form-label">Please type your Comment</label>
-                                 	</div>
-                                    
+								   <div class="row clearfix">
+										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+											<div class="form-group form-float">
+												<div class="form-line">
+												<form:textarea rows="4" class="form-control no-resize" path="loanApplicationComments[${status.index}].comments" />
+												<label class="form-label">Please type your Comment</label>
+												</div>
+											</div>
+										</div>
+									</div>	
 								</c:otherwise>
 								</c:choose>
                             </c:forEach>
-                          </tbody>
+									</tbody>
                                 </table>
                         </div>
                                </section>
                                
                           
        <!-------------------------------- Form Section 11 End Here --------------------------------->
-        <h2><span class="sr-only">12</span></h2>        
-               <section>
+							<h2>Documents</h2>        
+							<section>
                                 <div class="header kc-header">
                                 <h2>
                                 Documents :
@@ -1198,11 +1273,21 @@
                                     </tbody>
                                 </table>
                             </div>
+                              <div class="col-md-4">
+                                    <div class="form-group form-float">
+                                    	<span>Loan Status<span>(ऋण आवेदन की स्थिति)</span></span>
+                                      		<form:select path="status">
+   												<form:option value="NEW" label="New(नया)"/>
+   												<form:option value="ON_HOLD" label="On Hold(होल्ड पर)"/>
+   												<form:option value="APPROVED" label="Approved(मंजूर की)"/>
+   												<form:option value="REJECTED" label="Rejected(अस्वीकृत)"/>
+											</form:select>                         
+                                	</div> 
+                        	  </div>
                         </div>
                  
-       		</section>
-       
-    
+					</section>
+				      
                      
                 </div>
             </div>

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kcfinance.loans.Exceptions.GenericException;
-import com.kcfinance.loans.app.modals.CommentsData;
 import com.kcfinance.loans.app.modals.CustomerDocumentData;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.service.loan.ILoanService;
@@ -56,13 +55,8 @@ public class LoanApplicationControllerRest {
 		return loanService.saveLoanApplication(loanApplication);
 	}
 	
-	@PostMapping("/loans/docs")
+	@PostMapping("/loans/docs/{code}")
 	LoanApplicationResponse updateCustomerDocuments(@RequestBody CustomerDocumentData customerDocumentData) {
 		return loanService.addCustomerDocuments(customerDocumentData);
-	}
-	
-	@PostMapping("/loans/comments")
-	LoanApplicationResponse updateCustomerDocuments(@RequestBody CommentsData customerDocumentData) {
-		return loanService.addCustomerComments(customerDocumentData);
 	}
 }

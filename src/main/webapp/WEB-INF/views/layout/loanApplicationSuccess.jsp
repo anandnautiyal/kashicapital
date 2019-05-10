@@ -4,6 +4,6 @@
         ${success}
     </div>
     <span class="well floatRight">
-        Go Back <a href="javascript:history:back();"></a>
+        Go Back <a href="javascript:history.back();"></a>
     </span>
 </div>

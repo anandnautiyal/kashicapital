@@ -18,9 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.kcfinance.loans.app.modals.Lead;
-import com.kcfinance.loans.app.modals.LeadComment;
-import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.modals.LoanApplication;
 import com.kcfinance.loans.app.modals.LoanApplicationComment;
 import com.kcfinance.loans.app.modals.LoanApplicationCustomerDocument;
@@ -61,7 +58,7 @@ public class LoanController {
 	 * This method will list all existing users.
 	 */
 	@RequestMapping(value = { "/getLoan" }, method = RequestMethod.POST)
-	public String findLead(@ModelAttribute("loan") LoanApplication loan, ModelMap model) {
+	public String findLoanApplication(@ModelAttribute("loan") LoanApplication loan, ModelMap model) {
 
 		Optional<LoanApplication> tempLoan = loanService.getByCode(loan.getCode());
 		if(tempLoan.isPresent()){
@@ -101,8 +98,8 @@ public class LoanController {
 
 		loanService.updateLoanApplication(loanApplication, loanId);
 
-		model.addAttribute("success", "Loan Application with - " + loanApplication.getCode() + "updated successfully");
-		return ".tile.loanApplicationSuccess";
+		model.addAttribute("loanApplicationUpdateSuccess", "Loan Application [" + loanApplication.getCode() + "] is updated successfully");
+		return "loan";//".tile.loanApplicationSuccess";
 	}
 	
 	@RequestMapping("/downloadLoanFile/{fileId}")
@@ -126,7 +123,7 @@ public class LoanController {
 	}
 	
 	@ModelAttribute("loan")
-	public LoanApplication createLeadForm() {
+	public LoanApplication createLoanApplicationForm() {
 		return new LoanApplication();
 	}
 }

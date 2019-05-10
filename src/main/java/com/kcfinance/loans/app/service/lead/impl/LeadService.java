@@ -19,7 +19,6 @@ import com.kcfinance.loans.app.modals.LeadComment;
 import com.kcfinance.loans.app.modals.LeadCustomer;
 import com.kcfinance.loans.app.modals.LeadDocument;
 import com.kcfinance.loans.app.service.loan.ILeadService;
-import com.kcfinance.loans.dao.LeadCommentsRepository;
 import com.kcfinance.loans.dao.LeadCustomerRepository;
 import com.kcfinance.loans.dao.LeadDocumentsRepository;
 import com.kcfinance.loans.dao.LeadRepository;
@@ -28,10 +27,7 @@ import com.kcfinance.loans.web.controllers.webservices.LeadResponse;
 @Service
 @Transactional
 public class LeadService implements ILeadService {
-
-	private static final String SUCCESS_KEY = "SUCCESS";
-	private static final String FAILURE_KEY = "SUCCESS";
-
+ 
 	@Autowired
 	private LeadRepository leadRepository ;
 
@@ -40,9 +36,6 @@ public class LeadService implements ILeadService {
 
 	@Autowired
 	private LeadCustomerRepository leadCustomerRepository ;
-
-	@Autowired
-	private LeadCommentsRepository leadCommentsRepository ;
 
 	public Optional<Lead> findById(Long id) {
 		return leadRepository.findById(id);
@@ -104,7 +97,7 @@ public class LeadService implements ILeadService {
 	public LeadResponse addCustomerDocuments(CustomerDocumentData customerDocumentData) {
 
 		LeadResponse leadResponse = new LeadResponse();
-
+		
 		try {
 
 			Lead lead = leadRepository.findByCode(customerDocumentData.getCode()).orElse(null);
@@ -115,8 +108,7 @@ public class LeadService implements ILeadService {
 				List<LeadDocument> customerDocuments = customerDocumentData.getLeadDocuments();
 
 				for(LeadDocument customerDocument : customerDocuments) {
-					customerDocument.setLeadCustomer(leadCustomer);		
-					customerDocument.setCreateDate(new Date());
+					customerDocument.setLeadCustomer(leadCustomer);			
 					leadCustomer.getLeadDocuments().add(customerDocument);
 				}
 
@@ -180,5 +172,4 @@ public class LeadService implements ILeadService {
 
 		return leadResponse;
 	}
-
 }

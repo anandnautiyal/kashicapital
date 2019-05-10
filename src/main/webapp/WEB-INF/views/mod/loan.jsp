@@ -6,25 +6,28 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 	<section class="content">
+	<form:form method="POST" action="/getLoan" modelAttribute="loan">
         <div class="container-fluid">
 			<!-- Form structure Start -->
 			<div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
+                   <c:choose>
+                    <c:when test="${not empty loanApplicationUpdateSuccess}">${loanApplicationUpdateSuccess}</c:when>
+                    <c:otherwise>
                         <div class="header">
                             <h2>
-                                Search Lead
+                                Search Loan
                                 <small>With Loan no.</small>
                             </h2>
                         </div>
                         <div class="body">
-                        <form:form method="POST" action="/getLoan" modelAttribute="loan">
                                 <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <form:input type="text" path="code"  class="form-control"/>
-                                                <label class="form-label">Search</label>
+                                                <label class="form-label">Enter Loan no.</label>
                                             </div>
                                         </div>
                                     </div>
@@ -34,13 +37,13 @@
                                 </div>
 
 							
-                        </div>
+                        </div></c:otherwise></c:choose>
                     </div>
                 </div>
             </div>
 			<!-- Form structure End -->
 			
-			<!-- Basic Examples -->
+			<!-- Basic Examples --><c:if test="${not empty loanList or not empty noRecords}">
             <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -83,7 +86,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></c:if>
             <!-- #END# Basic Examples -->
         </div>
 	  </form:form>

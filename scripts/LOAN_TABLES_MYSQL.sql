@@ -281,4 +281,8 @@ alter table kashicapital.loan_application_customer_document drop column document
 
 alter table kashicapital.loan_application_customer_document add column document_image LONGBLOB;
 
+Insert into KASHICAPITAL.customer_asset (ID,ASSET_TYPE_CODE,ASSET_TYPE_NAME) values (1,'business','व्यावसायिक');
+Insert into KASHICAPITAL.customer_asset (ID,ASSET_TYPE_CODE,ASSET_TYPE_NAME) values (2,'home','घरेलू');
+alter table kashicapital.loan_customer_asset add column asset nvarchar(50);
+
 

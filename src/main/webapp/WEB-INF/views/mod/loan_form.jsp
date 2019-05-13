@@ -136,6 +136,7 @@
 							<div class="header kc-header">
 								<h2>
 									Proposed Credit Facilities<span>(प्रस्तावित ऋण सुविधाएं)</span>:
+                                </h2>
 							</div>
 							<div class="body kc-top">
 								
@@ -150,7 +151,7 @@
 									    </div>
 										<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
 											<div class="form-group form-float">
-												<div class="form-line">
+												<div class="form-line kc-Asst-tp">
 													 <form:input type="text" path="applicationLoanDetail.loanAmount" id="applicationLoanDetail.loanAmount" class="form-control"/>
 													<label class="form-label">Amount<span>(राशि)</span></label>
 												</div>
@@ -213,7 +214,7 @@
 													<label class="form-label"></label>
 												</div>
 											</div>
-									</div>
+									     </div>
 										<div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
 											<div class="form-group form-float">
 												<div class="form-line">
@@ -289,7 +290,8 @@
                                     </div>
                                     <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#businessinfo" role="button" aria-expanded="false" aria-controls="businessinfo"><i class="material-icons">add</i></a>
                                     </div>
-                                <div class="row clearfix collapse" id="businessinfo">
+                               <div class="collapse" id="businessinfo">
+                                <div class="row clearfix">
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -326,6 +328,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                  </div>    
+                                    <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -352,7 +356,7 @@
                                             </div>
                                         </div>
                                     </div>
-												<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+								  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <form:input type="text" rows="4" class="form-control" path="loanApplicationCustomer.loanCustomerBusinesses[${status.index}].email" />
@@ -361,6 +365,7 @@
                                         </div>
                                     </div> 
                                 </div>
+                               </div>
                                 <div class="kc-heading">
                                 <h4>
                                      Business Activity<span>(व्यवसाय कार्यकलाप)</span>:
@@ -385,10 +390,11 @@
                                     </div>
                                       <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#bussinessOff" role="button" aria-expanded="false" aria-controls="bussinessOff"><i class="material-icons">add</i></a>
                                  </div>
-                               <div class="row clearfix collapse" id="bussinessOff">
+                            <div class="collapse" id="bussinessOff">
+                            <div class="row clearfix">
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
+                                            <div class="form-line kc-Asst-tp">
                                                 <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBusinesses[${status.index}].startDate" />
                                                 <label class="form-label">Date Of Commencement (Day/Month/Year)<span>(प्रारंभ करने की तिथि (दिन/महीना/वर्ष))</span></label>
                                             </div>
@@ -406,6 +412,8 @@
    										</form:select>
 										                                                                    
                                    </div>
+                               </div>
+                                <div class="row clearfix">
                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                        <span class="kc-subhead">Business Premises Type<span>(व्यवसाय परिसर प्रकार)</span></span>
 										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerBusinesses[${status.index}].businessPremisesType">
@@ -417,12 +425,14 @@
                                    </div>
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
+                                            <div class="form-line kc-Asst-tp">
                                                 <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerBusinesses[${status.index}].registeredOffice" />
                                                 <label class="form-label">Registered Office Address<span>(पंजीकृत कार्यालय का पता)</span></label>
                                             </div>
                                         </div>
                                     </div>
+                               </div>
+                               <div class="row clearfix">
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-control-label">
                                       <label class="form-label kc-label">Is GST Registered (Yes/No)<span>(क्या इकाई GST पंजीकृत है (हाँ/ नहीं))</span></label>
                                     </div>
@@ -451,6 +461,8 @@
                                             </div>
                                         </div>
                                     </div>
+                               </div>
+                                <div class="row clearfix">
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -460,9 +472,9 @@
                                         </div>
                                     </div>
                                 </div>
-                           
+                               </div>
+                            </c:forEach>
                         </div>
-                        </c:forEach>
                                 </section>
        <!-------------------------------- Form Section 3 End Here ---------------------------------->
        <!-------------------------------- Form Section 4 Start From Here ---------------------------------->
@@ -588,11 +600,12 @@
                                     </div>
                                     <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#ownerPatners" role="button" aria-expanded="false" aria-controls="ownerPatners"><i class="material-icons">add</i></a>
                                  </div>
-                                    <div class="row clearfix collapse" id="ownerPatners">
+                                   <div class="collapse" id="ownerPatners">
+                                    <div class="row clearfix">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].qualification" />
+                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].qualification" />
                                                 <label class="form-label">Educational Qualification<span>(शैक्षणिक योग्यता)</span></label>
                                             </div>
                                         </div>
@@ -605,7 +618,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                        
+                                </div>
+                                <div class="row clearfix">  
                                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                        <span class="kc-subhead">Type Of Accommodation<span>(आवास का प्रकार)</span></span>
 										
@@ -619,12 +633,14 @@
                                    </div>
                                     <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
+                                            <div class="form-line kc-Asst-tp">
                                                 <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].partnerAddress" />
                                                 <label class="form-label">Residential address<span>(आवासीय पता)</span></label>
                                             </div>
                                         </div>
                                       </div>
+                                  </div>
+                                 <div class="row clearfix">
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                        <span class="kc-subhead">Social Ranking<span>(सोशल श्रेणी)</span></span>
                                        <form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].caste">
@@ -653,7 +669,7 @@
                                        </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
+                                            <div class="form-line kc-Asst-tp">
                                                 <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].mobileNumber" />
                                                 <label class="form-label">Mobile Number<span>(मोबाइल नंबर)</span></label>
                                             </div>
@@ -661,12 +677,14 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
+                                            <div class="form-line kc-Asst-tp">
                                                 <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerDetails[${status.index}].panNumber" />
                                                 <label class="form-label">Pan Card<span>(पैन कार्ड)</span></label>
                                             </div>
                                         </div>
                                     </div>
+                                  </div>
+                                <div class="row clearfix">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -692,6 +710,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
                        </div>
                     </c:forEach>
                                </section>
@@ -729,7 +748,7 @@
                                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-9">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].partnerFirmBankName" />
+                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerPartnerFirmDetails[${status.index}].partnerFirmBankName" />
                                                 <label class="form-label">Current Bank Being Banking Practices With<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
                                             </div>
                                         </div>
@@ -752,8 +771,8 @@
                                     </div>
                                 </div>
                         </div>
-                               </section>
            </c:forEach>
+                        </section>
        <!-------------------------------- Form Section 6 End Here ---------------------------------->
        <!-------------------------------- Form Section 7 Start From Here ---------------------------------->
                                 <h2>Current Banking Facilities (in rupees) (वर्तमान बैंकिंग सुविधाएं (रुपए में))</h2>        
@@ -777,19 +796,19 @@
                                     </div>
                                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankName" />
+                                            <div class="form-line kc-Asst-tp">
+                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankName" />
                                                 <label class="form-label">Present Bank Name With Whom You Have Banking Practices<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#currentBanking" role="button" aria-expanded="false" aria-controls="currentBanking"><i class="material-icons">add</i></a>
+                                    <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#currentBanking${status.index}" role="button" aria-expanded="false" aria-controls="currentBanking"><i class="material-icons">add</i></a>
                                 </div>
-                                <div class="row clearfix collapse" id="currentBanking">
+                                <div class="row clearfix collapse" id="currentBanking${status.index}">
                                      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankBranchNumber" />
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankBranchNumber" />
                                                 <label class="form-label">Bank Branch<span>(बैंक शाखा)</span></label>
                                             </div>
                                         </div>
@@ -855,23 +874,23 @@
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanCompanyName" />
+                                            <div class="form-line kc-Asst-tp">
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanCompanyName" />
                                                 <label class="form-label">Name<span>(नाम)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].purpose" />
+                                            <div class="form-line kc-Asst-tp">
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].purpose" />
                                                 <label class="form-label">Objective<span>(उद्देश्य)</span></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#detailsLib" role="button" aria-expanded="false" aria-controls="detailsLib"><i class="material-icons">add</i></a>
+                                    <a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#detailsLib${status.index}" role="button" aria-expanded="false" aria-controls="detailsLib${status.index}"><i class="material-icons">add</i></a>
                                 </div>
-                                <div class="row clearfix collapse" id="detailsLib">
+                                <div class="row clearfix collapse" id="detailsLib${status.index}">
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -891,7 +910,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                               <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanTerm" />
+                                               <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanTerm" />
                                                 <label class="form-label">Period<span>(अवधि)</span></label>
                                             </div>
                                         </div>
@@ -931,7 +950,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanSecurity" />
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanSecurity" />
                                                 <label class="form-label">Securities<span>(प्रतिभूति)</span></label>
                                             </div>
                                         </div>
@@ -939,7 +958,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].legalStatus" />
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].legalStatus" />
                                                 <label class="form-label">Any pending legal proceedings<span>(कोई अपूर्ण कानूनी कार्यवाही)</span></label>
                                             </div>
                                         </div>
@@ -947,7 +966,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanAgreementIncorporated" />
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerLoanDetails[${status.index}].loanAgreementIncorporated" />
                                                 <label class="form-label">Any Informal Settlement Between Borrower And Lender<span>(कोई अनौपचारिक समझौता जो उधारकर्ता और ऋणदाता में हुआ हो)</span></label>
                                             </div>
                                         </div>
@@ -1037,8 +1056,8 @@
                         </div>
                                </section>
                                
-                               
-                           	<!-------------------------------- Form Section new  --------------------------------->	
+                     <!-------------------------------- Form Section 9 End Here ---------------------------------->
+                     <!-------------------------------- Form Section 10 Start From Here ---------------------------------->
 					   <h2> Description Of Assets (परिसम्पत्तियों का विवरण )</h2>        
                              <section>
                                 <div class="header kc-header">
@@ -1050,7 +1069,7 @@
                         <div class="body">
                            
                                 <div class="row clearfix">
-                                    <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <span class="kc-subhead">Types Of Assets<span>( परिसम्पत्तियों का प्रकार)</span></span>
 										
 										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].customerAsset">
@@ -1060,7 +1079,7 @@
 										
 									
                                     </div>
-									 <div class="col-lg-4 col-md-5 col-sm-5 col-xs-5">
+									 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <span class="kc-subhead">Types<span>( प्रकार)</span></span>
 										<form:select  class="form-control show-tick kc-select" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetType">
 											<form:option value="अचल" label="Immovable(अचल)"/>
@@ -1069,18 +1088,17 @@
    											<form:option value="अन्य" label="Others(अन्य)"/>
 										</form:select>
                                     </div>
-									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+									<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                                         <div class="form-group form-float">
-                                            <div class="form-line">
-                                                <input type="text" class="form-control" name="B_Assest">
-                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" class="form-control"/>
+                                            <div class="form-line kc-Asst-tp">
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].asset" />
                                                 <label class="form-label">Assest<span>(संपत्ति)</span></label>
                                             </div>
                                         </div>
                                     </div>
-									
-								</div>	
-								<div class="row clearfix">
+									<a class="btn bg-orange btn-circle waves-effect waves-circle waves-float" data-toggle="collapse" href="#descripAction${status.index}" role="button" aria-expanded="false" aria-controls="descripAction"><i class="material-icons">add</i></a>
+								</div>
+								<div class="row clearfix collapse" id="descripAction${status.index}">
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <div class="form-group form-float">
                                             <div class="form-line">
@@ -1100,16 +1118,17 @@
 									<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" class="form-control"/>
+                                                <form:input class="form-control transliteration${status.index}" type="text" path="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" id="loanApplicationCustomer.loanCustomerAssets[${status.index}].assetDescription" />
                                                 <label class="form-label">Description<span>(विवरण)</span></label>
                                             </div>
                                         </div>
                                     </div>
                                 </div> 
-                             </c:forEach> 
+                       </div>
+                                 </c:forEach>
                                </section>  
-       <!-------------------------------- Form Section 9 End Here ---------------------------------->
-       <!-------------------------------- Form Section 10 Start From Here -------------------------->
+       <!-------------------------------- Form Section 10 End Here ---------------------------------->
+       <!-------------------------------- Form Section 11 Start From Here -------------------------->
                                 <h2>The Details Of The Monthly Household Income (मासिक घरेलु आय का विवरण)</h2>        
                                 <section>
                                 <div class="header kc-header">
@@ -1123,7 +1142,7 @@
                                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                         <div class="form-group form-float">
                                             <div class="form-line">
-                                                <form:input type="text" path="loanApplicationCustomer.incomeFromRent" id="loanApplicationCustomer.incomeFromRent" class="form-control"/>
+                                                <form:input type="text" class="form-control" path="loanApplicationCustomer.incomeFromRent" id="loanApplicationCustomer.incomeFromRent" />
                                                 <label class="form-label">Rental income<span>(किराये से आमदनी)</span></label>
                                             </div>
                                         </div>
@@ -1186,15 +1205,17 @@
                             
                         </div>
                                </section>
-       <!-------------------------------- Form Section 10 End Here --------------------------------->
+       <!-------------------------------- Form Section 11 End Here --------------------------------->
+        <!-------------------------------- Form Section 12 Start From Here ---------------------------------->
 								<h2>12</h2>        
                                 <section>
-                                <div class="header kc-header">
+                                <div class="header">
                                 <h2>
                                     Comments:
                                 </h2>
                                </div>
                         <div class="body">
+                            <div class="row clearfix">
                         <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
                                         <tr>
@@ -1219,34 +1240,54 @@
                                   
                             	</c:when>
                              	<c:otherwise>
-								   <div class="row clearfix">
 										<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 											<div class="form-group form-float">
-												<div class="form-line">
-												<form:textarea rows="4" class="form-control no-resize" path="loanApplicationComments[${status.index}].comments" />
+												<div class="form-line kc-loan-app-comments">
+												<form:textarea rows="2" class="form-control no-resize commenttransliteration" path="loanApplicationComments[${status.index}].comments" />
 												<label class="form-label">Please type your Comment</label>
 												</div>
 											</div>
-										</div>
-									</div>	
+										</div>	
+                
 								</c:otherwise>
 								</c:choose>
                             </c:forEach>
 									</tbody>
                                 </table>
+                            </div>
                         </div>
                                </section>
                                
-                          
-       <!-------------------------------- Form Section 11 End Here --------------------------------->
+        <!-------------------------------- Form Section 12 End Here---------------------------------->
+       <!-------------------------------- Form Section 13 Start From Here --------------------------------->
 							<h2>Documents</h2>        
 							<section>
                                 <div class="header kc-header">
                                 <h2>
-                                Documents :
-                            </h2>
-                        </div>
-                        <div class="body">
+                                     Loan Status (ऋण आवेदन की स्थिति) :
+                                </h2>
+                               </div>
+                           <div class="body">
+                             <div class="row clearfix">
+                                   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    	<span class="kc-subhead">Loan Status<span>(ऋण आवेदन की स्थिति)</span></span>
+                                      		<form:select class="form-control show-tick kc-select" path="status">
+   												<form:option value="NEW" label="New(नया)"/>
+   												<form:option value="ON_HOLD" label="On Hold(होल्ड पर)"/>
+   												<form:option value="APPROVED" label="Approved(मंजूर की)"/>
+   												<form:option value="REJECTED" label="Rejected(अस्वीकृत)"/>
+											</form:select>                         
+                                	</div> 
+                        	  </div>
+                            </div>
+                                <div id="kc-documents">
+                             <div class="header kc-header">
+                                <h2>
+                                     Documents :
+                                </h2>
+                             </div>
+                            <div class="row clearfix">
+                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                     <thead>
@@ -1272,31 +1313,23 @@
 										</c:forEach>
                                     </tbody>
                                 </table>
+                              </div>
                             </div>
-                              <div class="col-md-4">
-                                    <div class="form-group form-float">
-                                    	<span>Loan Status<span>(ऋण आवेदन की स्थिति)</span></span>
-                                      		<form:select path="status">
-   												<form:option value="NEW" label="New(नया)"/>
-   												<form:option value="ON_HOLD" label="On Hold(होल्ड पर)"/>
-   												<form:option value="APPROVED" label="Approved(मंजूर की)"/>
-   												<form:option value="REJECTED" label="Rejected(अस्वीकृत)"/>
-											</form:select>                         
-                                	</div> 
-                        	  </div>
+                          </div>  
                         </div>
-                 
 					</section>
-				      
+          <!-------------------------------- Form Section 13 End Here --------------------------------->
                      
                 </div>
+            </form:form>        
             </div>
             <!-- #END# Basic Example | Horizontal Layout -->
         </div>
-     </div>
-  </form:form>
+         </div>
+
+    </div>
+        </div>
     </section>
-	
 	<script>
 		//Load the Google Transliterate API
 		google.load("elements", "1", {
@@ -1316,7 +1349,15 @@
 			//Enable transliteration in the textbox with id
 			//'transliterateTextarea'.
 			var elements = document.getElementsByClassName('transliteration');
+			var elements1 = document.getElementsByClassName('transliteration0');
+			var elements2 = document.getElementsByClassName('transliteration1');
+			var elements3 = document.getElementsByClassName('transliteration2');
+			var elements4 = document.getElementsByClassName('commenttransliteration');
 			control.makeTransliteratable(elements);
+			control.makeTransliteratable(elements1);
+			control.makeTransliteratable(elements2);
+			control.makeTransliteratable(elements3);
+			control.makeTransliteratable(elements4);
 		}
 		google.setOnLoadCallback(onLoad);
 	</script>
@@ -1342,7 +1383,7 @@
                   var clon3 = $('.kc-PartnerBusinessFormBody>.kc-PartnerBusiness').clone();
                   $('#kc-append-Partner-Business').append(clon3);
                   $.AdminBSB.input.activate();
-                });                          
+                });
          });
        </script>
 <style>
@@ -1360,9 +1401,10 @@
     .kc-customerType{
     float: left;    
     }
-        .kc-select{
+    .kc-select{
     position: relative;
     top: -18px;
+    border-bottom: 2px solid #1f91f3 !important;
     }
     span.kc-subhead {
         position: relative;
@@ -1399,5 +1441,11 @@
     }
     .kc-heading {
     margin-bottom: 30px;
+    }
+    .kc-Asst-tp{
+    margin-top: 3px;    
+    }
+    .kc-loan-app-comments{
+    margin-left: 10px;    
     }
     </style>

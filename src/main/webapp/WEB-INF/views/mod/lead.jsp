@@ -63,7 +63,7 @@
                                         <tr>
                                             <th>Firstname</th>
 											<th>Lastname</th>
-											<th>Email</th>
+											<th>Mobile</th>
 											<th>Date</th>
                                         </tr>
                                     </thead>

@@ -986,7 +986,7 @@
                    
           <!-------------------------------- Form Section 8 End Here ---------------------------------->
        <!-------------------------------- Form Section 9 Start From Here ---------------------------------->
-                                <h2>Total Of Liabilities (Commercial and  Domestic) (कुल देनदारियां (व्यावसायिक व घरेलू))</h2>        
+                                <!-- <h2>Total Of Liabilities (Commercial and  Domestic) (कुल देनदारियां (व्यावसायिक व घरेलू))</h2>        
                                 <section>
                                 <div class="header kc-header">
                             <h2>
@@ -1054,7 +1054,7 @@
                                 </div>
                        
                         </div>
-                               </section>
+                               </section>-->
                                
                      <!-------------------------------- Form Section 9 End Here ---------------------------------->
                      <!-------------------------------- Form Section 10 Start From Here ---------------------------------->

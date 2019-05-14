@@ -22,6 +22,7 @@ import java.util.Date;
 @Table(name="loan_customer_asset")
 @NamedQuery(name="LoanCustomerAsset.findAll", query="SELECT l FROM LoanCustomerAsset l")
 public class LoanCustomerAsset implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id

@@ -1,5 +1,6 @@
 package com.kcfinance.loans.app.modals;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -21,7 +22,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="loan_customer_partner_firm")
 @NamedQuery(name="LoanCustomerPartnerFirmDetail.findAll", query="SELECT l FROM LoanCustomerPartnerFirmDetail l")
-public class LoanCustomerPartnerFirmDetail {
+public class LoanCustomerPartnerFirmDetail implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id

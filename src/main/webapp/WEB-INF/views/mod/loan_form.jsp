@@ -797,7 +797,7 @@
                                      <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
                                         <div class="form-group form-float">
                                             <div class="form-line kc-Asst-tp">
-                                                <form:input type="text" class="form-control transliteration" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankName" />
+                                                <form:input type="text" class="form-control transliteration${status.index}" path="loanApplicationCustomer.loanCustomerBankDetails[${status.index}].bankName" />
                                                 <label class="form-label">Present Bank Name With Whom You Have Banking Practices<span>(वर्तमान बैंक जिसके साथ बैंकिंग व्यवहार किया जा रहा हो)</span></label>
                                             </div>
                                         </div>
